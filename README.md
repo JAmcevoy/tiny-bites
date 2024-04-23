@@ -1,39 +1,131 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Tiny Bites
 
-Welcome,
+[tiny-bites]()
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Tiny Bites is more than just a food website; it's a culinary community where users can unleash their creativity by crafting their own delectable bites to share with the platform.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+ Whether it's a gourmet twist on instant noodles or a cherished lunchtime BLT spot, Tiny Bites invites users to explore and celebrate the world of snacks and tiny delights. With a focus on user-friendly design, the platform aims to provide a seamless experience for posting recipes and sharing ratings. It's not just about food; it's about sharing thoughts, emotions, and experiences surrounding everyone's ultimate passion: food.
 
-## Codeanywhere Reminders
+![Responsice Mockup]()
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+# User Needs
 
-`python3 -m http.server`
+- As a user, I would want the website to be accessible from different devices (Phone, Laptop, PC, Tablet).
+- As a user I would like it to be responsive to all screens, ensuring the information is readable and understandable.
+- As a user, I would want to easily be able to post my bites.
+- As a user, I would need to able able to create an account quick and easily.
+- As a user, I would want to able to post pictures of my bites.
+- As a user, I would want to be able to see a collection of my posts
+- As a user, I would need to be able to edit or delete my comments and posts.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+# Planning
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+- Before I could start this project I first needed to get the planned layout, The fields I required, and .
 
-`http_server`
+## Planned Design
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+- First, how did I want the site to look where did I want what, and what placement on smaller screens using wireframe I created my layout
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+### Large Screen Layout
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+![Large Screen](docs/)
 
-To log into the Heroku toolbelt CLI:
+### Types of Elements
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+![Types Layout](docs/)
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+### Small Screen Layout
 
----
+![Small Screen](docs/images)
 
-Happy coding!
+# Features
+
+### Existing Features
+
+
+
+### Features Left to Implement
+
+
+# Testing
+
+
+### Choices test
+
+#### Aim - To test that the computer is selecting different options and using each value of the user's options for one full game (up to 7 wins)
+
+### Conclusion
+
+
+### User testing
+
+
+### Validator Testing
+
+### Bugs I Faced Along The Way
+
+
+### Bugs I did not get to fix
+
+
+## Deployment
+
+This section describes how to create a new repository.
+
+- This repository was created using [GitHub](https://github.com/) The steps are as followed:
+  - I went to the [Code Institute Template](https://github.com/Code-Institute-Org/ci-full-template)
+  - I selected the green button labeled 'Use this template'
+  - Then, Create a new repository.
+  - Then I was brought to a new page to set the name and setting for my new repository.
+  - I named my repository 'R.P.S.L.S'
+
+This section describes how I set up my workspace, Once my repository has been created.
+
+- The workspace I used for this project was [codeanywhere](https://app.codeanywhere.com/). The steps are as follows:
+  - I opened [GitHub](https://github.com/) and went to the 'R.P.S.L.S' repository
+  - To get the link for codeanywhere I clicked the green button '<>code'.
+  - Here under local, I could copy the link needed: <https://github.com/JAmcevoy/R.P.S.L.S.git>
+  - Then I went to code anywhere.
+  - In workplaces, I selected new workspaces
+  - Here I copied the link from the git hub and clicked to create to make my workspace.
+
+This section describes the commands I used in code anywhere to push my code and changes to GitHub.
+
+    -  I created the files and folders needed for my project.
+      - index.html
+      - assets folder
+        - css folder
+          - style.css
+        - icon folder
+        - js folder
+          - script.js
+        - images
+      - Docs
+        - images
+    - I used the git add . command to add all changes above.
+    - Using the git commit command I committed the change and used -m to attach a message to the commit.
+    - When I was finished with the creation I used git push to push all these files and folders to GitHub.
+    - I used these same 3 commands through the creation and modification
+
+This section should describe the process I went through to deploy the project to a hosting platform.
+
+- The site was deployed to GitHub pages. The steps to deploy are as follows:
+  - In the GitHub repository, navigate to the Settings tab
+  - From the source section drop-down menu, select the Master Branch
+  - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+
+The live link can be found here - <https://jamcevoy.github.io/RPSLS/>
+
+## Credits
+
+- I used these resources to research and develop my understanding of JavaScript, as well as get inspiration for my own code. During this research, I have borrowed some ideas and modified the code to suit my project. No code was used unedited
+
+### Design
+
+- All the design screenshots from above came from [Wirframe](https://wireframe.cc/)
+
+### Code
+
+
+### Content
+

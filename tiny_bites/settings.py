@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&(=-f1dy05o&$*jmz%zn5pz8gryfipkllp&rv*ktedot8uxyix'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-jamcevoy-tiny-bites-2s726i9nhd.us1.codeanyapp.com']
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'feed',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +80,12 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+CSRF_TRUSTED_ORIGINS = [
+"https://*.codeanyapp.com",
+"https://*.herokuapp.com"
+]
 
 
 # Password validation

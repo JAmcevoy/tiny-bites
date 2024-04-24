@@ -20,7 +20,7 @@ Tiny Bites is more than just a food website; it's a culinary community where use
 
 # Planning
 
-- Before I could start this project I first needed to get the planned layout, The fields I required, and .
+- Before I could start this project I first needed to get the planned layout, The fields I required, and Database Schema
 
 ## Planned Design
 
@@ -29,6 +29,7 @@ Tiny Bites is more than just a food website; it's a culinary community where use
 ### Large Screen Layout
 
 ![Large Screen](docs/)
+![Small Screen]((docs/))
 
 ### Types of Elements
 

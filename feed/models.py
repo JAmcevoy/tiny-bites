@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Create(models.Model):
     name = models.CharField(max_length=200, unique=True)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="Feed_posts_create"
+        User, on_delete=models.CASCADE, related_name="Feed_create"
     )
     description = models.TextField()
     ingredients = models.TextField()
@@ -16,7 +16,7 @@ class Create(models.Model):
 class Review(models.Model):
     name = models.CharField(max_length=200, unique=True)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="blog_posts_review"
+        User, on_delete=models.CASCADE, related_name="blog_review"
     )
     name_of_chef = models.CharField(max_length=200, unique=True)
     description = models.TextField()

@@ -6,11 +6,11 @@
     <div class="container">
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
-                <h1 class="post-title">{{ post.name }}</h1>
-                <p class="post-subtitle">By {{ post.author }} | {{ post.created_at }}</p>
+                <h1 class="post-title">{{post.name}}</h1>
+                <p class="post-subtitle">By {{post.author}} | {{post.created_at}}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
-                <img src="{% static 'images/default.jpg' %}" class="scale" alt="placeholder">
+                <img src="{% static 'images/default_2.jpg' %}" class="scale" alt="Dish Image">
             </div>
         </div>
     </div>
@@ -21,7 +21,17 @@
         <div class="col card mb-4 mt-3 left top">
             <div class="card-body">
                 <p class="card-text">
-                    {{ post.description | safe }}
+                    {{post.description}}
+                </p>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    {{post.ingredients}}
+                </p>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    {{post.instructions}}
                 </p>
             </div>
         </div>

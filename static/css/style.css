@@ -10,3 +10,15 @@ body {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
   
 }
+
+.scale {
+  height:  300px; 
+  width: 400px;
+  border-radius: 50%;
+}
+
+#cover-img {
+  background-image: url("{% static 'images/default_2.jpg' %}");
+  background-size: cover;
+
+}

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
@@ -7,11 +8,11 @@
 
     {% for post in object_list %}
     <div class="card">
-      <div class="card-body">
+      <div class="card-body" id="cover-img">
         <h5 class="card-title">{{post.name}}</h5>
         <p class="card-text">{{post.author}}</p>
         <!-- <p class="card-text">{{post.description}}</p> -->
-        <a href=""{% url 'post_detail' post.name %}" class="btn btn-primary">Read More</a>
+        <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read More</a>
       </div>
     </div>
     {% endfor %}

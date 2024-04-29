@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-  }
-  .navbar-brand {
-    font-weight: bold;
-    font-size: 28px;
-    color: #fff; 
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-  }
+  font-family: "Anton", sans-serif;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  color: #fff; 
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  
+}

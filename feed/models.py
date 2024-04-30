@@ -24,3 +24,18 @@ class Review(models.Model):
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
+
+class Comment(models.Model):
+    post = models.ForeignKey(
+        Create,
+        on_delete=models.CASCADE,
+        related_name="comments"
+    )
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="comments_author"
+    )
+    body = models.TextField()
+    approved = models.BooleanField(default=False)
+    created_on = models.DateTimeField(auto_now_add=True)

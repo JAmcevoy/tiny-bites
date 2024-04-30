@@ -1,39 +1,58 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+{% load crispy_forms_tags %}
 
-<div class="masthead">
-    <div class="container">
-        <div class="row g-0">
-            <div class="col-md-6 masthead-text">
-                <h1 class="post-title">{{post.name}}</h1>
-                <p class="post-subtitle">By {{post.author}} | {{post.created_at}}</p>
-            </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
-                <img src="{% static 'images/default_2.jpg' %}" class="scale" alt="Dish Image">
+<div class="container py-5">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="card-title">{{ post.name }}</h1>
+                    <p class="card-subtitle text-muted">By {{ post.author }} | {{ post.created_at }}</p>
+                    <hr>
+                    <p class="card-text">{{ post.description }}</p>
+                    <p class="card-text">{{ post.ingredients }}</p>
+                    <p class="card-text">{{ post.instructions }}</p>
+                    <hr>
+                    <p class="card-text">{{ post.content | safe }}</p>
+                </div>
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <img src="{% static 'images/default_2.jpg' %}" class="img-fluid scale" alt="Post Image">
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="row">
-        <div class="col card mb-4 mt-3 left top">
-            <div class="card-body">
-                <p class="card-text">
-                    {{post.description}}
-                </p>
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="mb-4">Comments</h2>
+            <div id="comments-container">
+                {% for comment in comments %}
+                <div class="media mb-4">
+                    <div class="media-body">
+                        <h5 class="mt-0">{{ comment.author }}</h5>
+                        <p>{{ comment.body }}</p>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-            <div class="card-body">
-                <p class="card-text">
-                    {{post.ingredients}}
-                </p>
-            </div>
-            <div class="card-body">
-                <p class="card-text">
-                    {{post.instructions}}
-                </p>
-            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            {% if user.is_authenticated %}
+            <h2 class="mb-4">Leave a Comment</h2>
+            <p class="text-muted">Posting as: {{ user.username }}</p>
+            <form id="commentForm" method="post">
+                {% csrf_token %}
+                {{ comment_form | crispy }}
+                <button id="submitButton" type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            {% else %}
+            <p class="mb-0">Log in to leave a comment</p>
+            {% endif %}
         </div>
     </div>
 </div>

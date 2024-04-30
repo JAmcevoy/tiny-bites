@@ -17,8 +17,24 @@ body {
   border-radius: 50%;
 }
 
-#cover-img {
-  background-image: url("{% static 'images/default_2.jpg' %}");
-  background-size: cover;
+.dates-font {
+  font-weight: bolder;
+  font-style: italic;
+}
 
+.card-img {
+  max-width: 100%;
+  height: auto;
+}
+
+.btn-primary {
+  width: 100%;
+}
+
+.border-dark {
+  border-width: 5px;
+}
+
+.card-img-top {
+  margin-top: 20px;
 }

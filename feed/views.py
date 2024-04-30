@@ -45,7 +45,5 @@ def post_detail(request, slug):
     )
 
 
-
-
-
-
+def post_creation(request):
+    return render(request, 'feed/post_creation.html')

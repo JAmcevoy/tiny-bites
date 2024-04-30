@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<!-- Create Fields -->
+<div class="card" id="createFields">
+    <div class="card-body">
+        <div class="form-group">
+            <label for="dishName">Name of Dish</label>
+            <input type="text" class="form-control" id="dishName">
+        </div>
+        <div class="form-group">
+            <label for="dishText">Text</label>
+            <textarea class="form-control" id="dishText" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="dishImage">Picture - Image Upload</label>
+            <input type="file" class="form-control-file" id="dishImage">
+        </div>
+        <div class="form-group">
+            <label for="dishDescription">Description</label>
+            <textarea class="form-control" id="dishDescription" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="dishIngredients">Ingredients</label>
+            <textarea class="form-control" id="dishIngredients" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="dishInstructions">How to Make</label>
+            <textarea class="form-control" id="dishInstructions" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block extras %}
+<script src="{% static 'js/create.js' %}"></script>
+{% endblock %}

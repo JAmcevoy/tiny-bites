@@ -51,3 +51,15 @@ body {
   overflow: hidden;
   height: 400px;
 }
+
+/* Star rating */
+.stars {
+  cursor: pointer;
+}
+.stars span {
+  font-size: 30px;
+  color: #ccc;
+}
+.stars span.checked {
+  color: gold;
+}

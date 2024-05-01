@@ -2,17 +2,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
 from django.utils.text import slugify
-from .models import Create, Review, Comment
-from .forms import CommentForm, PostFormCreate
-
-
-# Create your views here.
+from .models import Create, Review
+from .forms import PostFormCreate, PostFormReview
 
 class PostList(generic.ListView):
     queryset = Create.objects.all()
     template_name = "feed/index.html"
     paginate_by = 10
-
 
 def post_detail(request, slug):
     queryset = Create.objects.filter()
@@ -45,20 +41,17 @@ def post_detail(request, slug):
         },
     )
 
-
 def post_creation(request):
     if request.method == 'POST':
-        form = PostFormCreate(request.POST, request.FILES)
-        if form.is_valid():
-            new_post = form.save(commit=False)
+        create_form = PostFormCreate(request.POST, request.FILES)
+        if create_form.is_valid():
+            new_post = create_form.save(commit=False)
             new_post.author = request.user
-            
-            # Generate unique slug
+
             new_post.slug = slugify(new_post.name)
-            
-            # Handle duplicate slugs
+
             suffix = 1
-            while Create.objects.filter(slug=new_post.slug).exists():
+            while Post.objects.filter(slug=new_post.slug).exists():
                 new_post.slug = slugify(new_post.name) + '-' + str(suffix)
                 suffix += 1
             
@@ -66,5 +59,29 @@ def post_creation(request):
 
             return redirect('post_detail', slug=new_post.slug)
     else:
-        form = PostFormCreate()
-    return render(request, 'feed/post_creation.html', {'form': form})
+        create_form = PostFormCreate()
+
+    return render(request, 'feed/post_creation.html', {'post_form': create_form})
+
+# def review_creation(request):
+#     if request.method == 'POST':
+#         review_form = ReviewForm(request.POST)
+#         if review_form.is_valid():
+#             new_review = review_form.save(commit=False)
+#             new_review.author = request.user
+
+#             new_review.slug = slugify(new_review.name)
+
+#             suffix = 1
+#             while Review.objects.filter(slug=new_review.slug).exists():
+#                 new_review.slug = slugify(new_review.name) + '-' + str(suffix)
+#                 suffix += 1
+            
+#             new_review.save()
+
+#             return redirect('post_detail', slug=new_review.slug)
+#     else:
+#         review_form = ReviewForm()
+
+#     return render(request, 'feed/post_creation.html', {'review_form': review_form})
+

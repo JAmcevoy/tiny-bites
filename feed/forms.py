@@ -1,4 +1,4 @@
-from .models import Comment, Create
+from .models import Comment, Create, Review
 from django import forms
 
 
@@ -16,4 +16,13 @@ class PostFormCreate(forms.ModelForm):
             'description',
             'ingredients',
             'instructions',
+        )
+
+class PostFormReview(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = (
+            'name',
+            'name_of_chef',
+            'description',
         )

@@ -12,6 +12,7 @@ class PostFormCreate(forms.ModelForm):
     class Meta:
         model = Create
         fields = (
+            'name',
             'description',
             'ingredients',
             'instructions',

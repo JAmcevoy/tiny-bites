@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
+from django.utils.text import slugify
 from .models import Create, Review, Comment
-from .forms import CommentForm
+from .forms import CommentForm, PostFormCreate
 
 
 # Create your views here.
@@ -46,4 +47,24 @@ def post_detail(request, slug):
 
 
 def post_creation(request):
-    return render(request, 'feed/post_creation.html')
+    if request.method == 'POST':
+        form = PostFormCreate(request.POST, request.FILES)
+        if form.is_valid():
+            new_post = form.save(commit=False)
+            new_post.author = request.user
+            
+            # Generate unique slug
+            new_post.slug = slugify(new_post.name)
+            
+            # Handle duplicate slugs
+            suffix = 1
+            while Create.objects.filter(slug=new_post.slug).exists():
+                new_post.slug = slugify(new_post.name) + '-' + str(suffix)
+                suffix += 1
+            
+            new_post.save()
+
+            return redirect('post_detail', slug=new_post.slug)
+    else:
+        form = PostFormCreate()
+    return render(request, 'feed/post_creation.html', {'form': form})

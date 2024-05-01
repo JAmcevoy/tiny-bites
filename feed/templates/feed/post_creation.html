@@ -1,42 +1,42 @@
 {% extends "base.html" %}
-{% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-
-
-<!-- Create Fields -->
-<div class="card" id="createFields">
-    <div class="card-body">
-        <div class="form-group">
-            <label for="dishName">Name of Dish</label>
-            <input type="text" class="form-control" id="dishName">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <div class="form-group">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="createReview" id="createRadio"
+                                value="create" checked>
+                            <label class="form-check-label" for="createRadio">Create</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="createReview" id="reviewRadio"
+                                value="review">
+                            <label class="form-check-label" for="reviewRadio">Review</label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form|crispy }}
+                            </div>
+                        </div>
+                        <div class="row justify-content-center mt-4">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="dishText">Text</label>
-            <textarea class="form-control" id="dishText" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="dishImage">Picture - Image Upload</label>
-            <input type="file" class="form-control-file" id="dishImage">
-        </div>
-        <div class="form-group">
-            <label for="dishDescription">Description</label>
-            <textarea class="form-control" id="dishDescription" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="dishIngredients">Ingredients</label>
-            <textarea class="form-control" id="dishIngredients" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="dishInstructions">How to Make</label>
-            <textarea class="form-control" id="dishInstructions" rows="3"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Submit</button>
     </div>
 </div>
-
 {% endblock content %}
-
-{% block extras %}
-<script src="{% static 'js/create.js' %}"></script>
-{% endblock %}

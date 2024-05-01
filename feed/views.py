@@ -3,7 +3,7 @@ from django.views import generic
 from django.contrib import messages
 from django.utils.text import slugify
 from .models import Create, Review
-from .forms import PostFormCreate, PostFormReview
+from .forms import PostFormCreate, PostFormReview, CommentForm
 
 class PostList(generic.ListView):
     queryset = Create.objects.all()

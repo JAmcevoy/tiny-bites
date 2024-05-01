@@ -7,7 +7,9 @@
 
   {% for post in object_list %}
   <div class="card bg-dark mb-3 border-dark mb-4 text-center">
-    <img class="card-img" src="{% static 'images/default_2.jpg' %}" alt="Card image">
+    <div class="image-container">
+      <img class="card-img" src="{% static 'images/default_2.jpg' %}" alt="Card image">
+    </div>
     <div class="card-img-top">
       <h5 class="card-title text-primary">{{post.name}}</h5>
       <p class="card-text text-primary">{{post.author}}</p>

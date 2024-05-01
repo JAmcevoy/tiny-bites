@@ -30,7 +30,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 SECRET_KEY = 'django-insecure-&(=-f1dy05o&$*jmz%zn5pz8gryfipkllp&rv*ktedot8uxyix'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-jamcevoy-tiny-bites-2s726i9nhd.us1.codeanyapp.com']
 
@@ -88,6 +88,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
             ],
         },
     },

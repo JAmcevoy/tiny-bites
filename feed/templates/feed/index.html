@@ -22,9 +22,9 @@
         aria-controls="collapse{{ forloop.counter }}">
         Description
       </button>
-      <div class="collapse" id="collapse{{ forloop.counter }}">
+      
         <div class="card card-body">
-          <p>{{ post.description }}</p>
+          <p<div class="collapse" id="collapse{{ forloop.counter }}">>{{ post.description }}</p>
           <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read More</a>
         </div>
       </div>

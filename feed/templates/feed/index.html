@@ -4,22 +4,27 @@
 {% block content %}
 
 <div class="container mt-4">
-
   {% for post in object_list %}
   <div class="card bg-dark mb-3 border-dark mb-4 text-center">
     <div class="image-container">
-      <img class="card-img" src="{% static 'images/default_2.jpg' %}" alt="Card image">
+      {% if "placeholder" in post.featured_image.url %}
+      <img class="card-img" src="{% static 'images/default_2.jpg' %}" alt="placeholder image">
+      {% else %}
+      <img class="card-img" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+      {% endif %}
     </div>
     <div class="card-img-top">
-      <h5 class="card-title text-primary">{{post.name}}</h5>
-      <p class="card-text text-primary">{{post.author}}</p>
-      <p class="card-text dates-font text-success">{{post.created_at}}</p>
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}">
+      <h5 class="card-title text-primary">{{ post.name }}</h5>
+      <p class="card-text text-primary">{{ post.author }}</p>
+      <p class="card-text dates-font text-success">{{ post.created_at }}</p>
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false"
+        aria-controls="collapse{{ forloop.counter }}">
         Description
       </button>
       <div class="collapse" id="collapse{{ forloop.counter }}">
         <div class="card card-body">
-          <p>{{post.description}}</p>
+          <p>{{ post.description }}</p>
           <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read More</a>
         </div>
       </div>

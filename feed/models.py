@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Create(models.Model):
@@ -8,6 +9,7 @@ class Create(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="Create"
     )
+    featured_image = CloudinaryField('image', default='placeholder')
     description = models.TextField()
     ingredients = models.TextField()
     instructions = models.TextField()
@@ -20,6 +22,7 @@ class Review(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="Review"
     )
+    featured_image = CloudinaryField('image', default='placeholder')
     name_of_chef = models.CharField(max_length=200, unique=True)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)

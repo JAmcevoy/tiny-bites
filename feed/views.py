@@ -8,7 +8,6 @@ from .forms import PostFormCreate, PostFormReview, CommentForm
 class PostList(generic.ListView):
     queryset = Create.objects.all()
     template_name = "feed/index.html"
-    paginate_by = 10
 
 def post_detail(request, slug):
     queryset = Create.objects.filter()
@@ -51,7 +50,7 @@ def post_creation(request):
             new_post.slug = slugify(new_post.name)
 
             suffix = 1
-            while Post.objects.filter(slug=new_post.slug).exists():
+            while Create.objects.filter(slug=new_post.slug).exists():
                 new_post.slug = slugify(new_post.name) + '-' + str(suffix)
                 suffix += 1
             

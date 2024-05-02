@@ -70,7 +70,7 @@ body {
   color: #007bff;
   background-color: transparent;
   border: 1px solid #007bff;
-  margin: 20px; /* Add semicolon here */
+  margin: 20px;
   transition: all 0.3s ease-in-out;
 }
 

@@ -10,6 +10,7 @@ class PostList(generic.ListView):
     template_name = "feed/index.html"
     paginate_by = 10
 
+
 def post_detail(request, slug):
     queryset = Create.objects.filter()
     post = get_object_or_404(queryset, slug=slug)
@@ -84,4 +85,16 @@ def post_creation(request):
 #         review_form = ReviewForm()
 
 #     return render(request, 'feed/post_creation.html', {'review_form': review_form})
+
+
+def my_bites(request):
+    if request.user.is_authenticated:
+        user_posts = Create.objects.filter(author_id=request.user.id)
+        return render(request, 'feed/my_bites.html', {'user_posts': user_posts})
+    else:
+        return render(request, 'account/login.html')
+
+
+
+
 

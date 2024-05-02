@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4">
+  {% if user_posts %}
+    {% for record in user_posts %}
+    <div class="card bg-dark mb-3 border-dark mb-4 text-center">
+      <div class="card-header" id="heading{{ forloop.counter }}">
+        <h5 class="mb-0">
+          <button class="btn btn-link text-primary" data-toggle="collapse" data-target="#collapse{{ forloop.counter }}"
+            aria-expanded="true" aria-controls="collapse{{ forloop.counter }}">
+            {{ record.name }}
+          </button>
+        </h5>
+      </div>
+      <div id="collapse{{ forloop.counter }}" class="collapse" aria-labelledby="heading{{ forloop.counter }}"
+        data-parent="#accordion">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <h1 class="card-title">{{ record.name }}</h1>
+              <p class="card-subtitle text-muted">By {{ record.author }} | {{ record.created_at }}</p>
+              <hr>
+              <p class="card-text">{{ record.description }}</p>
+              <p class="card-text">{{ record.ingredients }}</p>
+              <p class="card-text">{{ record.instructions }}</p>
+              <hr>
+              <p class="card-text">{{ record.content | safe }}</p>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+              <div class="image-container">
+                {% if "placeholder" in record.featured_image.url %}
+                <img class="card-img scale" src="{% static 'images/default_2.jpg' %}" alt="placeholder image">
+                {% else %}
+                <img class="card-img scale" src="{{ record.featured_image.url }}" alt="{{ record.title }}">
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+    <div class="alert alert-info" role="alert">
+      No posts yet.
+    </div>
+  {% endif %}
+</div>
+
+{% endblock %}

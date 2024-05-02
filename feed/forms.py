@@ -13,6 +13,7 @@ class PostFormCreate(forms.ModelForm):
         model = Create
         fields = (
             'name',
+            'featured_image',
             'description',
             'ingredients',
             'instructions',
@@ -23,6 +24,7 @@ class PostFormReview(forms.ModelForm):
         model = Review
         fields = (
             'name',
+            'featured_image',
             'name_of_chef',
             'description',
         )

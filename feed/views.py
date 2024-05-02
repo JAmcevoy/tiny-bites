@@ -8,6 +8,7 @@ from .forms import PostFormCreate, PostFormReview, CommentForm
 class PostList(generic.ListView):
     queryset = Create.objects.all()
     template_name = "feed/index.html"
+    paginate_by = 10
 
 def post_detail(request, slug):
     queryset = Create.objects.filter()

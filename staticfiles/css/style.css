@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+body {
+  font-family: "Anton", sans-serif;
+  background-color: #cdcdcd;
+  
+}
+
+.navbar-brand {
+  font-size: 24px;
+  color: #fff; 
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  
+}
+
+.scale {
+  height:  700px; 
+  width: 600px;
+  border-radius: 50%;
+  position: relative;
+}
+
+/* Cards Style */
+.card {
+  width: 100%;
+  padding: 10PX;
+}
+
+.dates-font {
+  font-weight: bolder;
+  font-style: italic;
+}
+
+.card-img {
+  max-width: 100%;
+  height: auto;
+}
+
+.btn-primary {
+  margin-bottom: 20px;
+}
+
+.border-dark {
+  border-width: 5px;
+}
+
+.card-img-top {
+  margin-top: 20px;
+}
+
+.image-container {
+  overflow: hidden;
+  height: 400px;
+}
+
+/* Star rating */
+.stars {
+  cursor: pointer;
+}
+.stars span {
+  font-size: 30px;
+  color: #ccc;
+}
+.stars span.checked {
+  color: gold;
+}

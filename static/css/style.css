@@ -3,18 +3,18 @@
 body {
   font-family: "Anton", sans-serif;
   background-color: #cdcdcd;
-  
+
 }
 
 .navbar-brand {
   font-size: 24px;
-  color: #fff; 
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-  
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
 }
 
 .scale {
-  height:  700px; 
+  height: 700px;
   width: 600px;
   border-radius: 50%;
   position: relative;
@@ -57,10 +57,12 @@ body {
 .stars {
   cursor: pointer;
 }
+
 .stars span {
   font-size: 30px;
   color: #ccc;
 }
+
 .stars span.checked {
   color: gold;
 }
@@ -90,55 +92,50 @@ body {
   border-color: #007bff;
 }
 
-/* To be Aprroved Page buttons */
-.approve-btn {
-  background-color: #00cc66;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin-right: 10px;
-  border-radius: 5px;
-  cursor: pointer;
+/* Custom styling for the comment section */
+.comment {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  position: relative;
 }
 
-.approve-btn:hover {
-  background-color: #00994d;
+.comment.pending {
+  opacity: 0.6;
 }
 
-.view-btn {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
+.comment-bubble {
+  position: relative;
 }
 
-.view-btn:hover {
-  background-color: #0056b3;
+.comment-bubble::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-bottom-color: #f9f9f9;
+  border-top: 0;
+  margin-left: -8px;
 }
 
-.delete-btn {
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
+.comment-content {
+  padding: 10px;
 }
 
-.delete-btn:hover {
-  background-color: #c82333;
+.comment h5 {
+  margin-bottom: 5px;
+}
+
+.comment p {
+  margin-bottom: 10px;
+}
+
+.comment-time {
+  font-size: 12px;
+  color: #999;
 }

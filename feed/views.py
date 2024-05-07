@@ -43,17 +43,51 @@ def post_detail(request, slug):
         },
     )
 
-def edit_post(request, slug):
-    post = get_object_or_404(Create, slug=slug)
-    if request.method == 'POST':
-        form = PostFormCreate(request.POST, instance=post)
-        if form.is_valid():
-            form.save()
-            return redirect('post_detail', slug=post.slug)
-    else:
-        form = PostFormCreate(instance=post)
-    return render(request, 'feed/edit_post.html', {'form': form, 'post': post})
 
+def comment_edit(request, slug, comment_id):
+    """
+    View to edit comments.
+    """
+    if request.method == "POST":
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        comment = get_object_or_404(Comment, pk=comment_id)
+
+        # Check if the current user is the author of the comment
+        if comment.author != request.user:
+            messages.add_message(request, messages.ERROR, 'You are not authorized to edit this comment.')
+            return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+        comment_form = CommentForm(data=request.POST, instance=comment)
+
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            comment.approved = False  # Assuming you want to mark it as unapproved after edit
+            comment.save()
+            messages.add_message(request, messages.SUCCESS, 'Comment updated!')
+            return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        else:
+            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+
+    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+def comment_delete(request, slug, comment_id):
+    """
+    view to delete comment
+    """
+    queryset = Post.objects.filter(status=1)
+    post = get_object_or_404(queryset, slug=slug)
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    if comment.author == request.user:
+        comment.delete()
+        messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+
+    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
 def post_creation(request):
@@ -78,6 +112,18 @@ def post_creation(request):
 
     return render(request, "feed/post_creation.html", {"post_form": create_form})
 
+
+def edit_post(request, slug):
+    post = get_object_or_404(Create, slug=slug)
+    if request.method == 'POST':
+        form = PostFormCreate(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('post_detail', slug=post.slug)
+    else:
+        form = PostFormCreate(instance=post)
+    return render(request, 'feed/edit_post.html', {'form': form, 'post': post})    
+    
 
 def my_bites(request):
     if request.user.is_authenticated:

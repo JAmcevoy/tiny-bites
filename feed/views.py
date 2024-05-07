@@ -43,6 +43,19 @@ def post_detail(request, slug):
         },
     )
 
+def edit_post(request, slug):
+    post = get_object_or_404(Create, slug=slug)
+    if request.method == 'POST':
+        form = PostFormCreate(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('post_detail', slug=post.slug)
+    else:
+        form = PostFormCreate(instance=post)
+    return render(request, 'feed/edit_post.html', {'form': form, 'post': post})
+
+
+
 def post_creation(request):
     if request.method == "POST":
         create_form = PostFormCreate(request.POST, request.FILES)

@@ -50,7 +50,7 @@ body {
 
 .image-container {
   overflow: hidden;
-  height: 400px;
+  height: 500px;
 }
 
 /* Star rating */
@@ -88,4 +88,57 @@ body {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
+}
+
+/* To be Aprroved Page buttons */
+.approve-btn {
+  background-color: #00cc66;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.approve-btn:hover {
+  background-color: #00994d;
+}
+
+.view-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background-color: #0056b3;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
 }

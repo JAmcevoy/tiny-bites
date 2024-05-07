@@ -18,6 +18,7 @@
           <p class="card-text">{{ record.description }}</p>
           <p class="card-text"><small class="text-muted">By {{ record.author }} | {{ record.created_at }}</small></p>
           <a href="{% url 'post_detail' record.slug %}" class="btn btn-primary">View Details</a>
+          <a href="{% url 'edit_post' record.slug %}" class="btn btn-primary">Edit Details</a>
         </div>
       </div>
     </div>

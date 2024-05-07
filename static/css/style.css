@@ -92,7 +92,7 @@ body {
   border-color: #007bff;
 }
 
-/* To be Aprrived Page */
+/* To be Aprroved Page buttons */
 .approve-btn {
   background-color: #00cc66;
   color: #fff;
@@ -126,4 +126,21 @@ body {
 
 .view-btn:hover {
   background-color: #0056b3;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
 }

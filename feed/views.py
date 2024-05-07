@@ -126,3 +126,10 @@ def approve_comment(request, comment_id):
     return redirect('to_be_approved')
 
 
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if request.user == comment.author or request.user.is_superuser:
+        comment.delete()
+    return redirect('to_be_approved')
+
+

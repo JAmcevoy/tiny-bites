@@ -3,30 +3,45 @@
 
 {% block content %}
 <div class="container mt-4">
-  {% if user_posts %}
-  <div class="row">
+  <div class="row row-cols-1 row-cols-md-2 g-3">
+    {% if user_posts %}
     {% for record in user_posts %}
-    <div class="col-md-12 mb-3">
-      <div class="card">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="{% if 'placeholder' in record.featured_image.url %}{% static 'images/default_2.jpg' %}{% else %}{{ record.featured_image.url }}{% endif %}" class="img-fluid rounded-start" alt="{{ record.title }}">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{ record.name }}</h5>
-              <p class="card-text">{{ record.description }}</p>
-              <p class="card-text"><small class="text-muted">{{ record.created_at }}</small></p>
-              <a href="{% url 'post_detail' record.slug %}" class="btn btn-primary stretched-link">View Details</a>
-            </div>
-          </div>
+    <div class="col mb-4">
+      <div class="card h-100">
+        <img
+          src="{% if 'placeholder' in record.featured_image.url %}{% static 'images/default_2.jpg' %}{% else %}{{ record.featured_image.url }}{% endif %}"
+          class="card-img-top" alt="{{ record.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ record.name }}</h5>
+          <p class="card-text">{{ record.description }}</p>
+          <p class="card-text"><small class="text-muted">By {{ record.author }} | {{ record.created_at }}</small></p>
+          <a href="{% url 'post_detail' record.slug %}" class="btn btn-primary">View Details</a>
         </div>
       </div>
     </div>
     {% endfor %}
+    {% else %}
+    <div class="col">
+      <div class="alert alert-info" role="alert">No posts yet.</div>
+    </div>
+    {% endif %}
   </div>
-  {% else %}
-  <div class="alert alert-info" role="alert">No posts yet.</div>
-  {% endif %}
 </div>
+
+<!-- Pagination -->
+<nav aria-label="...">
+  <ul class="pagination justify-content-center">
+    {% if user_posts.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ user_posts.previous_page_number }}">Previous</a>
+    </li>
+    {% endif %}
+    {% if user_posts.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ user_posts.next_page_number }}">Next</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+
 {% endblock %}

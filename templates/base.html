@@ -1,6 +1,8 @@
 {% load static %}
-
 {% url 'home' as home_url %}
+{% url 'my_bites' as my_bites_url %}
+{% url 'to_be_approved' as to_be_approved_url %}
+{% url 'post_creation' as post_creation_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
@@ -30,13 +32,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item {% if request.path == home_url %}active{% endif %}">
             <a class="nav-link" href="{% url 'home' %}">Feed</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {% if request.path == my_bites_url %}active{% endif %}">
             <a class="nav-link" href="{% url 'my_bites' %}">My Bites</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {% if request.path == to_be_approved_url %}active{% endif %}">
             <a class="nav-link" href="{% url 'to_be_approved' %}">To Be Approved</a>
           </li>
           <li>
@@ -81,7 +83,6 @@
       </div>
     </div>
   </div>
-
 
   {% block content %} {% endblock %}
 

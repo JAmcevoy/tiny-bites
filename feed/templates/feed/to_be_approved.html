@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+  {% if post.comments.all %}
+  <div class="row">
+    {% for comment in post.comments.all %}
+    <div class="col-md-12 mb-3">
+      <div class="card">
+        <div class="row g-0">
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Comment by {{ comment.author.username }}</h5>
+              <p class="card-text">{{ comment.body }}</p>
+              <p class="card-text"><small class="text-muted">{{ comment.created_on }}</small></p>
+              <!-- Add any additional actions here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="alert alert-info" role="alert">No comments yet.</div>
+  {% endif %}
+</div>
+{% endblock %}

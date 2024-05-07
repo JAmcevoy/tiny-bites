@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
 from django.utils.text import slugify
-from django.core.paginator import Paginator
-from .models import Create, Review
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .models import Create, Review, Comment
 from .forms import PostFormCreate, PostFormReview, CommentForm
 
 class PostList(generic.ListView):
@@ -88,9 +88,6 @@ def post_creation(request):
 
 #     return render(request, "feed/post_creation.html", {"review_form": review_form})
 
-
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
 def my_bites(request):
     if request.user.is_authenticated:
         user_posts = Create.objects.filter(author_id=request.user.id)
@@ -107,4 +104,12 @@ def my_bites(request):
         return render(request, "feed/my_bites.html", {'user_posts': user_posts})
     else:
         return render(request, "account/login.html")
+
+def to_be_approved(request):
+    if request.user.is_authenticated:
+        comments_pending = Comment.objects.filter(author_id=request.user.id, approved=False)
+        return render(request, "feed/to_be_approved.html")
+    else:
+        return render(request, "account/login.html")
+
 

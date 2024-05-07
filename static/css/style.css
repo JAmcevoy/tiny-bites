@@ -3,18 +3,18 @@
 body {
   font-family: "Anton", sans-serif;
   background-color: #cdcdcd;
-  
+
 }
 
 .navbar-brand {
   font-size: 24px;
-  color: #fff; 
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-  
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
 }
 
 .scale {
-  height:  700px; 
+  height: 700px;
   width: 600px;
   border-radius: 50%;
   position: relative;
@@ -57,10 +57,12 @@ body {
 .stars {
   cursor: pointer;
 }
+
 .stars span {
   font-size: 30px;
   color: #ccc;
 }
+
 .stars span.checked {
   color: gold;
 }
@@ -88,4 +90,40 @@ body {
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
+}
+
+/* To be Aprrived Page */
+.approve-btn {
+  background-color: #00cc66;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.approve-btn:hover {
+  background-color: #00994d;
+}
+
+.view-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background-color: #0056b3;
 }

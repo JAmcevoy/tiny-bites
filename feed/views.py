@@ -105,11 +105,24 @@ def my_bites(request):
     else:
         return render(request, "account/login.html")
 
+
 def to_be_approved(request):
     if request.user.is_authenticated:
-        comments_pending = Comment.objects.filter(author_id=request.user.id, approved=False)
-        return render(request, "feed/to_be_approved.html")
+
+        user_posts = Create.objects.filter(author=request.user)
+        
+        comments_pending = Comment.objects.filter(post__in=user_posts, approved=False)
+        
+        return render(request, "feed/to_be_approved.html", {'comments_pending': comments_pending})
     else:
         return render(request, "account/login.html")
+
+def approve_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    
+    comment.approved = True
+    comment.save()
+    
+    return redirect('to_be_approved')
 
 

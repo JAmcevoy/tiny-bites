@@ -3,27 +3,27 @@
 
 {% block content %}
 <div class="container mt-4">
-  {% if post.comments.all %}
-  <div class="row">
-    {% for comment in post.comments.all %}
-    <div class="col-md-12 mb-3">
-      <div class="card">
-        <div class="row g-0">
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Comment by {{ comment.author.username }}</h5>
-              <p class="card-text">{{ comment.body }}</p>
-              <p class="card-text"><small class="text-muted">{{ comment.created_on }}</small></p>
-              <!-- Add any additional actions here -->
+    {% if comments_pending %}
+      <div class="row">
+        {% for comment in comments_pending %}
+          <div class="col-md-12 mb-3">
+            <div class="card">
+              <div class="card-body d-flex justify-content-between">
+                <h5 class="card-title">Comment by {{ comment.author.username }}</h5>
+                <p class="card-text">{{ comment.body }}</p>
+                <p class="card-text"><small class="text-muted">{{ comment.created_on }}</small></p>
+                <a href="{% url 'post_detail' slug=comment.post.slug %}" class="view-btn">View Post</a>
+                <form method="post" action="{% url 'approve_comment' comment.id %}">
+                  {% csrf_token %}
+                  <button type="submit" class="approve-btn">Approve</button>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
+        {% endfor %}
       </div>
-    </div>
-    {% endfor %}
+    {% else %}
+      <div class="alert alert-info" role="alert">No comments need approval.</div>
+    {% endif %}
   </div>
-  {% else %}
-  <div class="alert alert-info" role="alert">No comments yet.</div>
-  {% endif %}
-</div>
 {% endblock %}

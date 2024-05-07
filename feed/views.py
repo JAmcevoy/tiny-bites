@@ -3,8 +3,8 @@ from django.views import generic
 from django.contrib import messages
 from django.utils.text import slugify
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Create, Review, Comment
-from .forms import PostFormCreate, PostFormReview, CommentForm
+from .models import Create, Comment
+from .forms import PostFormCreate, CommentForm
 
 class PostList(generic.ListView):
     queryset = Create.objects.all()
@@ -65,28 +65,6 @@ def post_creation(request):
 
     return render(request, "feed/post_creation.html", {"post_form": create_form})
 
-
-# def review_creation(request):
-#     if request.method == "POST":
-#         review_form = ReviewForm(request.POST)
-#         if review_form.is_valid():
-#             new_review = review_form.save(commit=False)
-#             new_review.author = request.user
-
-#             new_review.slug = slugify(new_review.name)
-
-#             suffix = 1
-#             while Review.objects.filter(slug=new_review.slug).exists():
-#                 new_review.slug = slugify(new_review.name) + "-" + str(suffix)
-#                 suffix += 1
-            
-#             new_review.save()
-
-#             return redirect("post_detail", slug=new_review.slug)
-#     else:
-#         review_form = ReviewForm()
-
-#     return render(request, "feed/post_creation.html", {"review_form": review_form})
 
 def my_bites(request):
     if request.user.is_authenticated:

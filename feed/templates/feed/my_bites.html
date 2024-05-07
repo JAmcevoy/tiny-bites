@@ -8,9 +8,11 @@
     {% for record in user_posts %}
     <div class="col mb-4">
       <div class="card h-100">
-        <img
-          src="{% if 'placeholder' in record.featured_image.url %}{% static 'images/default_2.jpg' %}{% else %}{{ record.featured_image.url }}{% endif %}"
-          class="card-img-top" alt="{{ record.title }}">
+        <div class="image-container">
+          <img
+            src="{% if 'placeholder' in record.featured_image.url %}{% static 'images/default_2.jpg' %}{% else %}{{ record.featured_image.url }}{% endif %}"
+            class="card-img-top" alt="{{ record.title }}">
+        </div>
         <div class="card-body">
           <h5 class="card-title">{{ record.name }}</h5>
           <p class="card-text">{{ record.description }}</p>

@@ -3,7 +3,7 @@
 body {
   font-family: "Anton", sans-serif;
   background-color: #cdcdcd;
-  margin-top: 70px;
+  margin-top: 80px;
 
 }
 
@@ -30,6 +30,22 @@ body {
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
+
+/* Search Bar */
+.search {
+  padding-left: 50px;
+}
+
+.search-btn {
+  position: relative;
+  right: 50px;
+}
+
+.search input::placeholder {
+  
+  color: rgba(0, 0, 0, 0.5);
+}
+
 
 /* Cards Style */
 .card {
@@ -62,20 +78,6 @@ body {
 .image-container {
   overflow: hidden;
   height: 500px;
-}
-
-/* Star rating */
-.stars {
-  cursor: pointer;
-}
-
-.stars span {
-  font-size: 30px;
-  color: #ccc;
-}
-
-.stars span.checked {
-  color: gold;
 }
 
 /* Styling for pagination buttons */

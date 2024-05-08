@@ -3,18 +3,18 @@
 
 {% block content %}
 
-<div class="align-self-center">
+
+<div class="align-self-center search">
   <form class="d-flex" role="search" method="POST">
     {% csrf_token %}
     <div class="input-group">
-      <input class="form-control" type="search" placeholder="Search" name="search_query" required aria-label="Search">
-      <span class="input-group-text">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </span>
+      <input class="form-control rounded-pill bg-light" type="search" placeholder="Search" name="search_query" required aria-label="Search">
+        <button type="button" class="btn rounded-pill search-btn" onclick="toggleSearchBar()">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
     </div>
   </form>
 </div>
-
 
 <div class="container mt-4">
   {% for post in object_list %}

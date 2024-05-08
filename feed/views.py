@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.views import generic
 from django.contrib import messages
 from django.db.models import Q
@@ -53,52 +55,6 @@ def post_detail(request, slug):
             "comment_form": comment_form,
         },
     )
-
-
-def comment_edit(request, slug, comment_id):
-    """
-    View to edit comments.
-    """
-    if request.method == "POST":
-        queryset = Create.objects.all()
-        post = get_object_or_404(queryset, slug=slug)
-        comment = get_object_or_404(Comment, pk=comment_id)
-
-        # Check if the current user is the author of the comment
-        if comment.author != request.user:
-            messages.add_message(request, messages.ERROR, 'You are not authorized to edit this comment.')
-            return HttpResponseRedirect(reverse('post_detail', args=[slug]))
-
-        comment_form = CommentForm(data=request.POST, instance=comment)
-
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.post = post
-            comment.approved = False  # Assuming you want to mark it as unapproved after edit
-            comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment updated!')
-            return HttpResponseRedirect(reverse('post_detail', args=[slug]))
-        else:
-            messages.add_message(request, messages.ERROR, 'Error updating comment!')
-
-    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
-
-
-def comment_delete(request, slug, comment_id):
-    """
-    view to delete comment
-    """
-    queryset = Create.objects.all()
-    post = get_object_or_404(queryset, slug=slug)
-    comment = get_object_or_404(Comment, pk=comment_id)
-
-    if comment.author == request.user:
-        comment.delete()
-        messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
-    else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
-
-    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
 def post_creation(request):
@@ -176,8 +132,25 @@ def approve_comment(request, comment_id):
 
 def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
-    if request.user == comment.author or request.user.is_superuser:
+    
+    # Store the referring URL in the session
+    request.session['referring_url'] = request.META.get('HTTP_REFERER', None)
+
+    if request.user == comment.author or request.user.is_superuser or comment.post.author:
+        post_slug = comment.post.slug
         comment.delete()
-    return redirect('to_be_approved')
+        messages.success(request, 'Comment deleted successfully.')
+        
+        # Redirect the user back to the referring URL
+        referring_url = request.session.get('referring_url', None)
+        if referring_url:
+            return HttpResponseRedirect(referring_url)
+        else:
+            return redirect('post_detail', slug=post_slug)
+    else:
+        messages.error(request, 'You are not authorized to delete this comment.')
+        return redirect('post_detail', slug=comment.post.slug)
+
+
 
 

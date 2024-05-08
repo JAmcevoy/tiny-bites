@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
+from django.db.models import Q
 from django.utils.text import slugify
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Create, Comment
@@ -10,6 +11,16 @@ class PostList(generic.ListView):
     queryset = Create.objects.all()
     template_name = "feed/index.html"
     paginate_by = 10
+
+
+def search_feature(request):
+    if request.method == 'POST':
+        search_query = request.POST.get('search_query', '')
+
+        posts = Create.objects.filter(Q(name__icontains=search_query))
+        return render(request, 'feed/search_results.html', {'query': search_query, 'posts': posts})
+    else:
+        return render(request, 'app/search_results.html', {})
 
 
 def post_detail(request, slug):

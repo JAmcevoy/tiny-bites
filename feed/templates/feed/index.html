@@ -5,13 +5,13 @@
 
 
 <div class="align-self-center search">
-  <form class="d-flex" role="search" method="POST">
+  <form class="d-flex" role="search" method="POST" action="{% url 'search_feature' %}">
     {% csrf_token %}
     <div class="input-group">
       <input class="form-control rounded-pill bg-light" type="search" placeholder="Search" name="search_query" required aria-label="Search">
-        <button type="button" class="btn rounded-pill search-btn" onclick="toggleSearchBar()">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
+      <button type="submit" class="btn rounded-pill search-btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
     </div>
   </form>
 </div>

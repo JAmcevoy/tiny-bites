@@ -3,6 +3,19 @@
 
 {% block content %}
 
+<div class="align-self-center">
+  <form class="d-flex" role="search" method="POST">
+    {% csrf_token %}
+    <div class="input-group">
+      <input class="form-control" type="search" placeholder="Search" name="search_query" required aria-label="Search">
+      <span class="input-group-text">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </span>
+    </div>
+  </form>
+</div>
+
+
 <div class="container mt-4">
   {% for post in object_list %}
   <div class="card bg-dark mb-3 border-dark mb-4 text-center">
@@ -32,25 +45,25 @@
   </div>
   {% endfor %}
   {% if is_paginated %}
-<nav aria-label="Page navigation">
+  <nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
-        {% if page_obj.has_previous %}
-        <li class="page-item">
-            <a href="?page={{ page_obj.previous_page_number }}" class="page-link" aria-label="Previous">
-                <span aria-hidden="true">Previous</span>
-            </a>
-        </li>
-        {% endif %}
-        {% if page_obj.has_next %}
-        <li class="page-item">
-            <a href="?page={{ page_obj.next_page_number }}" class="page-link" aria-label="Next">
-                <span aria-hidden="true">Next</span>
-            </a>
-        </li>
-        {% endif %}
+      {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a href="?page={{ page_obj.previous_page_number }}" class="page-link" aria-label="Previous">
+          <span aria-hidden="true">Previous</span>
+        </a>
+      </li>
+      {% endif %}
+      {% if page_obj.has_next %}
+      <li class="page-item">
+        <a href="?page={{ page_obj.next_page_number }}" class="page-link" aria-label="Next">
+          <span aria-hidden="true">Next</span>
+        </a>
+      </li>
+      {% endif %}
     </ul>
-</nav>
-{% endif %}
+  </nav>
+  {% endif %}
 </div>
 
 {% endblock %}

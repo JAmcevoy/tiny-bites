@@ -3,7 +3,7 @@
 body {
   font-family: "Anton", sans-serif;
   background-color: #cdcdcd;
-  margin-top: 50px;
+  margin-top: 70px;
 
 }
 
@@ -28,8 +28,7 @@ body {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: #fff; /* adjust background color as needed */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* optional: add shadow for better visibility */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 /* Cards Style */

@@ -11,20 +11,23 @@
                     <h4>Create Bite</h4>
                 </div>
                 <div class="card-body">
-                    <form id="postForm" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
-                        {% csrf_token %}
-                        {{ post_form|crispy }}
-                        <div class="row justify-content-center mt-4">
-                            <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary btn-block">Submit Post</button>
+                    <div class="form-bubble"> <!-- Adding a container with the form-bubble class -->
+                        <form id="postForm" method="post" enctype="multipart/form-data" class="needs-validation"
+                            novalidate>
+                            {% csrf_token %}
+                            {{ post_form|crispy }}
+                            <div class="row justify-content-center mt-4">
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-primary btn-block">Submit Post</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="{% static 'js/post_type.js' %}"></script>
+
 {% endblock content %}

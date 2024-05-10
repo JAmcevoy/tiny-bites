@@ -37,10 +37,14 @@ p {
 }
 
 .navbar-brand {
-  font-size: 24px;
+  font-size: 30px;
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 
+}
+
+.navbar-nav .nav-link {
+  font-size: 20px;
 }
 
 /* Search Bar */
@@ -95,9 +99,8 @@ p {
 /* Styling for pagination buttons */
 .pagination .page-item .page-link {
   color: #007bff;
-  background-color: transparent;
-  border: 1px solid #007bff;
-  margin: 20px;
+  margin: 10px;
+  font-size: 18px; /* Adjust font size to a good standard */
   transition: all 0.3s ease-in-out;
 }
 
@@ -214,3 +217,13 @@ p {
 #commentForm button[type="submit"]:hover {
   background-color: #0056b3;
 }  
+
+/* create form */
+.form-bubble {
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: grid;
+  place-items: center;
+}

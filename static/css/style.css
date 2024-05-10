@@ -7,13 +7,6 @@ body {
 
 }
 
-.navbar-brand {
-  font-size: 24px;
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-
-}
-
 .scale {
   height: 700px;
   width: 600px;
@@ -29,6 +22,13 @@ body {
   width: 100%;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.navbar-brand {
+  font-size: 24px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
 }
 
 /* Search Bar */
@@ -119,10 +119,6 @@ body {
   opacity: 0.6;
 }
 
-.comment.pending .modal.fade .modal-dialog {
-  opacity: 1; /* Set opacity to 1 to override */
-}
-
 .comment-bubble {
   position: relative;
 }
@@ -157,11 +153,51 @@ body {
   color: #999;
 }
 
-/* Custom styling for the modal */
-.custom-modal {
-  opacity: 1; /* Set opacity to 1 */
-  background-color: white; /* Set background color */
-  border: 1px solid #ccc; /* Add border */
-  border-radius: 10px; /* Add border radius */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow */
+.bubble {
+  position: relative;
+  background-color: #f5f5f5;
+  border-radius: 30px; /* Increase border-radius for more curved edges */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bubble::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 12px solid transparent;
+  border-top-color: #f5f5f5;
+  transform: translateX(-50%);
+}
+
+/* comment form  */
+#commentForm {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#commentForm input[type="text"],
+#commentForm textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  background-color: rgb(214, 214, 214);
+}
+
+#commentForm button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#commentForm button[type="submit"]:hover {
+  background-color: #0056b3;
 }

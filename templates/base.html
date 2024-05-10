@@ -83,10 +83,21 @@
 
   {% block content %} {% endblock %}
 
+  <footer class="bg-primary p-2 text-dark bg-opacity-10 py-4" >
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="mb-0">&copy; 2024 Little Bites. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 <!-- Bootstrap JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 <script src="https://kit.fontawesome.com/710fe75826.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/copyright.js' %}"></script>
 
 </html>

@@ -119,6 +119,10 @@ body {
   opacity: 0.6;
 }
 
+.comment.pending .modal.fade .modal-dialog {
+  opacity: 1; /* Set opacity to 1 to override */
+}
+
 .comment-bubble {
   position: relative;
 }

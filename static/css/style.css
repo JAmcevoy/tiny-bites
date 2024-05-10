@@ -100,7 +100,7 @@ p {
 .pagination .page-item .page-link {
   color: #007bff;
   margin: 10px;
-  font-size: 18px; /* Adjust font size to a good standard */
+  font-size: 18px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -159,13 +159,16 @@ p {
   margin-bottom: 5px;
 }
 
-.comment p {
-  margin-bottom: 10px;
-}
 
 .comment-time {
   font-size: 12px;
   color: #999;
+}
+
+.approval {
+  font-family: "Anton", sans-serif;
+  font-size: small;
+  color: red;
 }
 
 .bubble {
@@ -217,6 +220,10 @@ p {
 #commentForm button[type="submit"]:hover {
   background-color: #0056b3;
 }  
+
+.form-btn {
+  margin-bottom: 0;
+}
 
 /* create form */
 .form-bubble {

@@ -17,7 +17,7 @@ class PostList(generic.ListView):
 
 def search_feature(request):
     if request.method == 'POST':
-        search_query = request.POST.get('search_query', '')  # Corrected field name
+        search_query = request.POST.get('search_query', '')
 
         posts = Create.objects.filter(Q(name__icontains=search_query))
         return render(request, 'feed/search_results.html', {'query': search_query, 'posts': posts})
@@ -30,6 +30,7 @@ def post_detail(request, slug):
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
+    commented_forms = [(comment, CommentForm(instance=comment)) for comment in comments]
     
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
@@ -53,6 +54,7 @@ def post_detail(request, slug):
             "comments": comments,
             "comment_count": comment_count,
             "comment_form": comment_form,
+            "commented_forms": commented_forms,
         },
     )
 
@@ -156,16 +158,17 @@ def delete_comment(request, comment_id):
 
 def edit_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
-    form = CommentForm(instance=comment, initial={'body': comment.body})  # Change 'text' to 'body'
     
     if request.method == 'POST':
-        form = CommentForm(request.POST, instance=comment)
-        if form.is_valid():
-            comment = form.save(commit=False)
+        comment_form = CommentForm(request.POST, instance=comment)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
             comment.approved = False
             comment.save()
             messages.success(request, 'Comment updated!')
             return redirect('post_detail', slug=comment.post.slug)
     else:
-        return render(request, 'feed/psot_detail.html', {'form': form, 'comment': comment})
+        comment_form = CommentForm(instance=comment, initial={'body': comment.body})
+    
+    return render(request, 'post_detail.html', {'comment_form': comment_form, 'comment': comment})
 

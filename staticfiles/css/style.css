@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
   font-family: "Anton", sans-serif;
@@ -7,11 +9,14 @@ body {
 
 }
 
-.navbar-brand {
-  font-size: 24px;
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+button {
+  font-family: 'Figtree', sans-serif;
+  font-weight: bold;
+}
 
+p {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
 }
 
 .scale {
@@ -29,6 +34,17 @@ body {
   width: 100%;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.navbar-brand {
+  font-size: 30px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
+}
+
+.navbar-nav .nav-link {
+  font-size: 20px;
 }
 
 /* Search Bar */
@@ -83,9 +99,8 @@ body {
 /* Styling for pagination buttons */
 .pagination .page-item .page-link {
   color: #007bff;
-  background-color: transparent;
-  border: 1px solid #007bff;
-  margin: 20px;
+  margin: 10px;
+  font-size: 18px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -119,10 +134,6 @@ body {
   opacity: 0.6;
 }
 
-.comment.pending .modal.fade .modal-dialog {
-  opacity: 1; /* Set opacity to 1 to override */
-}
-
 .comment-bubble {
   position: relative;
 }
@@ -148,11 +159,78 @@ body {
   margin-bottom: 5px;
 }
 
-.comment p {
-  margin-bottom: 10px;
-}
 
 .comment-time {
   font-size: 12px;
   color: #999;
+}
+
+.approval {
+  font-family: "Anton", sans-serif;
+  font-size: small;
+  color: red;
+}
+
+.bubble {
+  position: relative;
+  background-color: #f5f5f5;
+  border-radius: 30px; /* Increase border-radius for more curved edges */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bubble::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 12px solid transparent;
+  border-top-color: #f5f5f5;
+  transform: translateX(-50%);
+}
+
+/* comment form  */
+#commentForm {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#commentForm input[type="text"],
+#commentForm textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  background-color: rgb(214, 214, 214);
+}
+
+#commentForm button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 4px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#commentForm button[type="submit"]:hover {
+  background-color: #0056b3;
+}  
+
+.form-btn {
+  margin-bottom: 0;
+}
+
+/* create form */
+.form-bubble {
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: grid;
+  place-items: center;
 }

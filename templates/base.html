@@ -83,15 +83,17 @@
 
   {% block content %} {% endblock %}
 
-  <footer class="bg-primary p-2 text-dark bg-opacity-10 py-4" >
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <p class="mb-0">&copy; 2024 Little Bites. All rights reserved.</p>
-        </div>
+  {% block footer %}
+  <footer class="bg-primary p-2 text-dark bg-opacity-10 py-4 fixed-bottom">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12 text-center">
+                  <p class="mb-0">&copy; 2024 Little Bites. All rights reserved.</p>
+              </div>
+          </div>
       </div>
-    </div>
   </footer>
+  {% endblock footer %}
 
 </body>
 <!-- Bootstrap JS -->

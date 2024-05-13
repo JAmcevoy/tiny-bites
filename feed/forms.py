@@ -23,7 +23,7 @@ class PostFormCreate(forms.ModelForm):
             'instructions',
         )
         widgets = {
-            'description': SummernoteWidget(),  # Use SummernoteWidget for rich text editing
-            'ingredients': SummernoteWidget(),  # Use SummernoteWidget for rich text editing
-            'instructions': SummernoteWidget(),  # Use SummernoteWidget for rich text editing
+            'description': SummernoteWidget(),
+            'ingredients': SummernoteWidget(),  
+            'instructions': SummernoteWidget(),  
         }

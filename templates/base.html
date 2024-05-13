@@ -49,7 +49,7 @@
         <ul class="navbar-nav ms-auto">
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
           </li>
           {% else %}
           <li class="nav-item">
@@ -63,6 +63,30 @@
       </div>
     </div>
   </nav>
+
+  <!-- Logout Modal -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-light">
+        <div class="modal-header border-0">
+          <h2 class="modal-title fw-bold" id="logoutModalLabel">Logout</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="logoutForm" method="POST" action="{% url 'account_logout' %}" class="mb-3">
+            {% csrf_token %}
+            <div class="text-center">
+              <p>Are you sure you want to logout?</p>
+            </div>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-danger btn-lg rounded-pill">Logout</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Logout Modal -->
 
   <div class="container">
     <div class="row">
@@ -84,14 +108,14 @@
   {% block content %} {% endblock %}
 
   {% block footer %}
-  <footer class="bg-primary p-2 text-dark bg-opacity-10 py-4 fixed-bottom">
-      <div class="container">
-          <div class="row">
-              <div class="col-md-12 text-center">
-                  <p class="mb-0">&copy; 2024 Little Bites. All rights reserved.</p>
-              </div>
-          </div>
+  <footer class="bg-primary p-2 text-dark bg-opacity-10 py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="mb-0">&copy; 2024 Little Bites. All rights reserved.</p>
+        </div>
       </div>
+    </div>
   </footer>
   {% endblock footer %}
 
@@ -102,6 +126,7 @@
 <script src="https://kit.fontawesome.com/710fe75826.js" crossorigin="anonymous"></script>
 <script src="{% static 'js/copyright.js' %}"></script>
 <script src="{% static 'js/comments.js' %}"></script>
+<script src="{% static 'js/signup.js' %}"></script>
 
 
 </html>

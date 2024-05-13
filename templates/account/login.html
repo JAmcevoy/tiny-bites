@@ -11,29 +11,16 @@
             <div class="card border-0 shadow rounded p-4">
                 <h1 class="card-title text-center mb-4">Welcome Back</h1>
 
-                {% get_providers as socialaccount_providers %}
-
-                {% if socialaccount_providers %}
-                <p class="card-text text-center mb-4">{% blocktrans with site.name as site_name %}Please sign in with one
-                    of your existing third-party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-                    for a {{ site_name }} account and sign in below.{% endblocktrans %}</p>
-
-                <div class="socialaccount_ballot text-center">
-                    <ul class="socialaccount_providers list-inline">
-                        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-                    </ul>
-                </div>
-
-                {% include "socialaccount/snippets/login_extra.html" %}
-
-                {% else %}
-                <p class="card-text text-center mb-4">{% blocktrans %}If you have not created an account yet, then please
-                    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-                {% endif %}
-
                 <form method="POST" action="{% url 'account_login' %}" class="mb-3">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label">{% trans "Username" %}</label>
+                        <input type="text" class="form-control rounded-pill" id="id_username" name="login" autofocus placeholder="Enter your username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_password" class="form-label">{% trans "Password" %}</label>
+                        <input type="password" class="form-control rounded-pill" id="id_password" name="password" placeholder="Enter your password">
+                    </div>
                     {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                     {% endif %}

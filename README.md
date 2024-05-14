@@ -145,6 +145,27 @@ Before I could start this project, I first needed to get the planned layout, the
 
 ![streched comment creation](docs/images)
 
+#### My Bites
+
+##### Card Layout
+
+- The card layout provides a visually appealing presentation of each user's post, with clear separation between different pieces of information such as the dish name, description, author, and creation date.
+- It is a bit smilar to the home page but the cards are two a row and they are brighter. Because these are the users ricpes I felt the idea of comfortable ricpe surfing wasnt need they know what they want here.
+- By prominently displaying the featured image of each post, users can quickly identify their dishes and visually assess their appeal. The use of a container ensures that images maintain their aspect ratio, maintaining consistency across different posts.
+- The card layout adapts seamlessly to different screen sizes, ensuring a consistent user experience across devices, whether users are browsing on a desktop or a mobile device.
+
+
+## 2. Pagination
+
+- Just like the home page clear Indication with the pagination section. Clearly indicating the current page number and the total number of pages, providing users with context and helping them understand their position within their post collection.
+- The use of arrow icons for navigating to the previous and next pages enhances the intuitive nature of the pagination controls, making it easy for users to understand how to move between pages.
+- When users have not yet created any posts, an informative alert informs them of this fact, reducing confusion and providing clear guidance on the next steps they can take.
+- Even when users have no posts to display, the alert message is designed to encourage them to start sharing their culinary creations, fostering engagement and participation within the community.
+- The watermark overlay just makes the page looks more empty to encourage users to fill it up.
+
+
+
+
 
 
 
@@ -153,10 +174,6 @@ Before I could start this project, I first needed to get the planned layout, the
 
 # Testing
 
-
-### Choices test
-
-#### Aim - To test that the computer is selecting different options and using each value of the user's options for one full game (up to 7 wins)
 
 ### Conclusion
 

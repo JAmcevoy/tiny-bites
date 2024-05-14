@@ -2,6 +2,10 @@
 {% load static %}
 
 {% block content %}
+<div class="full-page-overlay">
+  <div class="water-text" data-text="No posts yet. Click Create above to start!">No posts yet. Click Create above to start!</div>
+</div>
+
 <div class="container mt-4">
   <div class="row row-cols-1 row-cols-md-2 g-3">
     {% if user_posts %}
@@ -24,9 +28,8 @@
     </div>
     {% endfor %}
     {% else %}
-    <div class="col">
-      <div class="alert alert-info" role="alert">No posts yet.</div>
-    </div>
+    <!-- Add empty col to maintain layout -->
+    <div class="col"></div>
     {% endif %}
   </div>
 </div>
@@ -42,10 +45,11 @@
     </li>
     {% endif %}
     
-    <!-- Show page number -->
+    {% if user_posts.has_previous or user_posts.has_next %}
     <li class="page-item disabled">
       <span class="page-link">Page {{ user_posts.number }} of {{ user_posts.paginator.num_pages }}</span>
     </li>
+    {% endif %}
 
     {% if user_posts.has_next %}
     <li class="page-item">

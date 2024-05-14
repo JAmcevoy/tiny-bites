@@ -4,31 +4,35 @@ Tiny Bites is more than just a food website; it's a culinary community where use
 
 Whether it's a gourmet twist on instant noodles or a cherished lunchtime BLT spot, Tiny Bites invites users to explore and celebrate the world of snacks and tiny delights. With a focus on user-friendly design, the platform aims to provide a seamless experience for posting recipes and sharing ratings. It's not just about food; it's about sharing thoughts, emotions, and experiences surrounding everyone's ultimate passion: food.
 
-## User Needs
+ ## User Needs
 
-- As a user, I would want the website to be accessible from different devices (Phone, Laptop, PC, Tablet).
-- As a user, I would like it to be responsive to all screens, ensuring the information is readable and understandable.
-- As a user, I would want to easily be able to post my bites.
-- As a user, I would need to be able to create an account quickly and easily.
-- As a user, I would want to be able to post pictures of my bites.
-- As a user, I would want to be able to see a collection of my posts.
-- As a user, I would need to be able to edit or delete my comments and posts.
+- **Cross-Device Accessibility**: Users expect seamless access to the website from any device, whether it's a smartphone, laptop, tablet, or desktop. 
+- **Responsive Design**: A responsive design is crucial to ensure that the website adapts and delivers an optimal viewing experience across all screen sizes, ensuring readability and usability. 
+- **Easy Posting**: Users should be able to effortlessly share their culinary creations with clear, intuitive posting guidelines. - **Efficient Account Creation**: A quick and hassle-free account creation process is essential to encourage user participation. 
+- **Visual Appeal**: Users want to showcase their culinary creations through captivating images that highlight the aesthetic appeal of their bites. 
+- **User-centric Navigation**: Users need to easily navigate through their own posts, find specific recipes, and manage their comments and posts effectively.
 
-## Planning
+## Planning 
 
-Before I could start this project, I first needed to get the planned layout, the fields I required, and the Database Schema.
+Before embarking on the development journey, meticulous planning was undertaken to conceptualize the layout, define essential fields, and establish the Database Schema
 
 ### Planned Design
 
-#### Large Screen Layout
+#### Large Screen Layout 
+
+- The large screen layout provides ample space for users to navigate comfortably, with distinct sections for easy access to various features and functionalities.
 
 ![Large Screen Layout](docs/large_screen_layout.png)
 
-#### Types of Elements
+#### Types of Elements 
+
+- Different types of elements, including cards, forms, and navigation menus, were meticulously designed to ensure consistency and cohesiveness throughout the platform.
 
 ![Types Layout](docs/types_layout.png)
 
-#### Small Screen Layout
+#### Small Screen Layout 
+
+- The small screen layout prioritizes readability and usability, with optimized design elements to enhance the mobile browsing experience.
 
 ![Small Screen Layout](docs/small_screen_layout.png)
 
@@ -145,7 +149,7 @@ Before I could start this project, I first needed to get the planned layout, the
 
 ![streched comment creation](docs/images)
 
-#### My Bites
+### My Bites
 
 ##### Card Layout
 
@@ -155,13 +159,45 @@ Before I could start this project, I first needed to get the planned layout, the
 - The card layout adapts seamlessly to different screen sizes, ensuring a consistent user experience across devices, whether users are browsing on a desktop or a mobile device.
 
 
-## 2. Pagination
+##### Pagination
 
 - Just like the home page clear Indication with the pagination section. Clearly indicating the current page number and the total number of pages, providing users with context and helping them understand their position within their post collection.
 - The use of arrow icons for navigating to the previous and next pages enhances the intuitive nature of the pagination controls, making it easy for users to understand how to move between pages.
 - When users have not yet created any posts, an informative alert informs them of this fact, reducing confusion and providing clear guidance on the next steps they can take.
 - Even when users have no posts to display, the alert message is designed to encourage them to start sharing their culinary creations, fostering engagement and participation within the community.
 - The watermark overlay just makes the page looks more empty to encourage users to fill it up.
+
+### To Be Approved
+
+- In the "To Be Approved" section, we provide users with a streamlined interface for managing comments awaiting approval on their posts. Allow the user to to control what is seen on their post.
+
+##### Card Layout
+
+- Each comment awaiting approval is presented within a card layout, providing a clear and structured view of essential information such as the comment content, associated post, author, and creation date.
+- The use of different text styles and colors helps establish the sepperation of information, with prominent highlighting of key details such as the post name and author's username, enhancing readability and user comprehension.
+
+##### Action Buttons
+
+- For each pending comment, user are provided with action buttons to either approve or delete the comment directly from the interface, streamlining the moderation process and reducing the need for navigating to separate pages.
+
+##### Modal Confirmation 
+
+- To prevent accidental actions, modal dialogs are there for both the approval and deletion actions, requiring administrators to confirm their decision before proceeding. This helps prevent unintentional data loss and ensures accountability in the moderation process.
+
+- When there are no comments awaiting approval, an informative alert message is displayed, informing administrators that no further action is required. This helps reduce ambiguity and provides clear feedback on the current state of the moderation queue.
+
+
+###  Create Bite Form
+
+- In the "Create Bite" form section, users are provided with a user-friendly interface for submitting their culinary creations to the community. Here's a breakdown of the design elements and considerations:
+
+#### Card Layout
+
+- The form is presented within a card layout, providing a structured and visually appealing container for the form elements. The use of shadows adds depth to the card, enhancing its prominence on the page.
+- The card header is styled with a primary background color and white text, creating a visually striking header that clearly indicates the purpose of the form ("Create Bite").
+- To further distinguish the form from surrounding content, a "form-bubble" container is added, creating a visually distinct area for the form elements. This helps focus the user's attention on the form and enhances its visual prominence.
+- The Django Crispy Forms library is utilized to render the form fields in a clean and structured manner, improving readability and user experience. Crispy Forms automatically handles field rendering, error display, and layout configuration, streamlining the form creation process.
+- The submit button is prominently displayed at the bottom of the form, with a primary color to indicate its importance. This encourages users to complete the form and submit their posts, facilitating user engagement and participation within the community.
 
 
 

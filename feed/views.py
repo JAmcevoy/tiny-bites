@@ -85,13 +85,13 @@ def post_creation(request):
 def edit_post(request, slug):
     post = get_object_or_404(Create, slug=slug)
     if request.method == 'POST':
-        form = PostFormCreate(request.POST, instance=post)
+        form = PostFormCreate(request.POST, request.FILES, instance=post)
         if form.is_valid():
             form.save()
             return redirect('post_detail', slug=post.slug)
     else:
         form = PostFormCreate(instance=post)
-    return render(request, 'feed/edit_post.html', {'form': form, 'post': post})    
+    return render(request, 'feed/edit_post.html', {'form': form, 'post': post})  
 
 
 def my_bites(request):

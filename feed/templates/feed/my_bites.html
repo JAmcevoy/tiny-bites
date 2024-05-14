@@ -2,9 +2,12 @@
 {% load static %}
 
 {% block content %}
+<!-- Show overlay only if user has no posts -->
+{% if not user_posts %}
 <div class="full-page-overlay">
   <div class="water-text" data-text="No posts yet. Click Create above to start!">No posts yet. Click Create above to start!</div>
 </div>
+{% endif %}
 
 <div class="container mt-4">
   <div class="row row-cols-1 row-cols-md-2 g-3">

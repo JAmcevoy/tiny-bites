@@ -50,6 +50,10 @@ Whether it's a gourmet twist on instant noodles or a cherished lunchtime BLT spo
 
 ![Navbar Big Screen](docs/images)
 
+- Because most of the nav items are for a user who is logged in I dicided it was best to hide anything a user without an account wouldnt need.
+
+![Navbar_Logged_out](docs/image)
+
 ### Feed
 
 - The main point of the website is the feed; this is where the user will spend a lot of their time (assuming they are casual viewers; more specific users would enjoy the search bar below more). Because the target audience for this section is casual, there is quite a bit of white space to avoid crowding and intimidation for some users.

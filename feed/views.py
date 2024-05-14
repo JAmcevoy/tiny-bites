@@ -92,7 +92,7 @@ def edit_post(request, slug):
     else:
         form = PostFormCreate(instance=post)
     return render(request, 'feed/edit_post.html', {'form': form, 'post': post})    
-    
+
 
 def my_bites(request):
     if request.user.is_authenticated:
@@ -123,6 +123,8 @@ def to_be_approved(request):
     else:
         return render(request, "account/login.html")
 
+
+
 def approve_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     
@@ -137,23 +139,17 @@ def delete_comment(request, comment_id):
     
     # Store the referring URL in the session
     request.session['referring_url'] = request.META.get('HTTP_REFERER', None)
+    default_url = 'post_detail', {'slug': comment.post.slug}
 
     if request.user == comment.author or request.user.is_superuser or comment.post.author:
         post_slug = comment.post.slug
         comment.delete()
         messages.success(request, 'Comment deleted successfully.')
         
-        # Redirect the user back to the referring URL
-        referring_url = request.session.get('referring_url', None)
-        if referring_url:
-            return HttpResponseRedirect(referring_url)
-        else:
-            return redirect('post_detail', slug=post_slug)
+        return referring_url(request, default_url)
+
     else:
-        messages.error(request, 'You are not authorized to delete this comment.')
-        return redirect('post_detail', slug=comment.post.slug)
-
-
+        return redirect(default_url)
 
 
 def edit_comment(request, comment_id):
@@ -172,3 +168,10 @@ def edit_comment(request, comment_id):
     
     return render(request, 'post_detail.html', {'comment_form': comment_form, 'comment': comment})
 
+
+def referring_url(request, default_url):
+    referring_url = request.session.get('referring_url', None)
+    if referring_url:
+        return HttpResponseRedirect(referring_url)
+    else:
+        return redirect(*default_url)

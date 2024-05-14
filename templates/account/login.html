@@ -15,16 +15,22 @@
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="id_username" class="form-label">{% trans "Username" %}</label>
-                        <input type="text" class="form-control rounded-pill" id="id_username" name="login" autofocus placeholder="Enter your username">
+                        <input type="text" class="form-control rounded-pill {% if form.errors.username %}is-invalid{% endif %}" id="id_username" name="login" autofocus placeholder="Enter your username">
+                        {% if form.errors.username %}
+                            <div class="invalid-feedback">{{ form.errors.username }}</div>
+                        {% endif %}
                     </div>
                     <div class="mb-3">
                         <label for="id_password" class="form-label">{% trans "Password" %}</label>
-                        <input type="password" class="form-control rounded-pill" id="id_password" name="password" placeholder="Enter your password">
+                        <input type="password" class="form-control rounded-pill {% if form.errors.password %}is-invalid{% endif %}" id="id_password" name="password" placeholder="Enter your password">
+                        {% if form.errors.password %}
+                            <div class="invalid-feedback">{{ form.errors.password }}</div>
+                        {% endif %}
                     </div>
                     {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                     {% endif %}
-                    <div class="text-center"> <!-- Centering the content -->
+                    <div class="text-center">
                         <div class="mb-3">
                             <a class="btn btn-link text-muted" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
                         </div>

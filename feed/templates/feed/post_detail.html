@@ -37,13 +37,15 @@
                 <div class="card-body overflow-auto" style="max-height: 600px;">
                     <!-- Show approved comments and pending comments for post owner and user who posted it -->
                     {% for comment in comments %}
-                    {% if user.is_authenticated and comment.author == user %}
+                    {% if comment.approved or comment.author == user %}
                     <div class="comment {% if not comment.approved %}pending{% endif %}">
                         <div class="comment-bubble">
                             <div class="comment-content">
                                 <h5>{{ comment.author }} <i class="fa-solid fa-comment"></i> :</i></h5>
                                 <p class="special fs-2 text">{{ comment.body }}</p>
+                                {% if not comment.approved %}
                                 <p class="approval font-weight-light">This comment is awaiting approval</p>
+                                {% endif %}
                                 <span class="comment-time">{{ comment.created_on }}</span>
                                 {% if user.is_authenticated and comment.author == user %}
                                 <!-- Edit Comment Button -->
@@ -128,8 +130,9 @@
                 {% else %}
                 <div class="card mb-4 mt-3">
                     <h3>Login to Comment!</h3>
-                    <p>You must be logged in to leave a comment. Please <a href="{% url 'account_login' %}?next={{ request.path }}">Login</a> or
-                        <a href="{% url 'account_signup'?next={{ request.path }} %}">sign up</a>.
+                    <p>You must be logged in to leave a comment. Please <a
+                            href="{% url 'account_login' %}?next={{ request.path }}">Login</a> or
+                        <a href="{% url 'account_signup' %}?next={{ request.path }}">Sign up</a>
                     </p>
                 </div>
                 {% endif %}

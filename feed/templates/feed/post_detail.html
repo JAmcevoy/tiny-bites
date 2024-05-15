@@ -37,7 +37,7 @@
                 <div class="card-body overflow-auto" style="max-height: 600px;">
                     <!-- Show approved comments and pending comments for post owner and user who posted it -->
                     {% for comment in comments %}
-                    {% if comment.approved or comment.author == user %}
+                    {% if comment.approved or comment.author == user or comment.post.author == user %}
                     <div class="comment {% if not comment.approved %}pending{% endif %}">
                         <div class="comment-bubble">
                             <div class="comment-content">

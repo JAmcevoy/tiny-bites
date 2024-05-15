@@ -1,24 +1,28 @@
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* General Styles */
 body {
   font-family: "Anton", sans-serif;
   background-color: #cdcdcd;
   margin: 80px 0;
-
 }
 
+/* Buttons */
 button {
   font-family: 'Figtree', sans-serif;
   font-weight: bold;
 }
 
+/* Paragraphs */
 p {
   font-family: "Raleway", sans-serif;
   font-weight: 600;
 }
 
+/* Footer */
 footer {
   position: fixed;
   bottom: 0;
@@ -29,6 +33,7 @@ footer {
   padding: 10px 0;
 }
 
+/* Elements with Class Scale */
 .scale {
   height: 700px;
   width: 600px;
@@ -36,7 +41,7 @@ footer {
   position: relative;
 }
 
-/* nav */
+/* Navigation */
 .fixed-header {
   position: fixed;
   top: 0;
@@ -50,7 +55,6 @@ footer {
   font-size: 30px;
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-
 }
 
 .navbar-nav .nav-link {
@@ -68,15 +72,13 @@ footer {
 }
 
 .search input::placeholder {
-  
   color: rgba(0, 0, 0, 0.5);
 }
 
-
-/* Cards Style */
+/* Cards */
 .card {
   width: 100%;
-  padding: 10PX;
+  padding: 10px;
 }
 
 .dates-font {
@@ -106,7 +108,7 @@ footer {
   height: 500px;
 }
 
-/* Styling for pagination buttons */
+/* Pagination Buttons */
 .pagination .page-item .page-link {
   color: #007bff;
   margin: 10px;
@@ -130,7 +132,7 @@ footer {
   border-color: #007bff;
 }
 
-/* Custom styling for the comment section */
+/* Comments Section */
 .comment {
   margin-bottom: 20px;
   padding: 10px;
@@ -169,7 +171,6 @@ footer {
   margin-bottom: 5px;
 }
 
-
 .comment-time {
   font-size: 12px;
   color: #999;
@@ -184,7 +185,7 @@ footer {
 .bubble {
   position: relative;
   background-color: #f5f5f5;
-  border-radius: 30px; /* Increase border-radius for more curved edges */
+  border-radius: 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -198,7 +199,7 @@ footer {
   transform: translateX(-50%);
 }
 
-/* comment form  */
+/* Comment Form */
 #commentForm {
   background-color: #f5f5f5;
   border-radius: 10px;
@@ -229,13 +230,13 @@ footer {
 
 #commentForm button[type="submit"]:hover {
   background-color: #0056b3;
-}  
+}
 
 .form-btn {
   margin-bottom: 0;
 }
 
-/* create form */
+/* Create Form */
 .form-bubble {
   background-color: #f5f5f5;
   border-radius: 20px;
@@ -245,7 +246,7 @@ footer {
   place-items: center;
 }
 
-/* passwords */
+/* Passwords */
 .weak {
   color: red;
 }
@@ -256,4 +257,35 @@ footer {
 
 .strong {
   color: green;
+}
+
+/* Watermark */
+.full-page-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; 
+  margin: 70px 0;
+}
+
+.water-text {
+  color: rgba(0, 0, 0, 0.2);
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+}
+
+.water-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: -2px; 
+  left: -2px;
+  color: rgba(0, 0, 0, 0.1);
 }

@@ -11,9 +11,11 @@
                     <h1 class="card-title">{{ post.name }}</h1>
                     <p class="card-subtitle text-muted">By {{ post.author }} | {{ post.created_at }}</p>
                     <hr>
-                    <p class="card-text">{{ post.description }}</p>
-                    <p class="card-text">{{ post.ingredients }}</p>
-                    <p class="card-text">{{ post.instructions }}</p>
+                    <p class="card-text">{{ post.description | safe  }}</p>
+                    <h4>Ingredients:</h4>
+                    <p class="card-text">{{ post.ingredients | safe  }}</p>
+                    <h4>Instructions:</h4>
+                    <p class="card-text">{{ post.instructions | safe  }}</p>
                     <hr>
                     <p class="card-text">{{ post.content | safe }}</p>
                 </div>

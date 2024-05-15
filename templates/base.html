@@ -31,18 +31,18 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ">
+          {% if user.is_authenticated %}
           <li class="nav-item {% if request.path == home_url %}active{% endif %}">
             <a class="nav-link" href="{% url 'home' %}">Feed</a>
           </li>
-          {% if user.is_authenticated %}
           <li class="nav-item {% if request.path == my_bites_url %}active{% endif %}">
-            <a class="nav-link" href="{% url 'my_bites' %}">My Bites</a>
+            <a class="nav-link" href="{% url 'my_bites' %}?next={{ request.path }}">My Bites</a>
           </li>
           <li class="nav-item {% if request.path == to_be_approved_url %}active{% endif %}">
-            <a class="nav-link" href="{% url 'to_be_approved' %}">To Be Approved</a>
+            <a class="nav-link" href="{% url 'to_be_approved' %}?next={{ request.path }}">To Be Approved</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'post_creation' %}">
+            <a class="nav-link" href="{% url 'post_creation' %}?next={{ request.path }}">
               <span><i class="fas fa-plus-square"></i> Create</span>
             </a>
           </li>

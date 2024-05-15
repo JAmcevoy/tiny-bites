@@ -175,3 +175,21 @@ def referring_url(request, default_url):
         return HttpResponseRedirect(referring_url)
     else:
         return redirect(*default_url)
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # Redirect to the next URL if it exists
+            next_url = request.GET.get('next', None)
+            if next_url:
+                return redirect(next_url)
+            else:
+                return redirect('home')
+        else:
+            pass
+    return render(request, "account/login.html")

@@ -56,7 +56,8 @@ Before embarking on the development journey, meticulous planning was undertaken 
 
 ![Navbar Big Screen](docs/navbar_big_screen.png)
 
-- Because most of the nav items are for a user who is logged in, I decided it was best to hide anything a user without an account wouldn't need.
+- Because most of the nav items are for a user who is logged in, I decided it was best to hide all nav links for a none login user as they would have little need for any of the functionality provided.
+- I did leave the account links active.
 
 ![Navbar Logged out](docs/navbar_logged_out.png)
 

@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect, JsonResponse
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.contrib import messages
 from django.db.models import Q
 from django.utils.text import slugify
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.views import PasswordChangeView
 from .models import Create, Comment
 from .forms import PostFormCreate, CommentForm
 
@@ -184,7 +185,6 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            # Redirect to the next URL if it exists
             next_url = request.GET.get('next', None)
             if next_url:
                 return redirect(next_url)
@@ -193,3 +193,39 @@ def login_view(request):
         else:
             pass
     return render(request, "account/login.html")
+
+
+def profile(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            user = request.user
+            user.first_name = request.POST.get('firstName')
+            user.last_name = request.POST.get('lastName')
+            user.email = request.POST.get('email')
+            
+            user.save()
+            messages.success(request, 'Profile updated successfully!')
+            return redirect('profile')
+        else:
+            return render(request, 'feed/profile.html')
+    else:
+        return render(request, "account/login.html")
+
+
+class CustomPasswordChangeView(PasswordChangeView):
+    success_url = reverse_lazy('profile')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+
+        # Update session auth hash to prevent user from being logged out
+        update_session_auth_hash(self.request, self.request.user)
+
+        # Notify user of successful password change
+        messages.success(self.request, 'Password changed successfully!')
+
+        return response
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Incorrect Password!')
+        return HttpResponseRedirect(reverse_lazy('profile'))

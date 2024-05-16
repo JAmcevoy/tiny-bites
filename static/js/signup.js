@@ -1,27 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const passwordInput = document.getElementById('id_password1');
+    const passwordInput1 = document.getElementById('id_password1');
+    const passwordInput2 = document.getElementById('id_password2');
     const passwordHelp = document.getElementById('password-help');
-    const passwordStrength = document.getElementById('password-strength');
-    const signupButton = document.getElementById('signup-button');
-    const signupForm = document.getElementById('signup-form');
+    const passwordMismatchMessage = 'New password and confirmation do not match.';
+    const passwordForm = document.forms['passwordForm'];
+    const submitButton = document.getElementById('submit-button');
 
-    passwordInput.addEventListener('input', function() {
-        const password = passwordInput.value;
+    passwordInput1.addEventListener('input', function() {
+        const password = passwordInput1.value;
         const strength = calculatePasswordStrength(password);
         updatePasswordStrengthIndicator(strength);
+        validatePasswordsMatch();
     });
 
-    signupForm.addEventListener('submit', function(event) {
-        const password = passwordInput.value;
-        const strength = calculatePasswordStrength(password);
+    passwordInput2.addEventListener('input', function() {
+        validatePasswordsMatch();
+    });
 
-   
-        if (strength < 2) { 
-            event.preventDefault(); 
-            passwordInput.focus(); 
-            alert('Please choose a stronger password.');
+    function validatePasswordsMatch() {
+        const password1 = passwordInput1.value;
+        const password2 = passwordInput2.value;
+
+        // Check if passwords match
+        if (password1 === password2) {
+            passwordHelp.textContent = '';
+            submitButton.style.display = 'block';
+        } else {
+            passwordHelp.textContent = passwordMismatchMessage;
         }
-    });
+    }
 
     function calculatePasswordStrength(password) {
         let strength = 0;

@@ -36,13 +36,13 @@
             <a class="nav-link" href="{% url 'home' %}">Feed</a>
           </li>
           <li class="nav-item {% if request.path == my_bites_url %}active{% endif %}">
-            <a class="nav-link" href="{% url 'my_bites' %}?next={{ request.path }}">My Bites</a>
+            <a class="nav-link" href="{% url 'my_bites' %}">My Bites</a>
           </li>
           <li class="nav-item {% if request.path == to_be_approved_url %}active{% endif %}">
-            <a class="nav-link" href="{% url 'to_be_approved' %}?next={{ request.path }}">To Be Approved</a>
+            <a class="nav-link" href="{% url 'to_be_approved' %}">To Be Approved</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'post_creation' %}?next={{ request.path }}">
+            <a class="nav-link" href="{% url 'post_creation' %}">
               <span><i class="fas fa-plus-square"></i> Create</span>
             </a>
           </li>
@@ -51,8 +51,15 @@
         <ul class="navbar-nav ms-auto">
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
-          </li>
+            <div class="row">
+                <div class="col">
+                    <a class="nav-link" href="{% url 'profile' %}">{{ user.username }}</a>
+                </div>
+                <div class="col">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
+                </div>
+            </div>
+        </li>
           {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'account_login' %}">Login</a>
@@ -89,28 +96,6 @@
     </div>
   </div>
   <!-- End Logout Modal -->
-
-  <!-- Login Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content bg-light">
-        <div class="modal-header border-0">
-          <h2 class="modal-title fw-bold" id="loginModalLabel">Login Required</h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="text-center">
-            <p>You need to be logged in to access this feature.</p>
-          </div>
-          <div class="d-grid gap-2">
-            <a href="{% url 'account_login' %}" class="btn btn-primary btn-lg rounded-pill">Login</a>
-            <a href="{% url 'account_signup' %}" class="btn btn-outline-primary btn-lg rounded-pill">Sign Up</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Login Modal -->
 
   <div class="container">
     <div class="row">
@@ -150,5 +135,4 @@
 <script src="https://kit.fontawesome.com/710fe75826.js" crossorigin="anonymous"></script>
 <script src="{% static 'js/copyright.js' %}"></script>
 <script src="{% static 'js/signup.js' %}"></script>
-
 </html>

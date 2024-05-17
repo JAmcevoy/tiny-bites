@@ -46,18 +46,19 @@ Before embarking on the development journey, meticulous planning was undertaken 
 
 - The navbar was created with ease of access in mind using bootstrap. It provides a responsive navigation bar that displays all the website's different pages, with space to read and navigate clearly. On smaller screens, it neatly tucks together, hidden away until the burger icon is selected.
   - Contains:
-    - Feed
-    - My Bites
-    - To be Approved
-    - Create
-    - Login, Sign up, and log out (Based on if you are logged in or not)
+    - **Feed**
+    - **My Bites**
+    - **To be Approved**
+    - **Create**
+    - **Login**, **Sign up**, and **Log out** (Based on if you are logged in or not)
+    - If the user is logged in the navbar will display their username which act as a link to the **Profile**.
 
 ![Navbar Small Screen](docs/navbar_small_screen.png)
 
 ![Navbar Big Screen](docs/navbar_big_screen.png)
 
 - Because most of the nav items are for a user who is logged in, I decided it was best to hide all nav links for a none login user as they would have little need for any of the functionality provided.
-- I did leave the account links active.
+- I did leave the account login and sign up links active.
 
 ![Navbar Logged out](docs/navbar_logged_out.png)
 
@@ -201,8 +202,41 @@ Before embarking on the development journey, meticulous planning was undertaken 
 - The submit button is prominently displayed at the bottom of the form, with a primary color to indicate its importance. This encourages users to complete the form and submit their posts, facilitating user engagement and participation within the community.
 
 
+### Profile
 
+#### Page Layout
+- The profile pages purpose is to give the user the abilty to edit their own information. 
+  - First and Last Name
+  - Email
+  - Password.
+- The page is built as a form that hold to current values for the logged in user, to edit name and email you just type the new value in and save. 
+- The input for password on the profile page is just for design and is disabled.
 
+![Profile Form](docs/images)
+
+#### Password Modal
+- The password change is done by using a modal holding a form. This modal is actived by clicking the change password link. 
+- The modal  contains:
+  - Currrent Password
+  - New Password
+  - Confirm Password.
+- Using javascript I made some logic to make the change password process less prone to error
+  - Using calculatePasswordStrength() I check the password strenght based on predefined rules. If the password meet one the rule it adds 1 to the strenght variable. This reflects in the strenght message that shows under the password field. 
+    - <span style="color:red">Weak</span> is 0-1
+    - <span style="color:yellow">Moderate</span> is 2-3
+    - <span style="color:green">Strong</span> is 4 and higher
+  - Using validatePasswordsMatch() to check if new password and password confirm match. Untill they match the submit button is hidden. Also, show a passwordMismatchMessage, 'New password and confirmation do not match.'.
+- I used a lot of the color red in this modal to let the user know this is a major change and they must think carefully before procceding. This applies to the 'Change Password' link and the modal title. 
+
+## Account Pages
+
+### Login
+
+### Logout
+
+### Sign up
+
+### Forgot password
 
 
 

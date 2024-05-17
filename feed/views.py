@@ -229,3 +229,4 @@ class CustomPasswordChangeView(PasswordChangeView):
     def form_invalid(self, form):
         messages.error(self.request, 'Incorrect Password!')
         return HttpResponseRedirect(reverse_lazy('profile'))
+        

@@ -219,3 +219,16 @@ class EditCommentViewTest(TestCase):
         self.assertTrue(form.errors)
         self.comment.refresh_from_db()
         self.assertEqual(self.comment.body, 'Comment to edit')
+
+
+class LoginViewTest(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.url = reverse('account_login')
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+
+    def test_login_view_get(self):
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'account/login.html')

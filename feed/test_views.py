@@ -84,3 +84,18 @@ class PostCreationViewTest(TestCase):
         })
         self.assertEqual(response.status_code, 302)
         self.assertTrue(Create.objects.filter(name='New Post').exists())
+
+
+class EditPostViewTest(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.create = Create.objects.create(name='Test Post', slug='test-post', author=self.user)
+        self.url = reverse('edit_post', kwargs={'slug': 'test-post'})
+
+    def test_edit_post_view_get(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'feed/edit_post.html')

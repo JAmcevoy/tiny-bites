@@ -262,3 +262,16 @@ class ProfileViewTest(TestCase):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'account/login.html')
+
+    def test_profile_view_post(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.post(self.url, {
+            'firstName': 'Updated',
+            'lastName': 'Name',
+            'email': 'updated@example.com',
+        })
+        self.assertEqual(response.status_code, 302)
+        self.user.refresh_from_db()
+        self.assertEqual(self.user.first_name, 'Updated')
+        self.assertEqual(self.user.last_name, 'Name')
+        self.assertEqual(self.user.email, 'updated@example.com')

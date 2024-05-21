@@ -32,7 +32,20 @@ class SearchFeatureViewTest(TestCase):
         self.assertContains(response, 'Test Post 1')
         self.assertContains(response, 'Another Test Post')
 
-     def test_search_feature_get(self):
+    def test_search_feature_get(self):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'feed/search_results.html')
+
+class PostDetailViewTest(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='password')
+        self.create = Create.objects.create(name='Test Post', slug='test-post', author=self.user)
+        self.url = reverse('post_detail', kwargs={'slug': 'test-post'})
+
+    def test_post_detail_view(self):
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'feed/post_detail.html')

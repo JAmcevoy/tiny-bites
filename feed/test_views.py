@@ -49,3 +49,10 @@ class PostDetailViewTest(TestCase):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'feed/post_detail.html')
+
+    def test_post_detail_view_post_comment(self):
+        user = User.objects.create_user(username='uniqueuser', password='testpass') # need to add a unique username as testuser has already been created in test
+        self.client.login(username='uniqueuser', password='testpass')
+        response = self.client.post(self.url, {'body': 'Test comment'})
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(Comment.objects.filter(body='Test comment').exists())

@@ -73,3 +73,14 @@ class PostCreationViewTest(TestCase):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'feed/post_creation.html')
+    
+    def test_post_creation_view_post(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.post(self.url, {
+            'name': 'New Post',
+            'description': 'Description',
+            'ingredients': 'Ingredients',
+            'instructions': 'Instructions',
+        })
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(Create.objects.filter(name='New Post').exists())

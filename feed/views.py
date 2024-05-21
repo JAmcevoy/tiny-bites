@@ -203,8 +203,11 @@ def login_view(request):
             else:
                 return redirect('home')
         else:
-            pass
+            # Authentication failed, add error message and redirect back to login page
+            messages.error(request, "The username and/or password you specified are not correct.")
+            return redirect('account_login') 
     return render(request, "account/login.html")
+
 
 
 def profile(request):

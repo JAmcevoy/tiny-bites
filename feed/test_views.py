@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -20,8 +21,9 @@ class SearchFeatureViewTest(TestCase):
     def setUp(self):
         self.client = Client()
         self.url = reverse('search_feature')
-        self.create1 = Create.objects.create(name='Test Post 1')
-        self.create2 = Create.objects.create(name='Another Test Post')
+        self.user = User.objects.create_user(username='testuser', password='password') # fix error by adding test user to make author
+        self.create1 = Create.objects.create(name='Test Post 1', slug='test-post-1', author=self.user) # fixed error by adding slug an author
+        self.create2 = Create.objects.create(name='Another Test Post', slug='another-test-post', author=self.user)
 
     def test_search_feature_post(self):
         response = self.client.post(self.url, {'search_query': 'Test'})

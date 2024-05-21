@@ -13,3 +13,7 @@ class CommentFormTest(TestCase):
     def test_comment_form_valid_data(self):
         form = CommentForm(data={'body': 'Test comment'})
         self.assertTrue(form.is_valid())
+
+    def test_comment_form_invalid_data(self):
+        form = CommentForm(data={'body': ''})
+        self.assertFalse(form.is_valid())

@@ -27,3 +27,9 @@ class PostFormCreateTest(TestCase):
         self.assertIn('description', form.fields)
         self.assertIn('ingredients', form.fields)
         self.assertIn('instructions', form.fields)
+
+    def test_post_form_create_widgets(self):
+        form = PostFormCreate()
+        self.assertIsInstance(form.fields['description'].widget, SummernoteWidget)
+        self.assertIsInstance(form.fields['ingredients'].widget, SummernoteWidget)
+        self.assertIsInstance(form.fields['instructions'].widget, SummernoteWidget)

@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from .models import Create, Comment
 from .forms import PostFormCreate, CommentForm
 
+
 class PostListViewTest(TestCase):
 
     def setUp(self):
@@ -15,6 +16,7 @@ class PostListViewTest(TestCase):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'feed/index.html')
+
 
 class SearchFeatureViewTest(TestCase):
 
@@ -37,6 +39,7 @@ class SearchFeatureViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'feed/search_results.html')
 
+
 class PostDetailViewTest(TestCase):
 
     def setUp(self):
@@ -56,3 +59,17 @@ class PostDetailViewTest(TestCase):
         response = self.client.post(self.url, {'body': 'Test comment'})
         self.assertEqual(response.status_code, 200)
         self.assertTrue(Comment.objects.filter(body='Test comment').exists())
+
+
+class PostCreationViewTest(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.url = reverse('post_creation')
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+
+    def test_post_creation_view_get(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'feed/post_creation.html')

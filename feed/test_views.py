@@ -31,3 +31,8 @@ class SearchFeatureViewTest(TestCase):
         self.assertTemplateUsed(response, 'feed/search_results.html')
         self.assertContains(response, 'Test Post 1')
         self.assertContains(response, 'Another Test Post')
+
+     def test_search_feature_get(self):
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'feed/search_results.html')

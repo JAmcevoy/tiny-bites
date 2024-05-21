@@ -33,3 +33,12 @@ class PostFormCreateTest(TestCase):
         self.assertIsInstance(form.fields['description'].widget, SummernoteWidget)
         self.assertIsInstance(form.fields['ingredients'].widget, SummernoteWidget)
         self.assertIsInstance(form.fields['instructions'].widget, SummernoteWidget)
+
+    def test_post_form_create_valid_data(self):
+        form = PostFormCreate(data={
+            'name': 'Test post',
+            'description': 'Test description',
+            'ingredients': 'Test ingredients',
+            'instructions': 'Test instructions',
+        })
+        self.assertTrue(form.is_valid())

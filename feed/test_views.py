@@ -290,3 +290,14 @@ class CustomPasswordChangeViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'registration/password_change_form.html')
 
+    def test_password_change_view_post_valid(self):
+        response = self.client.post(self.url, {
+            'old_password': 'testpass',
+            'new_password1': 'newpass123',
+            'new_password2': 'newpass123',
+        })
+        self.assertEqual(response.status_code, 302)
+        self.user.refresh_from_db()
+        self.assertTrue(self.user.check_password('newpass123'))
+      
+

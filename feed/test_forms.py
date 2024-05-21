@@ -9,3 +9,7 @@ class CommentFormTest(TestCase):
         form = CommentForm()
         self.assertIn('body', form.fields)
         self.assertEqual(form.fields['body'].label, 'Comment')
+
+    def test_comment_form_valid_data(self):
+        form = CommentForm(data={'body': 'Test comment'})
+        self.assertTrue(form.is_valid())

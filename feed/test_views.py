@@ -202,3 +202,10 @@ class EditCommentViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'feed/post_detail.html')
         self.assertContains(response, 'Comment to edit')
+
+    def test_edit_comment_view_post(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.post(self.url, {'body': 'Updated comment'})
+        self.assertEqual(response.status_code, 302)
+        self.comment.refresh_from_db()
+        self.assertEqual(self.comment.body, 'Updated comment')

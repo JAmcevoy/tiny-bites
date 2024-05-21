@@ -42,3 +42,12 @@ class PostFormCreateTest(TestCase):
             'instructions': 'Test instructions',
         })
         self.assertTrue(form.is_valid())
+
+    def test_post_form_create_invalid_data(self):
+        form = PostFormCreate(data={
+            'name': '',
+            'description': '',
+            'ingredients': '',
+            'instructions': '',
+        })
+        self.assertFalse(form.is_valid())

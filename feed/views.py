@@ -98,7 +98,7 @@ def edit_post(request, slug):
 
 def my_bites(request):
     if request.user.is_authenticated:
-        user_posts = Create.objects.filter(author_id=request.user.id)
+        user_posts = Create.objects.filter(author_id=request.user.id).order_by('created_at')
         
         paginator = Paginator(user_posts, 6)
         page = request.GET.get('page')

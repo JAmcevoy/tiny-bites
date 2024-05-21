@@ -131,3 +131,24 @@ class MyBitesViewTest(TestCase):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'account/login.html')
+
+
+class ToBeApprovedViewTest(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.url = reverse('to_be_approved')
+        self.create = Create.objects.create(name='Test Post', author=self.user, slug='test_post')
+        self.comment = Comment.objects.create(post=self.create, body='Pending comment', approved=False, author=self.user)
+
+    def test_to_be_approved_view_authenticated(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'feed/to_be_approved.html')
+        
+    def test_to_be_approved_view_unauthenticated(self):
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'account/login.html')

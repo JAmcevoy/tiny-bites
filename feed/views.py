@@ -14,6 +14,7 @@ class PostList(generic.ListView):
     queryset = Create.objects.all()
     template_name = "feed/index.html"
     paginate_by = 10
+    ordering = ['created_at']
 
 
 def search_feature(request):

@@ -99,3 +99,15 @@ class EditPostViewTest(TestCase):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'feed/edit_post.html')
+
+    def test_edit_post_view_post(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.post(self.url, {
+            'name': 'Updated Post',
+            'description': 'Updated description',
+            'ingredients': 'Updated ingredients',
+            'instructions': 'Updated instructions',
+        })
+        self.assertEqual(response.status_code, 302)
+        self.create.refresh_from_db()
+        self.assertEqual(self.create.name, 'Updated Post')

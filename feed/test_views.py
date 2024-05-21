@@ -169,3 +169,19 @@ class ApproveCommentViewTest(TestCase):
         self.assertEqual(response.status_code, 302)
         self.comment.refresh_from_db()
         self.assertTrue(self.comment.approved)
+
+
+class DeleteCommentViewTest(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.create = Create.objects.create(name='Test Post', author=self.user, slug='test-post')
+        self.comment = Comment.objects.create(post=self.create, body='Comment to edit', author=self.user)
+        self.url = reverse('delete_comment', kwargs={'comment_id': self.comment.id})
+
+    def test_delete_comment_view_get(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 302)
+        self.assertFalse(Comment.objects.filter(id=self.comment.id).exists())

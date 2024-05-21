@@ -141,15 +141,13 @@ def delete_comment(request, comment_id):
     
     # Store the referring URL in the session
     request.session['referring_url'] = request.META.get('HTTP_REFERER', None)
-    default_url = 'post_detail', {'slug': comment.post.slug}
+    default_url = reverse('post_detail', kwargs={'slug': comment.post.slug})
 
-    if request.user == comment.author or request.user.is_superuser or comment.post.author:
-        post_slug = comment.post.slug
+    if request.user == comment.author or request.user.is_superuser or comment.post.author == request.user:
         comment.delete()
         messages.success(request, 'Comment deleted successfully.')
         
         return referring_url(request, default_url)
-
     else:
         return redirect(default_url)
 
@@ -176,7 +174,7 @@ def referring_url(request, default_url):
     if referring_url:
         return HttpResponseRedirect(referring_url)
     else:
-        return redirect(*default_url)
+        return HttpResponseRedirect(default_url)
 
 
 def login_view(request):

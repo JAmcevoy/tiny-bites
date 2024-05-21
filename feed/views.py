@@ -166,7 +166,20 @@ def edit_comment(request, comment_id):
     else:
         comment_form = CommentForm(instance=comment, initial={'body': comment.body})
     
-    return render(request, 'post_detail.html', {'comment_form': comment_form, 'comment': comment})
+    # Ensure the context contains necessary data for rendering the post_detail template correctly
+    post = comment.post
+    comments = post.comments.all().order_by("-created_on")
+    comment_count = post.comments.filter(approved=True).count()
+    commented_forms = [(comment, CommentForm(instance=comment)) for comment in comments]
+
+    return render(request, 'feed/post_detail.html', {
+        'post': post,
+        'comments': comments,
+        'comment_count': comment_count,
+        'comment_form': comment_form,
+        'commented_forms': commented_forms,
+        'comment': comment
+    })
 
 
 def referring_url(request, default_url):

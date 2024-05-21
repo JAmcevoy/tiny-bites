@@ -152,3 +152,20 @@ class ToBeApprovedViewTest(TestCase):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'account/login.html')
+
+
+class ApproveCommentViewTest(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.url = reverse('approve_comment', kwargs={'comment_id': 1})
+        self.create = Create.objects.create(name='Test Post', author=self.user)
+        self.comment = Comment.objects.create(post=self.create, body='Pending comment', approved=False, author=self.user)
+
+    def test_approve_comment_view(self):
+        self.client.login(username='testuser', password='testpass')
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 302)
+        self.comment.refresh_from_db()
+        self.assertTrue(self.comment.approved)

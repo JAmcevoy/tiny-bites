@@ -17,3 +17,13 @@ class CommentFormTest(TestCase):
     def test_comment_form_invalid_data(self):
         form = CommentForm(data={'body': ''})
         self.assertFalse(form.is_valid())
+
+class PostFormCreateTest(TestCase):
+
+    def test_post_form_create_fields(self):
+        form = PostFormCreate()
+        self.assertIn('name', form.fields)
+        self.assertIn('featured_image', form.fields)
+        self.assertIn('description', form.fields)
+        self.assertIn('ingredients', form.fields)
+        self.assertIn('instructions', form.fields)

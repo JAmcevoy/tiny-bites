@@ -232,3 +232,7 @@ class LoginViewTest(TestCase):
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'account/login.html')
+
+    def test_login_view_post_valid(self):
+        response = self.client.post(self.url, {'username': 'testuser', 'password': 'testpass'})
+        self.assertEqual(response.status_code, 302)

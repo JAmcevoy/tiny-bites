@@ -275,3 +275,18 @@ class ProfileViewTest(TestCase):
         self.assertEqual(self.user.first_name, 'Updated')
         self.assertEqual(self.user.last_name, 'Name')
         self.assertEqual(self.user.email, 'updated@example.com')
+
+
+class CustomPasswordChangeViewTest(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.url = reverse('password_change')
+        self.client.login(username='testuser', password='testpass')
+
+    def test_password_change_view_get(self):
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'registration/password_change_form.html')
+

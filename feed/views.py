@@ -67,17 +67,19 @@ def post_creation(request):
         if create_form.is_valid():
             new_post = create_form.save(commit=False)
             new_post.author = request.user
-
             new_post.slug = slugify(new_post.name)
 
             suffix = 1
             while Create.objects.filter(slug=new_post.slug).exists():
                 new_post.slug = slugify(new_post.name) + "-" + str(suffix)
                 suffix += 1
-            
+
             new_post.save()
 
+            messages.success(request, 'Your post has been created successfully!')
             return redirect("post_detail", slug=new_post.slug)
+        else:
+            messages.error(request, 'There was an error with your submission. Please check the form and try again.')
     else:
         create_form = PostFormCreate()
 

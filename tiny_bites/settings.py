@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 import sys
 import dj_database_url
+from django.contrib.messages import constants as messages
+
 if os.path.isfile('env.py'):
     import env
 
@@ -34,7 +36,7 @@ SECRET_KEY = 'SECRET_KEY'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-jamcevoy-tiny-bites-2s726i9nhd.us1.codeanyapp.com']
+ALLOWED_HOSTS = ['8000-jamcevoy-tiny-bites-jdbmznt5m7.us1.codeanyapp.com']
 
 
 # Application definition
@@ -171,3 +173,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'debug',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',
+}

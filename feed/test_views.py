@@ -237,6 +237,17 @@ class LoginViewTestCase(TestCase):
         self.assertRedirects(response, reverse('home'))
         self.assertIn("You have successfully logged in as testuser.", [m.message for m in messages.get_messages(request)])
 
+     def test_login_failure(self):
+        request = self.factory.post(reverse('login'), {'username': 'testuser', 'password': 'wrongpassword'})
+        request.user = self.user
+        request.session = {}
+        setattr(request, '_messages', FallbackStorage(request))
+        
+        response = login_view(request)
+        
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("The username and/or password you specified are not correct.", [m.message for m in messages.get_messages(request)])
+
 
 class ProfileViewTest(TestCase):
 

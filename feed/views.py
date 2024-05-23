@@ -251,18 +251,19 @@ def profile(request):
         return render(request, "account/login.html")
 
 class CustomPasswordChangeView(PasswordChangeView):
-    """
-    Handles password change and keeps the user logged in
-    """
     success_url = reverse_lazy('profile')
-    template_name = 'feed/profile.html'
 
     def form_valid(self, form):
         response = super().form_valid(form)
+
+        # Update session auth hash to prevent user from being logged out
         update_session_auth_hash(self.request, self.request.user)
+
+        # Notify user of successful password change
         messages.success(self.request, 'Password changed successfully!')
+
         return response
 
     def form_invalid(self, form):
         messages.error(self.request, 'Incorrect Password!')
-        return self.render_to_response(self.get_context_data(form=form, **{'template_name': 'feed/profile.html'}))
+        return HttpResponseRedirect(reverse_lazy('profile'))

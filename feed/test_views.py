@@ -221,28 +221,16 @@ class EditCommentViewTest(TestCase):
         self.assertEqual(self.comment.body, 'Comment to edit')
 
 
-# class LoginViewTest(TestCase):
-
-#     def setUp(self):
-#         self.client = Client()
-#         self.url = reverse('account_login')
-#         self.user = User.objects.create_user(username='testuser', password='testpass')
-
-#     def test_login_view_get(self):
-#         response = self.client.get(self.url)
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'account/login.html')
-
-#     def test_login_view_post_valid(self):
-#         response = self.client.post(self.url, {'login': 'testuser', 'password': 'testpass'})
-#         self.assertEqual(response.status_code, 302)
-#         self.assertRedirects(response, reverse('home'))
-
-#     def test_login_view_post_invalid(self):
-#         response = self.client.post(self.url, {'login': 'wronguser', 'password': 'wrongpass'})
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'account/login.html')
-#         self.assertContains(response, "The username and/or password you specified are not correct.")
+class LoginViewTestCase(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(username='testuser', password='testpassword')
+    
+    def test_login_success(self):
+        request = self.factory.post(reverse('login'), {'username': 'testuser', 'password': 'testpassword'})
+        request.user = self.user
+        request.session = {}
+        setattr(request, '_messages', FallbackStorage(request))
 
 
 class ProfileViewTest(TestCase):

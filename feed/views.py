@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from django.db.models import Q
 from django.utils.text import slugify
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -193,22 +194,24 @@ def referring_url(request, default_url):
 
 
 def login_view(request):
+    next_url = request.GET.get('next')
+
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            next_url = request.GET.get('next', None)
+            messages.success(request, f"You have successfully logged in as {request.user.username}.")
             if next_url:
                 return redirect(next_url)
             else:
                 return redirect('home')
         else:
-            # Authentication failed, add error message and redirect back to login page
             messages.error(request, "The username and/or password you specified are not correct.")
-            return redirect('account_login') 
-    return render(request, "account/login.html")
+            return render(request, "account/login.html", {'next': next_url})
+    else:
+        return render(request, "account/login.html", {'next': next_url})
 
 
 

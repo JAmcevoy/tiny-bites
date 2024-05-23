@@ -5,26 +5,17 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock head_title %}
 
 {% block content %}
-
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
-
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6 mt-5">
             <div class="card border-0 shadow rounded p-4">
                 <h1 class="card-title text-center mb-4">Welcome Back</h1>
 
-                <form method="POST" action="{% url 'account_login' %}" class="mb-3">
+                <form method="POST" action="{% url 'login' %}?next={{ request.GET.next }}" class="mb-3">
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="id_username" class="form-label">{% trans "Username" %}</label>
-                        <input type="text" class="form-control rounded-pill {% if form.errors.username %}is-invalid{% endif %}" id="id_username" name="login" autofocus placeholder="Enter your username">
+                        <input type="text" class="form-control rounded-pill {% if form.errors.username %}is-invalid{% endif %}" id="id_username" name="username" autofocus placeholder="Enter your username">
                         {% if form.errors.username %}
                             <div class="invalid-feedback">{{ form.errors.username }}</div>
                         {% endif %}

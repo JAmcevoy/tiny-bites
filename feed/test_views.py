@@ -232,6 +232,11 @@ class LoginViewTestCase(TestCase):
         request.session = {}
         setattr(request, '_messages', FallbackStorage(request))
 
+        response = login_view(request)
+        
+        self.assertRedirects(response, reverse('home'))
+        self.assertIn("You have successfully logged in as testuser.", [m.message for m in messages.get_messages(request)])
+
 
 class ProfileViewTest(TestCase):
 

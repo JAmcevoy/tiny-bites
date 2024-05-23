@@ -258,6 +258,16 @@ class LoginViewTestCase(TestCase):
         self.assertTemplateUsed(response, 'account/login.html')
         self.assertEqual(response.context['next'], None)
 
+    def test_login_redirect_next_url(self):
+        next_url = '/profile/'
+        request = self.factory.get(reverse('login') + f'?next={next_url}')
+        request.user = self.user
+        
+        response = login_view(request)
+        
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['next'], next_url)
+
 
 class ProfileViewTest(TestCase):
 

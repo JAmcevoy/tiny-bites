@@ -248,6 +248,16 @@ class LoginViewTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn("The username and/or password you specified are not correct.", [m.message for m in messages.get_messages(request)])
 
+    def test_login_get_request(self):
+        request = self.factory.get(reverse('login'))
+        request.user = self.user
+        
+        response = login_view(request)
+        
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'account/login.html')
+        self.assertEqual(response.context['next'], None)
+
 
 class ProfileViewTest(TestCase):
 

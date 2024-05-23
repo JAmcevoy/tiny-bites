@@ -78,11 +78,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
-
-module.exports = {
-    initializePasswordFunctionality,
-    handlePasswordInput,
-    validatePasswordsMatch,
-    calculatePasswordStrength,
-    updatePasswordStrengthIndicator
-};

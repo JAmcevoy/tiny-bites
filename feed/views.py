@@ -4,12 +4,14 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import update_session_auth_hash
 from django.db.models import Q
 from django.utils.text import slugify
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.views import PasswordChangeView
 from .models import Create, Comment
 from .forms import PostFormCreate, CommentForm
+
 
 class PostList(generic.ListView):
     queryset = Create.objects.all()
@@ -34,7 +36,7 @@ def post_detail(request, slug):
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
     commented_forms = [(comment, CommentForm(instance=comment)) for comment in comments]
-    
+
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -102,7 +104,7 @@ def edit_post(request, slug):
 def my_bites(request):
     if request.user.is_authenticated:
         user_posts = Create.objects.filter(author_id=request.user.id).order_by('created_at')
-        
+
         paginator = Paginator(user_posts, 6)
         page = request.GET.get('page')
         try:
@@ -111,7 +113,7 @@ def my_bites(request):
             user_posts = paginator.page(1)
         except EmptyPage:
             user_posts = paginator.page(paginator.num_pages)
-        
+
         return render(request, "feed/my_bites.html", {'user_posts': user_posts})
     else:
         return render(request, "account/login.html")
@@ -121,27 +123,26 @@ def to_be_approved(request):
     if request.user.is_authenticated:
 
         user_posts = Create.objects.filter(author=request.user)
-        
+
         comments_pending = Comment.objects.filter(post__in=user_posts, approved=False)
-        
+
         return render(request, "feed/to_be_approved.html", {'comments_pending': comments_pending})
     else:
         return render(request, "account/login.html")
 
 
-
 def approve_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
-    
+
     comment.approved = True
     comment.save()
-    
+
     return redirect('to_be_approved')
 
 
 def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
-    
+
     # Store the referring URL in the session
     request.session['referring_url'] = request.META.get('HTTP_REFERER', None)
     default_url = reverse('post_detail', kwargs={'slug': comment.post.slug})
@@ -149,7 +150,7 @@ def delete_comment(request, comment_id):
     if request.user == comment.author or request.user.is_superuser or comment.post.author == request.user:
         comment.delete()
         messages.success(request, 'Comment deleted successfully.')
-        
+
         return referring_url(request, default_url)
     else:
         return redirect(default_url)
@@ -157,7 +158,7 @@ def delete_comment(request, comment_id):
 
 def edit_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
-    
+
     if request.method == 'POST':
         comment_form = CommentForm(request.POST, instance=comment)
         if comment_form.is_valid():
@@ -168,7 +169,7 @@ def edit_comment(request, comment_id):
             return redirect('post_detail', slug=comment.post.slug)
     else:
         comment_form = CommentForm(instance=comment, initial={'body': comment.body})
-    
+
     # Ensure the context contains necessary data for rendering the post_detail template correctly
     post = comment.post
     comments = post.comments.all().order_by("-created_on")
@@ -214,15 +215,14 @@ def login_view(request):
         return render(request, "account/login.html", {'next': next_url})
 
 
-
 def profile(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             user = request.user
-            user.first_name = request.POST.get('firstName')
-            user.last_name = request.POST.get('lastName')
-            user.email = request.POST.get('email')
-            
+            user.first_name = request.POST.get('firstName', '')  # fix error 11
+            user.last_name = request.POST.get('lastName', '') 
+            user.email = request.POST.get('email', '')
+
             user.save()
             messages.success(request, 'Profile updated successfully!')
             return redirect('profile')
@@ -234,6 +234,7 @@ def profile(request):
 
 class CustomPasswordChangeView(PasswordChangeView):
     success_url = reverse_lazy('profile')
+    template_name = 'feed/profile.html'
 
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -248,5 +249,4 @@ class CustomPasswordChangeView(PasswordChangeView):
 
     def form_invalid(self, form):
         messages.error(self.request, 'Incorrect Password!')
-        return HttpResponseRedirect(reverse_lazy('profile'))
-        
+        return self.render_to_response(self.get_context_data(form=form, **{'template_name': 'feed/profile.html'}))

@@ -270,16 +270,6 @@ This section describes how I set up my workspace, Once my repository has been cr
 This section describes the commands I used in code anywhere to push my code and changes to GitHub.
 
     -  I created the files and folders needed for my project.
-      - index.html
-      - assets folder
-        - css folder
-          - style.css
-        - icon folder
-        - js folder
-          - script.js
-        - images
-      - Docs
-        - images
     - I used the git add . command to add all changes above.
     - Using the git commit command I committed the change and used -m to attach a message to the commit.
     - When I was finished with the creation I used git push to push all these files and folders to GitHub.
@@ -292,7 +282,48 @@ This section should describe the process I went through to deploy the project to
   - From the source section drop-down menu, select the Master Branch
   - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
 
-The live link can be found here - <https://jamcevoy.github.io/RPSLS/>
+The live link can be found here - <>
+
+## Heroku
+<!-- Edit with detail -->
+Part 1 - Create the Heroku app:
+10/04/2024, 13:40 Challenge: Deploy the project | Getting set up | FSD101_WTS Courseware | Code Institute
+https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+FSD101_WTS+2023_Q3/courseware 2/2
+1. Have you referred back to the deploying to Heroku text step topic to create
+your Heroku app?
+2. Have you added a key of DISABLE_COLLECTSTATIC and a value of 1 and
+clicked Add?
+Find this in the Config Vars section of the Settings tab.
+Part 2 - Update your code for deployment:
+1. Have you pip3 installed the webserver gunicorn and added it to the project
+requirements?
+pip3 install gunicorn~=20.1
+pip3 freeze --local > requirements.txt
+2. Have you created a Procfile at the root directory of the project, declared the
+process as web and added a start command?
+web: gunicorn codestar.wsgi
+Hint: Note there is a space after the colon.
+Hint: The Procfile has no file extension.
+3. Have you changed DEBUG to False and added , '.herokuapp.com' to
+the ALLOWED_HOSTS?
+DEBUG = False
+,'.herokuapp.com'
+Hint: Remember the comma and the dot before herokuapp.
+4. Push the code to GitHub.
+git add .
+git commit -m "readies code for deploy"
+git push origin main
+Part 3 - Deploy to Heroku:
+1. Have you clicked on the Deploy tab in your Heroku app dashboard,
+connected to your GitHub repo and clicked on Deploy Branch?
+1. Hint: Start typing your project repo name into the search box and click on the
+GitHub repo you want to deploy from.
+2. After manually deploying the main branch, you can view the build output in the
+application’s Activity tab in the dashboard.
+1. Have you clicked the Open app button to see your deployed app?
+Hint: The build must be complete before you can open the app.
+Hint: You will see an error that the current path didn’t match any of the URL
+patterns as you have not written the urlpattern yet
 
 ## Credits
 

@@ -1,1 +1,1 @@
-web: gunicorn tiny-bites.wsgi
+web: gunicorn tiny_bites.wsgi

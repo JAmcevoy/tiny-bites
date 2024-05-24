@@ -1,3 +1,22 @@
+const passwordInput1 = document.getElementById('id_password1');
+const passwordInput2 = document.getElementById('id_password2');
+const passwordHelp = document.getElementById('password-help');
+const passwordMismatchMessage = 'New password and confirmation do not match.';
+const passwordForm = document.forms['passwordForm'];
+const submitButton = document.getElementById('submit-button');
+
+
+passwordInput1.addEventListener('input', function() {
+    const password = passwordInput1.value;
+    const strength = calculatePasswordStrength(password);
+    updatePasswordStrengthIndicator(strength);
+    validatePasswordsMatch();
+});
+
+passwordInput2.addEventListener('input', function() {
+    validatePasswordsMatch();
+});
+
 function validatePasswordsMatch() {
     const password1 = passwordInput1.value;
     const password2 = passwordInput2.value;
@@ -8,6 +27,7 @@ function validatePasswordsMatch() {
         submitButton.style.display = 'block';
     } else {
         passwordHelp.textContent = passwordMismatchMessage;
+        submitButton.style.display = 'none';
     }
 }
 
@@ -58,10 +78,3 @@ function updatePasswordStrengthIndicator(strength) {
         strengthIndicator.classList.add('strong');
     }
 }
-
-// Export functions for testing
-module.exports = {
-    validatePasswordsMatch,
-    calculatePasswordStrength,
-    updatePasswordStrengthIndicator
-};

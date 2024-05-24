@@ -220,22 +220,124 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 ### Login
 
+- I wanted the login page to be a simple process so I went for a plain view with the username and password fields.
+- The login is a sepperate page so with use of the login_view I was able to allow the page to redirct to previous page when relavant. For example, the detail view has its own login button for the comments. Before after a successful a user would be redircted to home based of the configurations in the setting.py file, I believe this to be fustrating for the user as they would need to go back and find the post they wished to comment on. With the next method the login link grabs the slug of the post then after login the user will be brought back to the post.
+
+![Login](docs/images/)
+
 ### Logout
+
+- Just as the login I wanted the logout to be simple and easy to do. 
+- The logout is handled by a modal on the base. When the users wants to logout no matter the page the modal will pop up and it is just a simple click of a button. 
+- Because the user is logging out I found no need to redirct them to the previous page, as most of the pages (my bites, to be approved, create, and profile) require the user to be logged in I thought it would prevent any confusion or error for the user by bringing them back to home.
+
+![Logout](docs/images/)
 
 ### Sign up
 
+- The sign up is again a simple process the form consist of Username, email, and password. 
+- I thought not to add in the first and last name fields to speed the sign up process, only including the information not needed. The first name and last name can be added to the users profile after sign up using the profile page.
+- This form is close to the django allauth form so most of the error handling is there to be used preventing the user to submit if:
+  - Username is taken
+  - The emails is not the correct format
+  - Password and current password match. 
+- Because of all these actions I though it would be best to focus any custom error handling like password strenght to the profile page.
+- Just in case the sign up link was select by addicdent I add the login link at the bottom with a text where the user can notice it.
+
+![signup](docs/images/)
+
 ### Forgot password
+
+- I spent the least amount of time of this page, Again this is django aullauths template. I just added some bootstrap style to the page to fit in with the the base and the rest of the site.
+
+![forgot password](docs/images/)
 
 ## Features Left to Implement
 
+- As stated in the beginging I wanted this site to be both a recipe and review website however, I had some difficulties added the review section. I felt my time was being wasted trying to get this section in, I felt my website had a clear enough function by this time. The review section was similar to the create but allowed the users to review with a star option making the user more interactive with the theme of Little bites. I feel with more time and experience I feel I could accomplish this.
+- I wanted to add in socail media logins, allowing the users to connect their other socail profile but again my current knowledge and time frame I felt I couldnt get this done to an acceptable level.
+-I wanted to incorporate Tailwind CSS styles into my project to separate it from other projects, but as this was new to me, I felt the time would have been wasted focusing so much on style. Additionally, I found the verbosity of HTML classes in Tailwind CSS to be less visually appealing or harder to read compared to Bootstrap's more structured HTML markup. This made the learning curve steeper and the transition more challenging.
 
 # Testing
 
+### Logic testing
 
-### Conclusion
+- Because the majority of this projects time was spent on the python I found it necessacary to test the Django view and forms. Using djangos test functionality I ran a number of test.
+
+#### Forms
+
+#### Views
 
 
 ### User testing
+
+- The user testing was also important as my users needs was that the website was easy to understand. I felt human error would be a big factor in issues with this project. 
+- To allow for user testing I will encourage user to:
+  - Sign up using the sign up page. 
+  - Login using the login page. 
+  - Edit information from the profile page.
+  - Browser through the feed while also making use of the search bar. 
+  - Comment on a users post while making sure they are aware they can edit and delete said comments
+  - Review the my bites page and post edit page.
+  - Delete or approve comments I have made on their post using the to be approved page.
+  - Logout using the logout modal
+- I will ask the test users to answer these questions to review the website:
+  1. **How easy was it to sign up for an account on the website?**
+  2. **Did you encounter any difficulties while logging in?**
+  3. **Were you able to easily edit your information from the profile page?**
+  4. **How intuitive was it to browse through the feed and utilize the search bar?**
+  5. **Were you able to comment on a user's post and understand how to edit or delete your comments?**
+  6. **What are your thoughts on the "My Bites" page and post edit page in terms of usability?**
+  7. **Did you find it straightforward to delete or approve comments made on your posts?**
+  8. **What was your experience with logging out of the website using the logout modal?**
+  9. **Overall, how would you rate the ease of use and intuitiveness of the website?**
+  10. **Is there any specific feedback or suggestions you have for improving the website's usability?**
+
+
+#### User 1
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+#### User 2
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+#### User 3
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+#### User 4
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10.
 
 
 ### Validator Testing

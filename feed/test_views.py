@@ -210,6 +210,32 @@ class EditPostViewTest(TestCase):
         self.assertEqual(self.create.name, 'Updated Post')
 
 
+class DeletePostsTest(TestCase):
+    """
+    Tests the delete_posts function.
+    """
+
+    def setUp(self):
+        """
+        Set up the client, create a test user, and a test post.
+        """
+        self.client = Client()
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.post = Create.objects.create(name='Test Post', author=self.user, slug='test-post')
+
+    def test_delete_posts(self):
+        """
+        Tests the delete_posts function.
+        Verifies that a post is deleted successfully.
+        """
+        self.client.login(username='testuser', password='testpass')
+
+        response = self.client.post(reverse('delete_post', kwargs={'slug': self.post.slug}))
+
+        self.assertEqual(response.status_code, 302)
+        self.assertFalse(Create.objects.filter(slug=self.post.slug).exists())
+
+
 class MyBitesViewTest(TestCase):
 
     """

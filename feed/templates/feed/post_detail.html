@@ -22,7 +22,7 @@
                 <div class="col-md-6 d-flex justify-content-center align-items-center">
                     <div class="image-container">
                         {% if "placeholder" in post.featured_image.url %}
-                        <img class="card-img scale" src="{% static 'images/default_2.jpg' %}" alt="placeholder image">
+                        <img class="card-img scale" src="{% static 'images/default_2.jpg' %}" alt="{{ post.title }}">
                         {% else %}
                         <img class="card-img scale" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
                         {% endif %}

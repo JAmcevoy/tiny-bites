@@ -153,6 +153,21 @@ Before embarking on the development journey, meticulous planning was undertaken 
 - The featured image is prominently displayed, maintaining aspect ratio consistency.
 - The layout adapts seamlessly to different screen sizes.
 
+###### View button
+
+- I thought the view button was cruital as it give the my bites page a dictoionary like feel to it. You find when you need quickly and have the option to bring you to the details.
+
+###### Edit button
+
+- The my bites page acts as almost an admin center for the users. 
+- The edit buttons functions allows the user to update any of their existing posts.
+
+###### Delete button
+- I have also added the delete function for posts to this page. This allows the user to manage all aspects of their post from the one place. 
+- I made the delete button to a 'x' symbol in the corner of the card. I believe this to be a more understandable button for users. 
+- When the button is selected it bring up a modal to ensure the user are aware of their current actions and preventing accident deletation.
+
+
 ##### Pagination
 
 - Clear indication of the current page number and total pages helps users understand their position.

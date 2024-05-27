@@ -192,13 +192,13 @@ Before embarking on the development journey, meticulous planning was undertaken 
 
 ### Create Bite Form
 
-### Carousel Form Navigation
+#### Carousel Form Navigation
 - The form is divided into multiple slides using Bootstrap's carousel feature. This design choice was made to prevent users from feeling overwhelmed by a lengthy form. By breaking the form into manageable sections, users can focus on one task at a time, reducing cognitive load and improving the overall user experience.
 - Ensuring that the form is fully responsive was a key consideration. The carousel controls adjust based on the screen size:
   - **Mobile Views**: For smaller screens, internal buttons are provided within each slide to navigate between sections, making it easy to use on touch devices.
   - **Larger Screens**: For desktop and larger screens, external controls are positioned outside the form to provide a clean and uncluttered interface. These controls are strategically placed to enhance usability without obstructing the form content.
 
-### Form Sections
+#### Form Sections
 The form is divided into four distinct sections, each represented by a carousel slide. This segmentation ensures clarity and focus, guiding users through the process step-by-step.
 
 **First Slide**
@@ -231,16 +231,16 @@ The form is divided into four distinct sections, each represented by a carousel 
 - The password change is done via a modal containing a form.
 - JavaScript logic ensures a smooth process with password strength checks and validation.
 
-## Account Pages
+### Account Pages
 
-### Login
+#### Login
 
 - I wanted the login page to be a simple process so I went for a plain view with the username and password fields.
 - The login is a sepperate page so with use of the login_view I was able to allow the page to redirct to previous page when relavant. For example, the detail view has its own login button for the comments. Before after a successful a user would be redircted to home based of the configurations in the setting.py file, I believe this to be fustrating for the user as they would need to go back and find the post they wished to comment on. With the next method the login link grabs the slug of the post then after login the user will be brought back to the post.
 
 ![Login](docs/images/)
 
-### Logout
+#### Logout
 
 - Just as the login I wanted the logout to be simple and easy to do. 
 - The logout is handled by a modal on the base. When the users wants to logout no matter the page the modal will pop up and it is just a simple click of a button. 
@@ -248,7 +248,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 ![Logout](docs/images/)
 
-### Sign up
+#### Sign up
 
 - The sign up is again a simple process the form consist of Username, email, and password. 
 - I thought not to add in the first and last name fields to speed the sign up process, only including the information not needed. The first name and last name can be added to the users profile after sign up using the profile page.
@@ -261,7 +261,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 ![signup](docs/images/)
 
-### Forgot password
+#### Forgot password
 
 - I spent the least amount of time of this page, Again this is django aullauths template. I just added some bootstrap style to the page to fit in with the the base and the rest of the site.
 
@@ -273,17 +273,186 @@ The form is divided into four distinct sections, each represented by a carousel 
 - I wanted to add in socail media logins, allowing the users to connect their other socail profile but again my current knowledge and time frame I felt I couldnt get this done to an acceptable level.
 - I wanted to incorporate Tailwind CSS styles into my project to separate it from other projects, but as this was new to me, I felt the time would have been wasted focusing so much on style. Additionally, I found the verbosity of HTML classes in Tailwind CSS to be less visually appealing or harder to read compared to Bootstrap's more structured HTML markup. This made the learning curve steeper and the transition more challenging.
 
-# Testing
+## Testing
 
 ### Logic testing
 
 - Because the majority of this projects time was spent on the python I found it necessacary to test the Django view and forms. Using djangos test functionality I ran a number of test.
+- After I setup each test I ran the tests using python3 manage.py test.
+- There is a total of 36 tests
 
 #### Proformance
 
+##### SecurityTest
+- **setUp**
+  - Sets up the client and the URL for the home page.
+- **test_csrf**
+  - Tests the Cross-Site Request Forgery (CSRF) protection.
+  - Verifies that the CSRF token is present in the response.
+
+##### PerformanceTest
+- **setUp**
+  - Sets up the client and the URL for the home page.
+- **test_query_count**
+  - Tests the performance by checking the number of queries.
+  - Verifies that only one query is executed when accessing the home page.
+
 #### Forms
 
+##### CommentFormTest
+- **test_comment_form_fields**
+  - Checks if the `CommentForm` contains the 'body' field.
+  - Verifies that the label for the 'body' field is 'Comment'.
+- **test_comment_form_valid_data**
+  - Tests the `CommentForm` with valid data.
+  - Verifies that the form is valid when provided with valid data.
+- **test_comment_form_invalid_data**
+  - Tests the `CommentForm` with invalid data.
+  - Verifies that the form is invalid when provided with empty 'body' data.
+
+##### PostFormCreateTest
+- **test_post_form_create_fields**
+  - Checks if the `PostFormCreate` contains all expected fields.
+- **test_post_form_create_widgets**
+  - Checks if the widgets for certain fields in `PostFormCreate` are instances of `SummernoteWidget`.
+- **test_post_form_create_valid_data**
+  - Tests the `PostFormCreate` with valid data.
+  - Verifies that the form is valid when provided with valid data.
+- **test_post_form_create_invalid_data**
+  - Tests the `PostFormCreate` with invalid data.
+  - Verifies that the form is invalid when provided with empty data for all fields.
+
 #### Views
+
+##### PostListViewTest
+- **setUp**
+  - Sets up the client and the URL for the home page.
+- **test_post_list_view**
+  - Tests the behavior of the post list view.
+  - Verifies that the response status code is 200 (OK).
+  - Verifies that the correct template is used for rendering.
+
+##### SearchFeatureViewTest
+- **setUp**
+  - Sets up the client, URL for the search feature, and creates test data.
+- **test_search_feature_post**
+  - Tests the behavior of the search feature when using the POST method.
+  - Verifies various aspects of the response.
+- **test_search_feature_get**
+  - Tests the behavior of the search feature when using the GET method.
+  - Verifies various aspects of the response.
+
+##### PostDetailViewTest
+- **setUp**
+  - Sets up the client, user, post data, and URL for the post detail view.
+- **test_post_detail_view**
+  - Tests the behavior of the post detail view.
+  - Verifies various aspects of the response.
+- **test_post_detail_view_post_comment**
+  - Tests the behavior of the post detail view when posting a comment.
+  - Verifies various aspects of the response.
+
+##### PostCreationViewTest
+- **setUp**
+  - Sets up the client, URL for the post creation view, and creates a test user.
+- **test_post_creation_view_get**
+  - Tests the behavior of the post creation view when accessing via GET request.
+  - Verifies various aspects of the response.
+- **test_post_creation_view_post**
+  - Tests the behavior of the post creation view when submitting a POST request.
+  - Verifies various aspects of the response.
+
+##### EditPostViewTest
+- **setUp**
+  - Sets up the client, creates a test user and a post, and defines the URL for editing the post.
+- **test_edit_post_view_get**
+  - Tests the behavior of the edit post view when accessing via GET request.
+  - Verifies various aspects of the response.
+- **test_edit_post_view_post**
+  - Tests the behavior of the edit post view when submitting a POST request.
+  - Verifies various aspects of the response.
+
+##### DeletePostsTest
+- **setUp**
+  - Set up the client, create a test user, and a test post.
+- **test_delete_posts**
+  - Tests the delete_posts function.
+  - Verifies that a post is deleted successfully.
+
+##### MyBitesViewTest
+- **setUp**
+  - Sets up the client, creates a test user, a test post, and defines the URL for accessing user's saved posts.
+- **test_my_bites_view_authenticated**
+  - Tests the behavior of the my bites view when the user is authenticated.
+  - Verifies various aspects of the response.
+- **test_my_bites_view_unauthenticated**
+  - Tests the behavior of the my bites view when the user is unauthenticated.
+  - Verifies various aspects of the response.
+
+##### ToBeApprovedViewTest
+- **setUp**
+  - Sets up the client, creates a test user, a test post, and a pending comment.
+- **test_to_be_approved_view_authenticated**
+  - Tests the behavior of the to-be-approved view when the user is authenticated.
+  - Verifies various aspects of the response.
+- **test_to_be_approved_view_unauthenticated**
+  - Tests the behavior of the to-be-approved view when the user is unauthenticated.
+  - Verifies various aspects of the response.
+
+##### ApproveCommentViewTest
+- **setUp**
+  - Sets up the client, creates a test user, a test post, and a pending comment.
+- **test_approve_comment_view**
+  - Tests the behavior of the approve comment view.
+  - Verifies various aspects of the response.
+
+##### DeleteCommentViewTest
+- **setUp**
+  - Sets up the client, creates a test user, a test post, and a comment to delete.
+- **test_delete_comment_view_get**
+  - Tests the behavior of the delete comment view for GET request.
+  - Verifies various aspects of the response.
+
+##### EditCommentViewTest
+- **setUp**
+  - Sets up the client, creates a test user, a test post, and a comment to edit.
+- **test_edit_comment_view_get**
+  - Tests the behavior of the edit comment view for GET request.
+  - Verifies various aspects of the response.
+- **test_edit_comment_view_post**
+  - Tests the behavior of the edit comment view for POST request with valid data.
+  - Verifies various aspects of the response.
+- **test_edit_comment_view_post_invalid**
+  - Tests the behavior of the edit comment view for POST request with invalid data.
+  - Verifies various aspects of the response.
+
+##### LoginViewTestCase
+- **test_login_view**
+  - Test whether the login view returns the login page.
+- **test_login_unsuccessful**
+  - Test login with incorrect credentials.
+- **test_login_next_url**
+  - Test login with redirection to a next URL.
+
+##### ProfileViewTest
+- **setUp**
+  - Set up the client and URL for profile view.
+- **test_profile_view_authenticated**
+  - Test profile view for authenticated user.
+- **test_profile_view_unauthenticated**
+  - Test profile view for unauthenticated user.
+- **test_profile_view_post**
+  - Test profile view for POST request.
+
+##### CustomPasswordChangeViewTest
+- **setUp**
+  - Set up the test environment.
+- **test_password_change_view_post_valid**
+  - Test password change with valid input.
+- **test_password_change_view_post_invalid_old_password**
+  - Test password change with invalid old password.
+
+
 
 
 ### User testing
@@ -359,10 +528,13 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 ### Validator Testing
 
-### Bugs I Faced Along The Way
+
+## Bugs
+
+## Bugs I Faced Along The Way
 
 
-### Bugs I did not get to fix
+## Bugs I did not get to fix
 
 
 ## Deployment
@@ -374,75 +546,70 @@ This section describes how to create a new repository.
   - I selected the green button labeled 'Use this template'
   - Then, Create a new repository.
   - Then I was brought to a new page to set the name and setting for my new repository.
-  - I named my repository 'R.P.S.L.S'
+  - I named my repository 'tiny-bites'
 
 This section describes how I set up my workspace, Once my repository has been created.
 
 - The workspace I used for this project was [codeanywhere](https://app.codeanywhere.com/). The steps are as follows:
-  - I opened [GitHub](https://github.com/) and went to the 'R.P.S.L.S' repository
+  - I opened [GitHub](https://github.com/) and went to the 'tiny_bites' repository
   - To get the link for codeanywhere I clicked the green button '<>code'.
-  - Here under local, I could copy the link needed: <https://github.com/JAmcevoy/R.P.S.L.S.git>
+  - Here under local, I could copy the link needed: <https://github.com/JAmcevoy/tiny_bites.git>
   - Then I went to code anywhere.
   - In workplaces, I selected new workspaces
   - Here I copied the link from the git hub and clicked to create to make my workspace.
 
+  - The type of project was django so I had a different file creatation process that usual.
+    ##### Create the project
+    - First I type the following command in the terminal to install the Django Python package: pip3 install Django~=4.2.1
+    - Once the package is installed, I add it to the requirements.txt file with the following command: pip3 freeze --local > requirements.txt
+    - Then I Return to the terminal. In the terminal, create a Django project called tiny-bites in the current directory. django-admin startproject tiny-bites .
+    - Click on Open Browser.
+    - **DisallowedHost at /Invalid HTTP_HOST header: '8000-jamcevoy-tiny-bites-jdbmznt5m7.us1.codeanyapp.com'. You may need to add '8000-jamcevoy-tiny-bites-jdbmznt5m7.us1.codeanyapp.com' to ALLOWED_HOSTS.**. This means Django doesn't recognise the hostname - the server name your project is running on.
+    - I selected and copied the hostname after "Invalid HTTP_HOST header:". In this case, that is '8000-jamcevoy-tiny-bites-jdbmznt5m7.us1.codeanyapp.com'.
+    - In the my_project/settings.py file, I pasted the hostname between the square brackets of ALLOWED_HOSTS and save. For the above case, this looked like: ALLOWED_HOSTS = ['8000-nielmc-django-project0kylrta3cs.us2.codeanyapp.com']. 
+    
+    ##### Create the App
+    - Now I have a Django project created, I  need to make an app. To do this, I use the manage.py file. In the terminal, type: python3 manage.py startapp feed. 
+
+
 This section describes the commands I used in code anywhere to push my code and changes to GitHub.
 
-    -  I created the files and folders needed for my project.
-    - I used the git add . command to add all changes above.
+    - I used the git add . command to add all changes once the project and app was created.
     - Using the git commit command I committed the change and used -m to attach a message to the commit.
     - When I was finished with the creation I used git push to push all these files and folders to GitHub.
     - I used these same 3 commands through the creation and modification
 
 This section should describe the process I went through to deploy the project to a hosting platform.
 
-- The site was deployed to GitHub pages. The steps to deploy are as follows:
-  - In the GitHub repository, navigate to the Settings tab
-  - From the source section drop-down menu, select the Master Branch
-  - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+Create the Heroku app:
+- I went to https://dashboard.heroku.com/apps to create my new app. Once I got to this page I selected new > Create new app.
+- I had to give the app a name so I decided to name it after the repository 'tiny-bites'
+- I picked the closest region to me, in this case 'Europe'
+- Then I hit create app to confirm the creation of my app.
 
-The live link can be found here - <>
+Preparing the code for deployment:
+- I had to use pip3 install gunicorn~=20.1 to install gunicorn then used pip3 freeze --local > requirements.txt to added it to the requirements.txt.
+- I need to create a procfile (Note: Conventionally, the Procfile is spelled with an uppercase "P" to adhere to a widely accepted naming convention.)
+- The contents of the Profile should be as follows 'web: gunicorn tiny-bites.wsgi'
+- Because I am deployment to Heroku I need to allow the domain in the allowed host section of the settings.py. Like so .. ALLOWED_HOSTS = ['8000-jamcevoy-tiny-bites-jdbmznt5m7.us1.codeanyapp.com', '.herokuapp.com']
+- I had to make sure the Debug was set the False as it is recommended not to push your project to deployment with this True. When DEBUG is set to True, Django will display detailed error pages with sensitive information about your application, including stack traces and environment variables. This information can be useful for debugging during development but poses a security risk if exposed in a production environment.
+- Lastly I git add, commt -m, and pushed my code to github.
 
-## Heroku
-<!-- Edit with detail -->
-Part 1 - Create the Heroku app:
-10/04/2024, 13:40 Challenge: Deploy the project | Getting set up | FSD101_WTS Courseware | Code Institute
-https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+FSD101_WTS+2023_Q3/courseware 2/2
-1. Have you referred back to the deploying to Heroku text step topic to create
-your Heroku app?
-2. Have you added a key of DISABLE_COLLECTSTATIC and a value of 1 and
-clicked Add?
-Find this in the Config Vars section of the Settings tab.
-Part 2 - Update your code for deployment:
-1. Have you pip3 installed the webserver gunicorn and added it to the project
-requirements?
-pip3 install gunicorn~=20.1
-pip3 freeze --local > requirements.txt
-2. Have you created a Procfile at the root directory of the project, declared the
-process as web and added a start command?
-web: gunicorn codestar.wsgi
-Hint: Note there is a space after the colon.
-Hint: The Procfile has no file extension.
-3. Have you changed DEBUG to False and added , '.herokuapp.com' to
-the ALLOWED_HOSTS?
-DEBUG = False
-,'.herokuapp.com'
-Hint: Remember the comma and the dot before herokuapp.
-4. Push the code to GitHub.
-git add .
-git commit -m "readies code for deploy"
-git push origin main
-Part 3 - Deploy to Heroku:
-1. Have you clicked on the Deploy tab in your Heroku app dashboard,
-connected to your GitHub repo and clicked on Deploy Branch?
-1. Hint: Start typing your project repo name into the search box and click on the
-GitHub repo you want to deploy from.
-2. After manually deploying the main branch, you can view the build output in the
-application’s Activity tab in the dashboard.
-1. Have you clicked the Open app button to see your deployed app?
-Hint: The build must be complete before you can open the app.
-Hint: You will see an error that the current path didn’t match any of the URL
-patterns as you have not written the urlpattern yet
+Deploying in Heroku: 
+- Once my code was pushed to github then I need to deploy it from my tiny-bites app.
+Firstly, I need to add all of the varables of the env.py file to the Config Vars. I opened my app then navigated to the setting tab and then the 'Config Vars' section. Here I added the following: 
+  - CLOUDINARY_URL
+  - DATABASE_URL
+  - DISABLE_COLLECTSTATIC ( Set to the value of '1')
+  - SECRET_KEY
+- Finally once these vars were configured I need to connect my github to heroku. I done this from the 'Deploy' tab within in heroku app.
+- In the deployment method section I selected Github. Once signed in I used the search bar to locate my repository and connected my app.
+- Last but not least, I manually deployed the app using 'Manual deploy' so I could see a log of the ddeployment incase of any errors. I selected the main branch and then once I was sure I selected 'Deploy Branch' button to start the process.
+- The process is as follows:
+  - Receive code from GitHub
+  - Build main efe7e624
+  - Release phase
+  - Deploy to Heroku, this is the final step and once done click view to see your result.
 
 ## Credits
 

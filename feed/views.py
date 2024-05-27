@@ -110,6 +110,23 @@ def edit_post(request, slug):
         form = PostFormCreate(instance=post)
     return render(request, 'feed/edit_post.html', {'form': form, 'post': post})  
 
+
+def delete_posts(request, slug):
+    """
+    Handles the deletation of a existing post
+    """
+    post = get_object_or_404(Create, slug=slug)
+
+    if request.user == post.author or request.user.is_superuser:
+        post.delete()
+        messages.success(request, 'Your bite deleted successfully.')
+        return redirect('my_bites')
+    else:
+        messages.danger(request, 'There has been an error, Try again later.')
+        return redirect('my_bites')
+
+
+
 def my_bites(request):
     """
     Displays the posts created by the logged-in user with pagination

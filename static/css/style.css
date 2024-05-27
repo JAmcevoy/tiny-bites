@@ -278,32 +278,13 @@ footer {
 }
 
 /* Watermark */
-.full-page-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  margin: 70px 0;
-}
 
 .water-text {
+  margin-top: 100px;
   color: rgba(0, 0, 0, 0.2);
   font-size: 48px;
   font-weight: bold;
   text-align: center;
   position: relative;
-}
-
-.water-text::before {
-  content: attr(data-text);
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  color: rgba(0, 0, 0, 0.1);
 }
 

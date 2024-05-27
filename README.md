@@ -76,6 +76,9 @@ Before embarking on the development journey, meticulous planning was undertaken 
 ##### Search Bar
 
 - The search bar is a necessary feature for this type of website, enabling users to find specific recipes based on their preferences. The search bar runs a query on the Create model by 'name', and it is set to contain so that even if a user has no idea how to spell a dish, as long as they are close enough, they will find it.
+- This page is not paginated, I felt because it was a search it would be best for users to just have all their search results on the one page without splitting it out into multiple. I believe this has 2 benefits. 
+  - This will encourage to the user to better define their search to find exactly what they want. 
+  - For the more indecive people it will give them a larger section to run through opening up their own ideas like if I was to search chicken I would find all the chicken dishes in one place and a list in full so not so much time is wasted on reloading the next page.
 
 ![Search Bar](docs/search_bar.png)
 
@@ -144,7 +147,7 @@ Before embarking on the development journey, meticulous planning was undertaken 
 
 ![streched comment creation](docs/images)
 
-### My Bites
+#### My Bites
 
 ##### Card Layout
 
@@ -174,7 +177,7 @@ Before embarking on the development journey, meticulous planning was undertaken 
 - Arrow icons enhance intuitive navigation.
 - Informative alerts guide users when no posts are available, encouraging participation.
 
-### To Be Approved
+#### To Be Approved
 
 - A streamlined interface for managing comments awaiting approval on user posts.
 
@@ -190,7 +193,7 @@ Before embarking on the development journey, meticulous planning was undertaken 
 
 - Modal dialogs for both approval and deletion actions prevent accidental actions and ensure accountability.
 
-### Create Bite Form
+#### Create Bite Form
 
 #### Carousel Form Navigation
 - The form is divided into multiple slides using Bootstrap's carousel feature. This design choice was made to prevent users from feeling overwhelmed by a lengthy form. By breaking the form into manageable sections, users can focus on one task at a time, reducing cognitive load and improving the overall user experience.
@@ -217,7 +220,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 - Overall, the design aims to balance aesthetic appeal with functional efficiency, creating a pleasant and intuitive experience for users. The use of Bootstrap's carousel and responsive design principles ensures that the form is accessible and easy to use across all devices.
 
-### Profile
+#### Profile
 
 #### Page Layout
 
@@ -231,7 +234,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 - The password change is done via a modal containing a form.
 - JavaScript logic ensures a smooth process with password strength checks and validation.
 
-### Account Pages
+#### Account Pages
 
 #### Login
 
@@ -531,10 +534,53 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 ## Bugs
 
-## Bugs I Faced Along The Way
+### Bugs I Faced Along The Way
 
+- When there was a user with no post yet and they try to log out the modal is not accessible but the user due to the over-lay sittng on the page. This was a bit of an oversite when I was creating this. To fix this bug I removed the following styles.
+    ``` 
+    /* .full-page-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      margin: 70px 0;
+    } */
 
-## Bugs I did not get to fix
+    /* .water-text::before {
+      content: attr(data-text);
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      color: rgba(0, 0, 0, 0.1);
+    } */
+    ```
+- When a user adds a post with a substanal amount of text it makes the post card longers which is fine however this has an effect on the image. I believe this is because the image is size.
+- My first style idea for the creation form was a lot simpler but I found it necessary for the users to have the summer note field for formating thier posts. However, this caused a lot of issues with the card that held the form on smallers screens. The fields went over the bound of the card and it just looked a mess. I tried to reszie the fields but that was proving difficult so I decided to reimagine the form page with I belive is a lot more interactive. 
+- The password change was suppose to be part of the profile page but the issue was the password would update anytime the profile was updated even if you did not wish to change it. Also, it didnt ask for current password to confirm the user was aware of the change so it definely casued some security concerns. I decided a modal was a better idea as I still wanted the password change to be on the same page.
+- All the current data was brought into the system using a json file so all the post formats were incorrect and the were missing images. 
+  - I thought a default image was the best way to approach the image issue, by setting a default image I could see how each  post card looked with a image witout having to go through each one by one but it also made the pressure of uploading a image with your post a little less as there would but something visiually pleasing at least.
+    - The default image I picked was
+    ![Defualt Image](docs/images/default_2.jpg)
+  - I had have such an easy choice with the text so I decided I put aside some time to go through this but when I update the text it appeared to put it through as HTML with tags like <p> and <h3> I belive this was due to using the summernote. As I mentioned already I thought this was an important part of the create process so I couldnt just change it. After some research I found summernote, like many other rich text editors, automatically converts input into HTML format to preserve formatting such as bold, italics, headers, and paragraphs. Using | safe, it tells the system to treat the text as safe HTML, preventing it from escaping HTML characters and rendering them as text. This approach ensures that the HTML tags are interpreted correctly and displayed as intended, rather than as plain text.
+  - The process of login redirection became a significant focus of my attention. Initially, the login functionality would consistently redirect users to the home page upon successful login, which wasn't problematic. However, a significant issue arose when users attempted to log in to post a comment on a specific post—they were redirected to the home page instead of returning to the post they were engaging with. This discrepancy posed a considerable inconvenience, as hours of research or interaction could be undone by a simple login. To address this, I implemented the "next" method, which appends the current page's URL to the login link. This ensures that users are redirected back to their original page after logging in.
+  ```
+  {% url 'account_login' %}?next={{ request.path }}
+  ```
+  - However, this solution unearthed another issue: if a user mistyped their password and the login page refreshed, the "next" URL would be lost. To mitigate this problem, I adjusted the login page's return statement to include a dictionary containing the "next" URL as context. This approach ensured that even if the login attempt failed, the "next" URL would persist, allowing users to be redirected back to their intended page upon successful login.
+  ```
+  return render(request, "account/login.html", {'next': next_url})
+  ```
+
+### Bugs I did not get to fix
+
+- The images only certain images for posts work with the post detail and the post list view if the photo is too big its is hidden or makes the card appear bigger, I fear this will cause issue for the users as most users not not have the abilty to reize their images. I feel like this is an easily solved issue however I didnt notice this till late in the project and I had not enough time investigate and correct this.
+- When the image is too big it mishapes the image circle on the post detail card.
+- 
 
 
 ## Deployment
@@ -613,14 +659,19 @@ Firstly, I need to add all of the varables of the env.py file to the Config Vars
 
 ## Credits
 
-- I used these resources to research and develop my understanding of JavaScript, as well as get inspiration for my own code. During this research, I have borrowed some ideas and modified the code to suit my project. No code was used unedited
+- I used these resources to research and develop my understanding of the Django framework, as well as get inspiration for my own code. During this research, I have borrowed some ideas and modified the code to suit my project. No code was used unedited
 
-### Design
+### Design/Style
 
+- I used the bootsrap 5.1.3 Documentation to research the inspiration of my design.
 - All the design screenshots from above came from [Wirframe](https://wireframe.cc/)
+- All images come from [Pexels](https://www.pexels.com/)
+- The fonts were taking from [Google Fonts](https://fonts.google.com/)
 
 ### Code
 
+- All my main code inspiration and ideas came from my reasearch into the Django Documentation [Django Documentation](https://docs.djangoproject.com/)
+- The idea behind the Search bar was taken from [Make Use Of](https://www.makeuseof.com/add-search-functionality-to-django-apps/#:~:text=Create%20a%20View%20for%20the%20Search&text=%23%20Check%20if%20the%20request%20is%20a%20post%20request.&text=In%20request.,your%20search%20bar's%20input%20field.&text=Finally%2C%20the%20function%20renders%20a,and%20filtered%20model%20as%20context.)
+- The if next functionality for redircting users back to a page after a login was part taken from this post [Django Forms](https://forum.djangoproject.com/t/redirecting-user-to-page-after-login/14603/10)
 
-### Content
 

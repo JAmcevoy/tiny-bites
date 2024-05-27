@@ -21,6 +21,7 @@ class PostList(generic.ListView):
     paginate_by = 10
     ordering = ['created_at']
 
+
 def search_feature(request):
     """
     Handles the search functionality for posts
@@ -31,6 +32,7 @@ def search_feature(request):
         return render(request, 'feed/search_results.html', {'query': search_query, 'posts': posts})
     else:
         return render(request, 'feed/search_results.html', {})
+
 
 def post_detail(request, slug):
     """
@@ -68,6 +70,7 @@ def post_detail(request, slug):
         },
     )
 
+
 def post_creation(request):
     """
     Handles the creation of a new post.
@@ -95,6 +98,7 @@ def post_creation(request):
         create_form = PostFormCreate()
 
     return render(request, "feed/post_creation.html", {"post_form": create_form})
+
 
 def edit_post(request, slug):
     """
@@ -126,7 +130,6 @@ def delete_posts(request, slug):
         return redirect('my_bites')
 
 
-
 def my_bites(request):
     """
     Displays the posts created by the logged-in user with pagination
@@ -147,6 +150,7 @@ def my_bites(request):
     else:
         return render(request, "account/login.html")
 
+
 def to_be_approved(request):
     """
     Displays the comments that are pending approval by the logged-in user
@@ -158,6 +162,7 @@ def to_be_approved(request):
     else:
         return render(request, "account/login.html")
 
+
 def approve_comment(request, comment_id):
     """
     Approves a comment
@@ -166,6 +171,7 @@ def approve_comment(request, comment_id):
     comment.approved = True
     comment.save()
     return redirect('to_be_approved')
+
 
 def delete_comment(request, comment_id):
     """
@@ -182,6 +188,7 @@ def delete_comment(request, comment_id):
         return referring_url(request, default_url)
     else:
         return redirect(default_url)
+
 
 def edit_comment(request, comment_id):
     """
@@ -215,6 +222,7 @@ def edit_comment(request, comment_id):
         'comment': comment
     })
 
+
 def referring_url(request, default_url):
     """
     Redirects to the referring URL or a default URL if the referring URL is not available
@@ -224,6 +232,7 @@ def referring_url(request, default_url):
         return HttpResponseRedirect(referring_url)
     else:
         return HttpResponseRedirect(default_url)
+
 
 def login_view(request):
     """
@@ -248,6 +257,7 @@ def login_view(request):
     else:
         return render(request, "account/login.html", {'next': next_url})
 
+
 def profile(request):
     """
     Displays and updates the user's profile
@@ -266,6 +276,7 @@ def profile(request):
             return render(request, 'feed/profile.html')
     else:
         return render(request, "account/login.html")
+
 
 class CustomPasswordChangeView(PasswordChangeView):
     success_url = reverse_lazy('profile')

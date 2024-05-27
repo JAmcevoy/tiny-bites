@@ -13,29 +13,104 @@ Whether it's a gourmet twist on instant noodles or a cherished lunchtime BLT spo
 - **Visual Appeal**: Users want to showcase their culinary creations through captivating images that highlight the aesthetic appeal of their bites.
 - **User-centric Navigation**: Users need to easily navigate through their own posts, find specific recipes, and manage their comments and posts effectively.
 
+#### User Stories 
+
+- I came up with the following user stories, I am going to use these stories to put myself in the position of the user and allow but to keep UI in mind at all stages during development. 
+- Also, they will allow me to use an Agile Devlopment, Agile promotes iterative development, where features are delivered incrementally in short cycles called sprints. This allows for regular feedback from stakeholders and users, leading to quicker adjustments and improvements. With this in mind I tackled one issue at a time and took time after each session to reflect and compare to other social media sites along with research.
+
+```
+Feed In Admin
+Ability to create users
+Display my feed
+View Scroll list of posts
+Open a post
+View A Comment
+Comment on a post
+Pagination on List view like index and My Bites
+To be Approved page
+Approve Comments
+Edit Post
+Navbar Show Actice
+Edit Comments
+Delete Comments
+Search Bar
+Pagination - page number
+Profile Setting
+Delete post
+```
+
 ## Planning
 
 Before embarking on the development journey, meticulous planning was undertaken to conceptualize the layout, define essential fields, and establish the Database Schema.
 
 ### Planned Design
 
+- Because there was some many pages within this project I didnt find a need to map out each page instead once I established the theme of the page with the index/home I would fit the other pages around this.
+- In the following parraghraphs I want to show you the index and how it contributed to the my bites and to be approved page
+
 #### Large Screen Layout
 
 - The large screen layout provides ample space for users to navigate comfortably, with distinct sections for easy access to various features and functionalities.
 
-![Large Screen Layout](docs/large_screen_layout.png)
+![Large Screen Layout](docs/images/large-wir.JPG)
 
-#### Types of Elements
-
-- Different types of elements, including cards, forms, and navigation menus, were meticulously designed to ensure consistency and cohesiveness throughout the platform.
-
-![Types Layout](docs/types_layout.png)
 
 #### Small Screen Layout
 
 - The small screen layout prioritizes readability and usability, with optimized design elements to enhance the mobile browsing experience.
 
-![Small Screen Layout](docs/small_screen_layout.png)
+![Small Screen Layout](docs/images/small-wir.JPG)
+
+- For the smaller screen I am planning to hide all the nav items in a menu activated by a burger icon.
+
+![Small Screen Nav](docs/images/navmenu-small.JPG)
+
+- As mention at the start of the sections I wanted to get the index page down first, The reason being is through to the process of trying to create a view I thought would fit this purpose I createda few mock ups in which I will use to create my_bites and to be approved.
+- My first idea for the index was to make it minial as possible more compact. I did think that page deserved a little more effort and it difinately would bring more apeal. However, the to be approved section is best suited to be compact and shouldnt use much imformation in fact it would take away from the purpose of the page if I added any more. I just needed to add some aprrove abnd delete buttons
+  ![To be Approved](docs/images/to-be-approved-wir.JPG)
+- The my bites if felt held a similar purposes so I propoed a similar style but I wanted to make a backup design, so I could mock up both stlye and see if it is best to set that page apart or keep it similar.
+
+##### Choice  1 :
+![Choice 1](docs/images/my_bites_choice_1-wir.JPG)
+
+##### Choice 2 : 
+![Choice 2](docs/images/my_bites_choice_2-wir.JPG)
+
+- I don't want to get stuck on the planning to long so I decided to try both in the bulid stage and see which one suits better, maybe get a second option on it.
+
+### Database Schema
+
+- Here is the database schema I created. I later took the review sections out so below you will need the old and new schema.
+
+![Orignal Design](docs/images/database-schema.JPG)
+
+![After Removal of Review](docs/images/update-schema.JPG)
+
+
+
+#### Fonts
+
+- Through google searchs I tried to find different font to fit differnt place instead of having them all under one.
+  - Anton
+  - Figtree
+  - Raleway 
+##### Anton
+- **Usage**: Best suited for headings and titles.
+- **Description**: Anton is a bold, attention-grabbing typeface with high contrast and distinct characters. It is characterized by its thick strokes and narrow spacing, making it perfect for headlines and emphasis.
+- **Why it's good for headings (body)**: With its bold and impactful appearance, Anton commands attention and ensures that headings stand out prominently on the page. It adds a sense of authority and modernity to the text, making it ideal for grabbing the reader's attention at a glance.
+
+##### Raleway
+- **Usage**: Suitable for body text and paragraphs.
+- **Description**: Raleway is a versatile sans-serif font known for its clean lines and geometric shapes. It offers a modern and sophisticated look while maintaining excellent readability across different screen sizes and resolutions.
+- **Why it's good for paragraphs (p)**: Raleway's simplicity and clarity make it an excellent choice for body text and paragraphs. Its clean design ensures that text remains legible even when presented in large blocks, enhancing the readability of the content and providing a pleasant reading experience for users.
+
+##### Figtree
+- **Usage**: Ideal for buttons.
+- **Description**: Figtree is a distinctive font with a unique style, characterized by its elegant curves and playful appearance. It brings a touch of creativity and sophistication to any design, making it particularly well-suited for adding visual interest to buttons and other interactive elements.
+- **Why it's good for buttons**: Figtree's stylish and artistic design makes it a perfect choice for buttons. Its eye-catching aesthetic draws attention and encourages user interaction, enhancing the overall appeal and usability of the interface.
+
+ 
+
 
 ## Features
 
@@ -530,6 +605,18 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 
 ### Validator Testing
+
+##### HTML Validator
+
+- I used [W3C HTML](https://validator.w3.org/) to validate my app to bypass the ginja errors that might come with it I used the URL to validate the HTML
+
+![HTML Validation](docs/images/html_val.JPG)
+
+##### CSS Validator
+
+- I didnt have any worries with the css so I was able to just copy and paste the file into [W3C CSS](https://jigsaw.w3.org/css-validator/)
+
+![CSS Validation](docs/images/css_val.JPG)
 
 
 ## Bugs

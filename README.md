@@ -581,6 +581,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 - The images only certain images for posts work with the post detail and the post list view if the photo is too big its is hidden or makes the card appear bigger, I fear this will cause issue for the users as most users not not have the abilty to reize their images. I feel like this is an easily solved issue however I didnt notice this till late in the project and I had not enough time investigate and correct this.
 - When the image is too big it mishapes the image circle on the post detail card.
 - The password reset section is incomplete, Everytime I try email from the page it throws a error. Unfortunately, I dont have the knowledge to fufill this function before my projects dead line. So for testing purposes I will removed the forgot password fucntion.
+- I couldnt quite get the time or focus to apply the socials authentication, I really wanted to add this hence the enteries in the setting.py file however they were only added back in to prevent an error I know it is not a bug but I thought it was worth mention.
 
 
 ## Deployment

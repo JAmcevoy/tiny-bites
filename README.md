@@ -355,6 +355,12 @@ The following table describes each password strength rule.
 
 ![My bites](docs/images/my-bites-card.JPG)
 
+##### Edit Page 
+
+- I keep the edit page very close to the create page in layout so as to keep the process alignened so when the user clicks edit they are brought to a similar page to create but the fields will be populated. Once the post is updated you will be brought the the detailed view. 
+
+- ***Closes U.S.12*** With a straightforward editing interface, changes are made quickly and appear instantly upon submission, meeting the user story's need for efficient post editing.
+
 ###### View button
 
 - I thought the view button was cruital as it give the my bites page a dictoionary like feel to it. You find when you need quickly and have the option to bring you to the details.
@@ -859,6 +865,26 @@ The form is divided into four distinct sections, each represented by a carousel 
   return render(request, "account/login.html", {'next': next_url})
   ```
   - The create form had a bit of issue with UI, on larger screens the arrows confused the user. To counter this I decided to change 'Create Bite' into Steps based on which slide the user is on. I had to create my own 'carousel.js'. I was having some trouble putting that script directly to the page, when I did it didnt work so I moved it to base and it worked fine.
+  - The summernote field was an important part of the create and edit process as it allows user to add style and format to their posts, however that wasnt the only function of the summernote. I notice that code or html could be added directly. With security in mind I found it possible these features could cause some damage to my database if encountered by anyone with malicaus intent. So to fix this issue I used to form to specfically out what functions I would like the summernote field to have, I decide all that was really need was the style and formatting so everything else was removed. 
+```
+widgets = {
+            'description': SummernoteWidget(attrs={'summernote': {'toolbar': [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ]}}),
+            'ingredients': SummernoteWidget(attrs={'summernote': {'toolbar': [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ]}}),
+            'instructions': SummernoteWidget(attrs={'summernote': {'toolbar': [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ]}}),
+        }
+```
 
 ### Bugs I did not get to fix
 

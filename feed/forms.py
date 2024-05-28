@@ -23,7 +23,19 @@ class PostFormCreate(forms.ModelForm):
             'instructions',
         )
         widgets = {
-            'description': SummernoteWidget(),
-            'ingredients': SummernoteWidget(),  
-            'instructions': SummernoteWidget(),  
+            'description': SummernoteWidget(attrs={'summernote': {'toolbar': [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ]}}),
+            'ingredients': SummernoteWidget(attrs={'summernote': {'toolbar': [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ]}}),
+            'instructions': SummernoteWidget(attrs={'summernote': {'toolbar': [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['para', ['ul', 'ol', 'paragraph']],
+            ]}}),
         }

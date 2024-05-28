@@ -87,7 +87,6 @@ Before embarking on the development journey, meticulous planning was undertaken 
 ![After Removal of Review](docs/images/update-schema.JPG)
 
 
-
 #### Fonts
 
 - Through google searchs I tried to find different font to fit differnt place instead of having them all under one.
@@ -129,44 +128,62 @@ Before embarking on the development journey, meticulous planning was undertaken 
     - **Login**, **Sign up**, and **Log out** (Based on if you are logged in or not)
     - If the user is logged in the navbar will display their username which acts as a link to the **Profile**.
 
-![Navbar Small Screen](docs/navbar_small_screen.png)
+![Navbar Big Screen](docs/images/nav_signed_in.JPG)
 
-![Navbar Big Screen](docs/navbar_big_screen.png)
+![Navbar Small Screen](docs/images/nav-small.JPG)
 
 - Because most of the nav items are for a user who is logged in, it was best to hide all nav links for a non-logged-in user as they would have little need for any of the functionality provided.
 - The account login and sign up links remain active for non-logged-in users.
 
-![Navbar Logged out](docs/navbar_logged_out.png)
+![Navbar Logged out](docs/images/navbar_notlogged_in.JPG)
 
 ##### Feed
 
 - The main point of the website is the feed; this is where the user will spend a lot of their time (assuming they are casual viewers; more specific users would enjoy the search bar below more). Because the target audience for this section is casual, there is quite a bit of white space to avoid crowding and intimidation for some users.
 
-![Feed Big Screen](docs/feed_big_screen.png)
+![Feed Big Screen](docs/images/feed_big_screen.JPG)
 
 - Each recipe card is generously sized to give a feel of one at a time. This makes it more readable for the user and enables them to focus on each recipe individually to find what they are looking for or something they might want to try.
 
-![Feed Small Screen](docs/feed_small_screen.png)
+![Feed Small Screen](docs/images/feed_small_screen.JPG)
 
 ##### Search Bar
 
-- The search bar is a necessary feature for this type of website, enabling users to find specific recipes based on their preferences. The search bar runs a query on the Create model by 'name', and it is set to contain so that even if a user has no idea how to spell a dish, as long as they are close enough, they will find it.
-- This page is not paginated, I felt because it was a search it would be best for users to just have all their search results on the one page without splitting it out into multiple. I believe this has 2 benefits. 
-  - This will encourage to the user to better define their search to find exactly what they want. 
-  - For the more indecive people it will give them a larger section to run through opening up their own ideas like if I was to search chicken I would find all the chicken dishes in one place and a list in full so not so much time is wasted on reloading the next page.
+- The search bar is an essential component of this recipe website, designed to enhance user experience by allowing users to quickly and efficiently find specific recipes based on their preferences. Here are the key features and benefits of the search bar:
 
-![Search Bar](docs/search_bar.png)
+###### Functionality
+
+-   Query Execution: The search bar runs a query on the Create model by 'name'. This ensures that users can find recipes based on the names of the dishes they are looking for.
+-   Contain Search: The search functionality is set to 'contain'. This means that even if users do not know the exact spelling of a dish, as long as their input is close enough, they will be able to find the desired recipe. This makes the search more forgiving and user-friendly.
+
+![Search Bar](docs/images/search-bar.JPG)
+
+###### Design Choices
+
+-   Non-Paginated Results: The search results are displayed on a single, non-paginated page. This design choice was made to provide several benefits:
+    -   Encourages Specific Searches: By displaying all results on one page, users are encouraged to refine their search terms to find exactly what they want. This can lead to more precise search queries and better user satisfaction.
+    -   Facilitates Browsing: For users who are indecisive or looking for inspiration, having all search results on one page allows them to browse a comprehensive list of options. For example, if a user searches for "chicken", they will see all chicken recipes in one place. This can help users discover new dishes and save time by not needing to reload multiple pages.
+
+###### Benefits of the Search Bar Design
+
+-   User-Friendly Experience: The contain search feature helps users find what they are looking for.
+-   Efficient Browsing: Non-paginated results enable users to quickly scan through all available options without the interruption of loading new pages.
+-   Inspiration and Discovery: A comprehensive list of results on one page can spark new ideas and help users find recipes they might not have considered initially.
+
+![Search Page](docs/images/search-page.JPG)
+
+
 
 ##### Recipe Cards
 
 - The recipe card is designed with the idea of a scroller in mind, similar to those on social media platforms like Facebook or Instagram. It provides a little preview to pique the reader's interest.
 - Each card, at first glance, features an image of the post, the dish's name, the author's username, and the creation date/time.
 
-![Card Top](docs/card_top.png)
+![Card Top](docs/images/card_top.JPG)
 
 - Recognizing that sometimes a post might catch your eye but not immediately draw you in with just the information above, the description button reveals a box on the card with the description the user set for the recipe, along with another button that leads to the post's detailed page. This creates a step-by-step journey for the user, rather than overwhelming them with all the information at once or making them hunt for it at the end.
 
-![Card Bottom](docs/card_bottom.png)
+![Card Bottom](docs/images/card_bottom.JPG)
 
 ##### Pagination
 
@@ -174,20 +191,28 @@ Before embarking on the development journey, meticulous planning was undertaken 
 - The arrow icon showcases the buttons for the next and previous pages, providing a more user-friendly approach for users who might not be very good at reading or understanding the function.
 - The page number is displayed for easy navigation and understanding of their position within the feed.
 
-![Pagination](docs/pagination.png)
+![Pagination](docs/images/pagination.JPG)
 
 #### Post Detail
+
+- When delving into the details of a recipe post, users are met with a comprehensive view designed to enhance their engagement and interaction with the content. 
+
+![Details page](docs/images/detailed-page.JPG)
+
+- Here's an overview of the various components:
 
 ##### Recipe Card
 
 - All the information is kept in one card, similar to the home page, avoiding the need for users to poke around for content.
 - The card is titled with the name of the dish, and just under that, it shows "by 'username' | the date of creation," giving off an article feel.
 
+![Recipe Card](docs/images/recipe-card.JPG)
+
 ##### Comment Sections
 
 - The comment section is divided into two: posted comments and the comment creation form.
 
-![Comment Section](docs/images)
+![Comment Section](docs/images/comment-section.JPG)
 
 ###### Comments Post
 
@@ -198,19 +223,25 @@ Before embarking on the development journey, meticulous planning was undertaken 
   - Comment Body
   - Date of Creation
 
-![Comment Card](docs/images)
+![Comment Card](docs/images/comment-card.JPG)
 
 - Unapproved comments are only visible to the post owner and the comment author, styled faintly to indicate their pending status.
 
-![waiting for approval](docs/images)
+![waiting for approval](docs/images/not-approved.JPG)
 
 - Logged-in users can edit or delete their comments, even if awaiting approval, using the provided buttons.
 
-![edit/delete buttons](docs/images)
+![edit/delete buttons](docs/images/edit-delete.JPG)
+
+- These button then open modals to perform whatever action selected.
+
+**EDIT**
+![Edit Modal](docs/images/edit-modal.JPG)
+
+**DELETE**
+![Delete](docs/images/delete-modal.JPG)
 
 - The section is scrollable to keep the page tidy and maintain focus on the recipe.
-
-![comment scroll](docs/images)
 
 ###### Comments Creation
 
@@ -218,11 +249,22 @@ Before embarking on the development journey, meticulous planning was undertaken 
 - The creation bubble is styled similarly to the comment cards for consistency.
 - The text area can be stretched for additional space.
 
-![comment creation](docs/images)
+![comment creation](docs/images/comment-create.JPG)
 
-![streched comment creation](docs/images)
+![streched comment creation](docs/images/comments-pulled-out.JPG)
 
 #### My Bites
+
+- As mentioned in the planning stage I could decide on a layout for my bites. Here are the two choices created.
+
+**Choice 1**
+![Choice 1](docs/images/my_bites_choice_1.JPG)
+**Choice 2**
+![Choice 2](docs/images/my_bites_choice_2.JPG)
+
+- I sent both options to possible users and chocie two seemed to be the most popular option. Also, I decided I want the users control on edit and delete to be used her and my idea took a little more shape.
+
+![My bites](docs/images/my-bites.JPG)
 
 ##### Card Layout
 
@@ -230,6 +272,8 @@ Before embarking on the development journey, meticulous planning was undertaken 
 - Two cards are displayed per row, and they are brighter than those on the home page.
 - The featured image is prominently displayed, maintaining aspect ratio consistency.
 - The layout adapts seamlessly to different screen sizes.
+
+![My bites](docs/images/my-bites-card.JPG)
 
 ###### View button
 
@@ -240,10 +284,17 @@ Before embarking on the development journey, meticulous planning was undertaken 
 - The my bites page acts as almost an admin center for the users. 
 - The edit buttons functions allows the user to update any of their existing posts.
 
+![View and Edit Button](docs/images/view-edit-mybites.JPG)
+
 ###### Delete button
 - I have also added the delete function for posts to this page. This allows the user to manage all aspects of their post from the one place. 
 - I made the delete button to a 'x' symbol in the corner of the card. I believe this to be a more understandable button for users. 
+
+![Delete Button](docs/images/delete-button-mybites.JPG)
+
 - When the button is selected it bring up a modal to ensure the user are aware of their current actions and preventing accident deletation.
+
+![Delete Modal](docs/images/delete-modal-mybites.JPG)
 
 
 ##### Pagination
@@ -252,21 +303,41 @@ Before embarking on the development journey, meticulous planning was undertaken 
 - Arrow icons enhance intuitive navigation.
 - Informative alerts guide users when no posts are available, encouraging participation.
 
+![Pagination](docs/images/pagination-mybites.JPG)
+
+
 #### To Be Approved
 
 - A streamlined interface for managing comments awaiting approval on user posts.
+
+![To Be Approved](docs/images/to-be-approved.JPG)
+
+- I didnt add pagination to this card page as I thought it would encourage user to interact and manage their comments more. As it shows the oldest comments first users will have to approve to delete comments to clean up.
 
 ##### Card Layout
 
 - Comments awaiting approval are presented within a card layout for clear and structured information.
 
+![To Be Approve Card](docs/images/to-be-approved-card.JPG)
+
 ##### Action Buttons
 
 - Action buttons for approving or deleting comments directly from the interface streamline the moderation process.
 
+![Action Buttons](docs/images/actions-buttons-tbp.JPG)
+
+
 ##### Modal Confirmation
 
 - Modal dialogs for both approval and deletion actions prevent accidental actions and ensure accountability.
+
+**Approve**
+
+![Approve Modal Confirmation](docs/images/to-be-approved-approved-modal.JPG)
+
+**Delete**
+
+![Delete Modal Confirmation](docs/images/to-be-approved-delete-modal.JPG)
 
 #### Create Bite Form
 

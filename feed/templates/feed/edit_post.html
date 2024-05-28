@@ -1,23 +1,102 @@
 {% extends "base.html" %}
+
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container mt-4">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header bg-primary text-white">
-          Edit Post
+<div class="container-fluid mt-5">
+  <div class="row justify-content-center position-relative">
+    <div class="col-md-10">
+      <div class="card card-custom-size shadow-lg bg-info text-dark bg-opacity-25 text-light">
+        <div class="card-header bg-primary text-white text-center">
+          <h2 id="stepsButton">Create Bite</h2>
         </div>
-        <div class="card-body">
-          <form method="post" enctype="multipart/form-data">
+        <div class="card-body p-4">
+          <form id="postForm" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+            <div id="postFormCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="text-center mb-3 round-pillow">
+                    <div class="form-group mb-0">
+                      {{ form.name.label_tag }}
+                      {{ form.name }}
+                    </div>
+                  </div>
+                  <div class="text-center mb-3">
+                    <div class="form-group mb-0">
+                      {{ form.featured_image.label_tag }}
+                      {{ form.featured_image }}
+                    </div>
+                  </div>
+                  <button class="btn btn-primary float-end d-md-none next-btn" data-bs-target="#postFormCarousel"
+                    data-bs-slide="next">
+                    Next
+                  </button>
+                </div>
+                <div class="carousel-item">
+                  <div class="text-center">
+                    <div class="form-group mb-3">
+                      {{ form.description.label_tag }}
+                      {{ form.description }}
+                    </div>
+                  </div>
+                  <button class="btn btn-secondary float-start d-md-none prev-btn" data-bs-target="#postFormCarousel"
+                    data-bs-slide="prev">
+                    Previous
+                  </button>
+                  <button class="btn btn-primary float-end d-md-none next-btn" data-bs-target="#postFormCarousel"
+                    data-bs-slide="next">
+                    Next
+                  </button>
+                </div>
+                <div class="carousel-item">
+                  <div class="text-center">
+                    <div class="form-group mb-3">
+                      {{ form.ingredients.label_tag }}
+                      {{ form.ingredients }}
+                    </div>
+                  </div>
+                  <button class="btn btn-secondary float-start d-md-none prev-btn" data-bs-target="#postFormCarousel"
+                    data-bs-slide="prev">
+                    Previous
+                  </button>
+                  <button class="btn btn-primary float-end d-md-none next-btn" data-bs-target="#postFormCarousel"
+                    data-bs-slide="next">
+                    Next
+                  </button>
+                </div>
+                <div class="carousel-item">
+                  <div class="text-center">
+                    <div class="form-group mb-3">
+                      {{ form.instructions.label_tag }}
+                      {{ form.instructions }}
+                    </div>
+                  </div>
+                  <button class="btn btn-secondary float-start d-md-none prev-btn" data-bs-target="#postFormCarousel"
+                    data-bs-slide="prev">
+                    Previous
+                  </button>
+                  <button type="submit" class="btn btn-primary float-end">
+                    Submit Post
+                  </button>
+                </div>
+              </div>
+            </div>
           </form>
         </div>
       </div>
     </div>
+    <a class="carousel-control-prev d-none d-md-flex" href="#postFormCarousel" role="button" data-bs-slide="prev"
+      style="position: absolute; top: 50%; transform: translateY(-50%); left: 20px;">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next d-none d-md-flex" href="#postFormCarousel" role="button" data-bs-slide="next"
+      style="position: absolute; top: 50%; transform: translateY(-50%); right: 20px;">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
   </div>
 </div>
-{% endblock %}
+{% endblock content %}

@@ -109,6 +109,7 @@ def edit_post(request, slug):
         form = PostFormCreate(request.POST, request.FILES, instance=post)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Your bite has Updated successfully.')
             return redirect('post_detail', slug=post.slug)
     else:
         form = PostFormCreate(instance=post)

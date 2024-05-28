@@ -1,8 +1,12 @@
 # Tiny Bites
 
+[Tiny Bites](https://tiny-bites-ce02a59d2630.herokuapp.com/)
+
 Tiny Bites is more than just a food website; it's a culinary community where users can unleash their creativity by crafting their own delectable bites to share with the platform.
 
 Whether it's a gourmet twist on instant noodles or a cherished lunchtime BLT spot, Tiny Bites invites users to explore and celebrate the world of snacks and tiny delights. With a focus on user-friendly design, the platform aims to provide a seamless experience for posting recipes and sharing ratings. It's not just about food; it's about sharing thoughts, emotions, and experiences surrounding everyone's ultimate passion: food.
+
+![Responsice Mockup](doc/images/responsive-all-screens.JPG)
 
 ## User Needs
 
@@ -17,26 +21,62 @@ Whether it's a gourmet twist on instant noodles or a cherished lunchtime BLT spo
 
 - I came up with the following user stories, I am going to use these stories to put myself in the position of the user and allow but to keep UI in mind at all stages during development. 
 - Also, they will allow me to use an Agile Devlopment, Agile promotes iterative development, where features are delivered incrementally in short cycles called sprints. This allows for regular feedback from stakeholders and users, leading to quicker adjustments and improvements. With this in mind I tackled one issue at a time and took time after each session to reflect and compare to other social media sites along with research.
+- Each Story is assigned a number in github which I have used below, this is how I will be referring them in the features section. User.Story.Number (e.g. U.S.1).
 
 ```
 Feed In Admin
+U.S.1
+
 Ability to create users
+U.S.2
+
 Display my feed
+U.S.3
+
 View Scroll list of posts
+U.S.4
+
 Open a post
+U.S.6
+
 View A Comment
+U.S.7
+
 Comment on a post
+U.S.8
+
 Pagination on List view like index and My Bites
+U.S.9
+
 To be Approved page
+U.S.10
+
 Approve Comments
+U.S.11
+
 Edit Post
-Navbar Show Actice
+U.S.12
+
+Navbar Show Active
+U.S.13
+
 Edit Comments
+U.S.15
+
 Delete Comments
+U.S.16
+
 Search Bar
+U.S.17
+
 Pagination - page number
+U.S.18
+
 Profile Setting
+U.S.19
+
 Delete post
+U.S.20
 ```
 
 ## Planning
@@ -108,7 +148,25 @@ Before embarking on the development journey, meticulous planning was undertaken 
 - **Description**: Figtree is a distinctive font with a unique style, characterized by its elegant curves and playful appearance. It brings a touch of creativity and sophistication to any design, making it particularly well-suited for adding visual interest to buttons and other interactive elements.
 - **Why it's good for buttons**: Figtree's stylish and artistic design makes it a perfect choice for buttons. Its eye-catching aesthetic draws attention and encourages user interaction, enhancing the overall appeal and usability of the interface.
 
- 
+
+### Password
+
+- You can set password strength rules that a password policy uses to determine whether a password is valid. I found a site that explain the following about password policies. You can find the site here : [IBM](https://www.ibm.com/docs/en/sig-and-i/10.0.0?topic=rules-password-strength)
+
+The following table describes each password strength rule.
+
+| Attribute | Description |
+| --- | --- |
+| Maximum length | Enter the maximum number of characters that a password can contain.<br>For example: if value of this rule set to 6, then password should have at least 6 characters. |
+| Minimum length | Enter the minimum number of characters that a password can contain.<br>For example: if value of this rule set to 12, then user is allowed to set password up to 12 characters. |
+| Minimum unique characters | Enter the minimum number of unique characters that a password must contain.<br>For example: if value of this rule is 3, then password should have at least 3 unique characters such as abcdcba. |
+| Minimum alphabetic characters | Enter the minimum number of alphabetic characters that a password must contain.<br>For example: if value of this rule is 3, then password should have at least 3 alphabets, such as a1b2c3d. |
+| Minimum numeric characters | Enter the minimum number of numeric characters that a password must contain.<br>For example: if value of this rule is 3, then password should have at least 3 numbers, such as a1b2c3d. |
+| Characters not allowed | Enter characters that are not allowed in the password. Do not separate any characters with a space or another delimiter, unless a space or the delimiter is a disallowed character.<br>For example: if you want to specify _- |
+| Required characters | Enter character that must be in the password. Do not use a comma or a space or another delimiter.<br>For example: if password value must contain a, b and c characters then a correct value for this field is:<br>`abc`<br>An incorrect value for this field is:<br>`a b c`<br>or:<br>`a,b,c` |
+| Restricted to characters | Enter the set of characters to which the password is restricted. That is, the password must contain only these characters. Do not separate any characters with a space or another delimiter, unless a space or the delimiter is a character that must be specified.<br>For example: If you want to specify all lowercase letters then a correct value for this field is:<br>`abcdefghijklmnopqrstuvwxyz` |
+
+ |
 
 
 ## Features
@@ -141,6 +199,9 @@ Before embarking on the development journey, meticulous planning was undertaken 
 
 - The main point of the website is the feed; this is where the user will spend a lot of their time (assuming they are casual viewers; more specific users would enjoy the search bar below more). Because the target audience for this section is casual, there is quite a bit of white space to avoid crowding and intimidation for some users.
 
+- ***Closes U.S.3*** because it provides a personalized feed for users, allowing them to view posts and content relevant to their interests and interactions.
+- ***Closes U.S.4*** because it enables users to scroll through a list of posts, similar to social media feeds, enhancing user engagement and content discovery.
+
 ![Feed Big Screen](docs/images/feed_big_screen.JPG)
 
 - Each recipe card is generously sized to give a feel of one at a time. This makes it more readable for the user and enables them to focus on each recipe individually to find what they are looking for or something they might want to try.
@@ -164,6 +225,8 @@ Before embarking on the development journey, meticulous planning was undertaken 
     -   Encourages Specific Searches: By displaying all results on one page, users are encouraged to refine their search terms to find exactly what they want. This can lead to more precise search queries and better user satisfaction.
     -   Facilitates Browsing: For users who are indecisive or looking for inspiration, having all search results on one page allows them to browse a comprehensive list of options. For example, if a user searches for "chicken", they will see all chicken recipes in one place. This can help users discover new dishes and save time by not needing to reload multiple pages.
 
+ - ***Closes U.S.17*** because it allows users to search for specific recipes and posts, enhancing content discovery and user experience.
+
 ###### Benefits of the Search Bar Design
 
 -   User-Friendly Experience: The contain search feature helps users find what they are looking for.
@@ -179,6 +242,8 @@ Before embarking on the development journey, meticulous planning was undertaken 
 - The recipe card is designed with the idea of a scroller in mind, similar to those on social media platforms like Facebook or Instagram. It provides a little preview to pique the reader's interest.
 - Each card, at first glance, features an image of the post, the dish's name, the author's username, and the creation date/time.
 
+- ***Closes U.S.6*** because it allows users to click on a recipe card and view the detailed post, providing a comprehensive view of the content including ingredients, instructions, and comments.
+
 ![Card Top](docs/images/card_top.JPG)
 
 - Recognizing that sometimes a post might catch your eye but not immediately draw you in with just the information above, the description button reveals a box on the card with the description the user set for the recipe, along with another button that leads to the post's detailed page. This creates a step-by-step journey for the user, rather than overwhelming them with all the information at once or making them hunt for it at the end.
@@ -191,11 +256,16 @@ Before embarking on the development journey, meticulous planning was undertaken 
 - The arrow icon showcases the buttons for the next and previous pages, providing a more user-friendly approach for users who might not be very good at reading or understanding the function.
 - The page number is displayed for easy navigation and understanding of their position within the feed.
 
+- ***Closes U.S.9*** because it breaks up the list of posts into manageable pages, improving load times and user navigation through content.
+- ***Closes U.S.18*** because it displays the page number within the pagination controls, helping users keep track of their location within the list of posts.
+
 ![Pagination](docs/images/pagination.JPG)
 
 #### Post Detail
 
 - When delving into the details of a recipe post, users are met with a comprehensive view designed to enhance their engagement and interaction with the content. 
+
+- ***Closes U.S.6*** because it allows users to click on a recipe card and view the detailed post, providing a comprehensive view of the content including ingredients, instructions, and comments.
 
 ![Details page](docs/images/detailed-page.JPG)
 
@@ -211,6 +281,9 @@ Before embarking on the development journey, meticulous planning was undertaken 
 ##### Comment Sections
 
 - The comment section is divided into two: posted comments and the comment creation form.
+
+- ***Closes U.S.7*** because it enables users to see all the comments on a post, fostering community interaction and feedback on the content.
+- ***Closes U.S.8*** because it provides users with the ability to add comments to posts, contributing to discussions and providing feedback to content creators.
 
 ![Comment Section](docs/images/comment-section.JPG)
 
@@ -230,6 +303,10 @@ Before embarking on the development journey, meticulous planning was undertaken 
 ![waiting for approval](docs/images/not-approved.JPG)
 
 - Logged-in users can edit or delete their comments, even if awaiting approval, using the provided buttons.
+
+- ***Closes U.S.11*** because it enables users to approve or reject comments on their posts, maintaining the quality and relevance of interactions.
+- ***Closes U.S.15*** because it provides users with the ability to modify their comments, allowing for corrections and updates to their contributions.
+- ***Closes U.S.16*** because it enables users to remove their comments, maintaining the relevancy and appropriateness of discussions on posts.
 
 ![edit/delete buttons](docs/images/edit-delete.JPG)
 
@@ -256,6 +333,9 @@ Before embarking on the development journey, meticulous planning was undertaken 
 #### My Bites
 
 - As mentioned in the planning stage I could decide on a layout for my bites. Here are the two choices created.
+
+- ***Closes U.S.12*** because it allows users to update and modify their existing posts, ensuring that the content remains accurate and up-to-date.
+- ***Closes U.S.20*** because it allows users to remove their posts from the platform, maintaining the relevancy and appropriateness of content on their profile.
 
 **Choice 1**
 ![Choice 1](docs/images/my_bites_choice_1.JPG)
@@ -284,11 +364,15 @@ Before embarking on the development journey, meticulous planning was undertaken 
 - The my bites page acts as almost an admin center for the users. 
 - The edit buttons functions allows the user to update any of their existing posts.
 
+- ***Closes U.S.12*** because it allows users to update and modify their existing posts, ensuring that the content remains accurate and up-to-date.
+
 ![View and Edit Button](docs/images/view-edit-mybites.JPG)
 
 ###### Delete button
 - I have also added the delete function for posts to this page. This allows the user to manage all aspects of their post from the one place. 
 - I made the delete button to a 'x' symbol in the corner of the card. I believe this to be a more understandable button for users. 
+
+- ***Closes U.S.20*** because it allows users to remove their posts from the platform, maintaining the relevancy and appropriateness of content on their profile.
 
 ![Delete Button](docs/images/delete-button-mybites.JPG)
 
@@ -305,10 +389,16 @@ Before embarking on the development journey, meticulous planning was undertaken 
 
 ![Pagination](docs/images/pagination-mybites.JPG)
 
+- ***Closes U.S.9*** because it breaks up the list of posts into manageable pages, improving load times and user navigation through content.
+- ***Closes U.S.18*** because it displays the page number within the pagination controls, helping users keep track of their location within the list of posts.
+
 
 #### To Be Approved
 
 - A streamlined interface for managing comments awaiting approval on user posts.
+
+- ***Closes U.S.10*** because it provides a dedicated page for users to manage comments that require approval, ensuring that only appropriate comments are displayed publicly.
+- ***Closes U.S.11*** because it enables users to approve or reject comments on their posts, maintaining the quality and relevance of interactions.
 
 ![To Be Approved](docs/images/to-be-approved.JPG)
 
@@ -343,9 +433,6 @@ Before embarking on the development journey, meticulous planning was undertaken 
 
 #### Carousel Form Navigation
 - The form is divided into multiple slides using Bootstrap's carousel feature. This design choice was made to prevent users from feeling overwhelmed by a lengthy form. By breaking the form into manageable sections, users can focus on one task at a time, reducing cognitive load and improving the overall user experience.
-- Ensuring that the form is fully responsive was a key consideration. The carousel controls adjust based on the screen size:
-  - **Mobile Views**: For smaller screens, internal buttons are provided within each slide to navigate between sections, making it easy to use on touch devices.
-  - **Larger Screens**: For desktop and larger screens, external controls are positioned outside the form to provide a clean and uncluttered interface. These controls are strategically placed to enhance usability without obstructing the form content.
 
 #### Form Sections
 The form is divided into four distinct sections, each represented by a carousel slide. This segmentation ensures clarity and focus, guiding users through the process step-by-step.
@@ -354,15 +441,26 @@ The form is divided into four distinct sections, each represented by a carousel 
   - **Name Field**: A text input for the name of the bite. This field is crucial as it helps users to clearly identify their post.
   - **Featured Image**: An image upload field for adding a featured image of the bite. Visual appeal is essential in culinary communities, and this feature allows users to showcase their creations attractively.
 
+![First Slide](docs/images/slide-1.JPG)
+
 **Second Slide**
   - **Description**: A text area for the description of the bite. This section allows users to provide context and background for their creation, engaging the community with their story or inspiration behind the dish.
+
+![Second Slide](docs/images/slide-2.JPG)
+  
 
 **Third Slide**
   - **Ingredients**: A text area for listing the ingredients required for the bite. Clear and detailed ingredient lists are vital for users who wish to recreate the dish, ensuring that all necessary components are listed.
 
+![Third Slide](docs/images/slide-3.JPG)
+
+
 **Fourth Slide**
   - **Instructions**: A text area for providing the instructions to prepare the bite. Step-by-step instructions help users to follow along and replicate the recipe accurately.
   - **Submit Button**: A button to submit the form and create the post. Placing the submit button at the end of the carousel ensures that users have completed all necessary sections before submission, reducing the likelihood of incomplete posts.
+
+![Fourth Slide](docs/images/slide-4.JPG)
+
 
 - Overall, the design aims to balance aesthetic appeal with functional efficiency, creating a pleasant and intuitive experience for users. The use of Bootstrap's carousel and responsive design principles ensures that the form is accessible and easy to use across all devices.
 
@@ -373,12 +471,32 @@ The form is divided into four distinct sections, each represented by a carousel 
 - The profile page allows users to edit their information, including first and last name, email, and password.
 - The input for the password on the profile page is for design and is disabled.
 
-![Profile Form](docs/images)
+![Profile Form](docs/images/profile.JPG)
 
 #### Password Modal
+- The password change is done by using a modal holding a form. This modal is actived by clicking the change password link. 
+- The modal  contains:
+  - Currrent Password
+  - New Password
+  - Confirm Password.
 
-- The password change is done via a modal containing a form.
-- JavaScript logic ensures a smooth process with password strength checks and validation.
+![Password Modal](docs/images/change-password-modal.JPG)
+
+- Using javascript I made some logic to make the change password process less prone to error
+  - Using calculatePasswordStrength() I check the password strenght based on predefined rules. If the password meet one the rule it adds 1 to the strenght variable. This reflects in the strenght message that shows under the password field. 
+    - <span style="color:red">Weak</span> is 0-1
+    - <span style="color:yellow">Moderate</span> is 2-3
+    - <span style="color:green">Strong</span> is 4 and higher
+  - Using validatePasswordsMatch() to check if new password and password confirm match. Untill they match the submit button is hidden. Also, show a passwordMismatchMessage, 'New password and confirmation do not match.'.
+- I used a lot of the color red in this modal to let the user know this is a major change and they must think carefully before procceding. This applies to the 'Change Password' link and the modal title. 
+
+- ***Closes U.S.19*** because it provides users with the ability to update their profile information, ensuring that their account details are accurate and up-to-date.
+
+![Password Weak](docs/images/weak.JPG)
+![Password Moderate](docs/images/moderate.JPG)
+![Password Strong](docs/images/strong.JPG)
+![Passwords Match](docs/images/match.JPG)
+
 
 #### Account Pages
 
@@ -387,7 +505,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 - I wanted the login page to be a simple process so I went for a plain view with the username and password fields.
 - The login is a sepperate page so with use of the login_view I was able to allow the page to redirct to previous page when relavant. For example, the detail view has its own login button for the comments. Before after a successful a user would be redircted to home based of the configurations in the setting.py file, I believe this to be fustrating for the user as they would need to go back and find the post they wished to comment on. With the next method the login link grabs the slug of the post then after login the user will be brought back to the post.
 
-![Login](docs/images/)
+![Login](docs/images/login.JPG)
 
 #### Logout
 
@@ -395,7 +513,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 - The logout is handled by a modal on the base. When the users wants to logout no matter the page the modal will pop up and it is just a simple click of a button. 
 - Because the user is logging out I found no need to redirct them to the previous page, as most of the pages (my bites, to be approved, create, and profile) require the user to be logged in I thought it would prevent any confusion or error for the user by bringing them back to home.
 
-![Logout](docs/images/)
+![Logout](docs/images/logout.JPG)
 
 #### Sign up
 
@@ -408,13 +526,8 @@ The form is divided into four distinct sections, each represented by a carousel 
 - Because of all these actions I though it would be best to focus any custom error handling like password strenght to the profile page.
 - Just in case the sign up link was select by addicdent I add the login link at the bottom with a text where the user can notice it.
 
-![signup](docs/images/)
+![signup](docs/images/signup.JPG)
 
-#### Forgot password
-
-- I spent the least amount of time of this page, Again this is django aullauths template. I just added some bootstrap style to the page to fit in with the the base and the rest of the site.
-
-![forgot password](docs/images/)
 
 ### Features Left to Implement
 
@@ -689,6 +802,18 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 ![CSS Validation](docs/images/css_val.JPG)
 
+### Browser testing
+
+- I tested that this page works in different browsers: Chrome, Firefox, Microsoft Edge, and Safari.
+
+![Chrome](docs/images/chrome.JPG)
+
+![Firefox](docs/images/firefox.JPG)
+
+![Microsoft Edge](docs/images/edge.JPG)
+
+![Safari](docs/images/safari.jpg)
+
 
 ## Bugs
 
@@ -737,7 +862,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 ### Bugs I did not get to fix
 
-- The images only certain images for posts work with the post detail and the post list view if the photo is too big its is hidden or makes the card appear bigger, I fear this will cause issue for the users as most users not not have the abilty to reize their images. I feel like this is an easily solved issue however I didnt notice this till late in the project and I had not enough time investigate and correct this.
+- The images only certain images for posts work with the post detail and the post list view if the photo is too big its is hidden or makes the card appear bigger, I fear this will cause issue for the users as most users not not have the abilty to reize their images. I feel like this is an easily solved issue however I didnt notice this till late in the project and I had not enough time investigate and correct this. I did correct it light with media queries however I feel it is not fully fixed so I added it to did not get to fix.
 - When the image is too big it mishapes the image circle on the post detail card.
 - The password reset section is incomplete, Everytime I try email from the page it throws a error. Unfortunately, I dont have the knowledge to fufill this function before my projects dead line. So for testing purposes I will removed the forgot password fucntion.
 - I couldnt quite get the time or focus to apply the socials authentication, I really wanted to add this hence the enteries in the setting.py file however they were only added back in to prevent an error I know it is not a bug but I thought it was worth mention.

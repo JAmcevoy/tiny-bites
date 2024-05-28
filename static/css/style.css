@@ -37,7 +37,7 @@ footer {
 .scale {
   height: 700px;
   width: 600px;
-  border-radius: 50%;
+  border-radius: 30%;
   position: relative;
 }
 
@@ -286,5 +286,14 @@ footer {
   font-weight: bold;
   text-align: center;
   position: relative;
+}
+
+/* Media Queries */
+
+/* Small screen up to 900 px */
+@media (min-width: 200px) and (max-width: 750px) {
+  .image-container {
+    height: 300px;
+  }
 }
 

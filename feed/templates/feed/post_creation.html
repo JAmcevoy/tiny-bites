@@ -1,23 +1,21 @@
 {% extends "base.html" %}
+
 {% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
-
-
 <div class="container-fluid mt-5">
     <div class="row justify-content-center position-relative">
         <div class="col-md-10">
             <div class="card card-custom-size shadow-lg bg-info text-dark bg-opacity-25 text-light">
                 <div class="card-header bg-primary text-white text-center">
-                    <h2>Create Bite</h2>
+                    <h2 id="stepsButton">Create Bite</h2>
                 </div>
                 <div class="card-body p-4">
                     <form id="postForm" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                         {% csrf_token %}
                         <div id="postFormCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
                             <div class="carousel-inner">
-                                <!-- First Slide -->
                                 <div class="carousel-item active">
                                     <div class="text-center mb-3 round-pillow">
                                         <div class="form-group mb-0">
@@ -29,46 +27,43 @@
                                             {{ post_form.featured_image|as_crispy_field }}
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary float-end d-md-none" data-bs-target="#postFormCarousel" data-bs-slide="next">
+                                    <button class="btn btn-primary float-end d-md-none next-btn" data-bs-target="#postFormCarousel" data-bs-slide="next">
                                         Next
                                     </button>
                                 </div>
-                                <!-- Second Slide -->
                                 <div class="carousel-item">
                                     <div class="text-center">
                                         <div class="form-group mb-3">
                                             {{ post_form.description|as_crispy_field }}
                                         </div>
                                     </div>
-                                    <button class="btn btn-secondary float-start d-md-none" data-bs-target="#postFormCarousel" data-bs-slide="prev">
+                                    <button class="btn btn-secondary float-start d-md-none prev-btn" data-bs-target="#postFormCarousel" data-bs-slide="prev">
                                         Previous
                                     </button>
-                                    <button class="btn btn-primary float-end d-md-none" data-bs-target="#postFormCarousel" data-bs-slide="next">
+                                    <button class="btn btn-primary float-end d-md-none next-btn" data-bs-target="#postFormCarousel" data-bs-slide="next">
                                         Next
                                     </button>
                                 </div>
-                                <!-- Third Slide -->
                                 <div class="carousel-item">
                                     <div class="text-center">
                                         <div class="form-group mb-3">
                                             {{ post_form.ingredients|as_crispy_field }}
                                         </div>
                                     </div>
-                                    <button class="btn btn-secondary float-start d-md-none" data-bs-target="#postFormCarousel" data-bs-slide="prev">
+                                    <button class="btn btn-secondary float-start d-md-none prev-btn" data-bs-target="#postFormCarousel" data-bs-slide="prev">
                                         Previous
                                     </button>
-                                    <button class="btn btn-primary float-end d-md-none" data-bs-target="#postFormCarousel" data-bs-slide="next">
+                                    <button class="btn btn-primary float-end d-md-none next-btn" data-bs-target="#postFormCarousel" data-bs-slide="next">
                                         Next
                                     </button>
                                 </div>
-                                <!-- Fourth Slide -->
                                 <div class="carousel-item">
                                     <div class="text-center">
                                         <div class="form-group mb-3">
                                             {{ post_form.instructions|as_crispy_field }}
                                         </div>
                                     </div>
-                                    <button class="btn btn-secondary float-start d-md-none" data-bs-target="#postFormCarousel" data-bs-slide="prev">
+                                    <button class="btn btn-secondary float-start d-md-none prev-btn" data-bs-target="#postFormCarousel" data-bs-slide="prev">
                                         Previous
                                     </button>
                                     <button type="submit" class="btn btn-primary float-end">
@@ -81,7 +76,6 @@
                 </div>
             </div>
         </div>
-        <!-- Carousel Controls outside the card for larger screens -->
         <a class="carousel-control-prev d-none d-md-flex" href="#postFormCarousel" role="button" data-bs-slide="prev" style="position: absolute; top: 50%; transform: translateY(-50%); left: 20px;">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>

@@ -662,6 +662,7 @@ The form is divided into four distinct sections, each represented by a carousel 
   ```
   return render(request, "account/login.html", {'next': next_url})
   ```
+  - The create form had a bit of issue with UI, on larger screens the arrows confused the user. To counter this I decided to change 'Create Bite' into Steps based on which slide the user is on. I had to create my own 'carousel.js'. I was having some trouble putting that script directly to the page, when I did it didnt work so I moved it to base and it worked fine.
 
 ### Bugs I did not get to fix
 

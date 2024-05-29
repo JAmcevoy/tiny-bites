@@ -288,6 +288,29 @@ footer {
   position: relative;
 }
 
+/* Support Page */
+
+#support-bubble {
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  width: 90px;
+  height: 90px;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  text-align: center;
+}
+
+#support-bubble:hover {
+  background-color: #0056b3;
+}
+
 /* Media Queries */
 
 /* Small screen up to 900 px */

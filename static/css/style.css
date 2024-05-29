@@ -33,13 +33,6 @@ footer {
   padding: 10px 0;
 }
 
-/* Elements with Class Scale */
-.scale {
-  height: 500px;
-  width: 600px;
-  border-radius: 30%;
-  position: relative;
-}
 
 /* Navigation */
 .fixed-header {
@@ -101,6 +94,15 @@ footer {
 .image-container {
   overflow: hidden;
   height: 500px;
+}
+
+
+/* Post Detail image */
+.scale {
+  height: 500px;
+  width: 600px;
+  border-radius: 30%;
+  position: relative;
 }
 
 /* Delete post */
@@ -336,3 +338,8 @@ footer {
   }
 }
 
+@media (min-width: 750px) and (max-width: 1000px) {
+  .scale {
+    height: 400px;
+  }
+}

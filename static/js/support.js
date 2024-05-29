@@ -1,3 +1,11 @@
+var currentUrl = window.location.href;
+var hideSupportBubble = currentUrl.includes("support/submit_error");
+
+if (hideSupportBubble) {
+    document.getElementById("support-bubble").style.display = "none";
+}
+
 document.getElementById("support-bubble").onclick = function() {
-    window.location.href = "submit_error/";
+    var supportUrl = window.location.origin + "/support/submit_error/";
+    window.location.href = supportUrl;
 }

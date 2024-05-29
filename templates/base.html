@@ -114,6 +114,11 @@
   {% block content %} {% endblock %}
 
   {% block footer %}
+
+  <div id="support-bubble" onclick="window.location.href='{% url 'submit_error' %}'">
+    <span class="display-5"><i class="fas fa-headset"></i></span>
+  </div>
+
   <footer class="bg-primary p-2 text-dark bg-opacity-10 py-2">
     <div class="container">
       <div class="row">

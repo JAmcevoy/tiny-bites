@@ -35,7 +35,7 @@ footer {
 
 /* Elements with Class Scale */
 .scale {
-  height: 700px;
+  height: 500px;
   width: 600px;
   border-radius: 30%;
   position: relative;
@@ -88,7 +88,6 @@ footer {
 
 .card-img {
   max-width: 100%;
-  height: auto;
 }
 
 .btn-primary {
@@ -97,10 +96,6 @@ footer {
 
 .border-dark {
   border-width: 5px;
-}
-
-.card-img-top {
-  margin-top: 20px;
 }
 
 .image-container {
@@ -334,6 +329,10 @@ footer {
   .support-label {
     font-size: 12px;
     margin-top: 2px;
+  }
+
+  .scale {
+    height: 300px;
   }
 }
 

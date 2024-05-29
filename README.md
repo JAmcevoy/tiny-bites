@@ -6,7 +6,7 @@ Tiny Bites is more than just a food website; it's a culinary community where use
 
 Whether it's a gourmet twist on instant noodles or a cherished lunchtime BLT spot, Tiny Bites invites users to explore and celebrate the world of snacks and tiny delights. With a focus on user-friendly design, the platform aims to provide a seamless experience for posting recipes and sharing ratings. It's not just about food; it's about sharing thoughts, emotions, and experiences surrounding everyone's ultimate passion: food.
 
-![Responsice Mockup](doc/images/responsive-all-screens.JPG)
+![Responsive Mock-up](doc/images/responsive-all-screens.JPG)
 
 ## User Needs
 
@@ -20,8 +20,8 @@ Whether it's a gourmet twist on instant noodles or a cherished lunchtime BLT spo
 #### User Stories 
 
 - I came up with the following user stories, I am going to use these stories to put myself in the position of the user and allow but to keep UI in mind at all stages during development. 
-- Also, they will allow me to use an Agile Devlopment, Agile promotes iterative development, where features are delivered incrementally in short cycles called sprints. This allows for regular feedback from stakeholders and users, leading to quicker adjustments and improvements. With this in mind I tackled one issue at a time and took time after each session to reflect and compare to other social media sites along with research.
-- Each Story is assigned a number in github which I have used below, this is how I will be referring them in the features section. User.Story.Number (e.g. U.S.1).
+- Also, they will allow me to use an Agile Development, Agile promotes iterative development, where features are delivered incrementally in short cycles called sprints. This allows for regular feedback from stakeholders and users, leading to quicker adjustments and improvements. With this in mind, I tackled one issue at a time and took time after each session to reflect and compare to other social media sites along with research.
+- Each Story is assigned a number in GitHub which I have used below, this is how I will be referring to them in the features section. User.Story.Number (e.g. U.S.1).
 
 ```
 Feed In Admin
@@ -357,13 +357,13 @@ The following table describes each password strength rule.
 
 ##### Edit Page 
 
-- I keep the edit page very close to the create page in layout so as to keep the process alignened so when the user clicks edit they are brought to a similar page to create but the fields will be populated. Once the post is updated you will be brought the the detailed view. 
+- I keep the edit page very close to the create page in layout to keep the process aligned. When the user clicks edit, they are brought to a similar page as create, but the fields will be populated. Once the post is updated, you will be brought to the detailed view. 
 
 - ***Closes U.S.12*** With a straightforward editing interface, changes are made quickly and appear instantly upon submission, meeting the user story's need for efficient post editing.
 
 ###### View button
 
-- I thought the view button was cruital as it give the my bites page a dictoionary like feel to it. You find when you need quickly and have the option to bring you to the details.
+- I thought the view button was crucial as it gives the my bites page a dictionary like feel to it. You find when you require quickly and have the option to bring you to the details.
 
 ###### Edit button
 
@@ -382,7 +382,7 @@ The following table describes each password strength rule.
 
 ![Delete Button](docs/images/delete-button-mybites.JPG)
 
-- When the button is selected it bring up a modal to ensure the user are aware of their current actions and preventing accident deletation.
+- When the button is selected, it bring up a modal to ensure the user are aware of their current actions and preventing accident deletions.
 
 ![Delete Modal](docs/images/delete-modal-mybites.JPG)
 
@@ -408,7 +408,7 @@ The following table describes each password strength rule.
 
 ![To Be Approved](docs/images/to-be-approved.JPG)
 
-- I didnt add pagination to this card page as I thought it would encourage user to interact and manage their comments more. As it shows the oldest comments first users will have to approve to delete comments to clean up.
+- I didn't add pagination to this card page as I thought it would encourage user to interact and manage their comments more. As it shows the oldest comments first, users will have to approve to delete comments to clean up.
 
 ##### Card Layout
 
@@ -425,7 +425,7 @@ The following table describes each password strength rule.
 
 ##### Modal Confirmation
 
-- Modal dialogs for both approval and deletion actions prevent accidental actions and ensure accountability.
+- Modal dialogues for both approval and deletion actions prevent accidental actions and ensure accountability.
 
 **Approve**
 
@@ -508,40 +508,40 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 ##### Login
 
-- I wanted the login page to be a simple process so I went for a plain view with the username and password fields.
-- The login is a sepperate page so with use of the login_view I was able to allow the page to redirct to previous page when relavant. For example, the detail view has its own login button for the comments. Before after a successful a user would be redircted to home based of the configurations in the setting.py file, I believe this to be fustrating for the user as they would need to go back and find the post they wished to comment on. With the next method the login link grabs the slug of the post then after login the user will be brought back to the post.
+- I wanted the login page to be a simple process, so I went for a plain view with the username and password fields.
+- The login is a separate page, so with use of the login_view I was able to allow the page to redirect to the previous page when relevant. For example, the detail view has its own login button for the comments. Before after a successful a user would be redirected to home based on the configurations in the setting.py file, I believe this to be frustrating for the user as they would need to go back and find the post they wished to comment on. With the next method, the login link grabs the slug of the post, then after login the user will be brought back to the post.
 
 ![Login](docs/images/login.JPG)
 
 ##### Logout
 
-- Just as the login I wanted the logout to be simple and easy to do. 
-- The logout is handled by a modal on the base. When the users wants to logout no matter the page the modal will pop up and it is just a simple click of a button. 
-- Because the user is logging out I found no need to redirct them to the previous page, as most of the pages (my bites, to be approved, create, and profile) require the user to be logged in I thought it would prevent any confusion or error for the user by bringing them back to home.
+- Just as the login, I wanted the logout to be simple and easy to do. 
+- The logout is handled by a modal on the base. When the users want to log out no matter the page the modal will pop up, and it is just a simple click of a button. 
+- Because the user is logging out, I found no need to redirect them to the previous page. Most of the pages (my bites, to be approved, create, and profile) require the user to be logged in. I thought it would prevent any confusion or error for the user by bringing them back to home.
 
 ![Logout](docs/images/logout.JPG)
 
 ##### Sign up
 
-- The sign up is again a simple process the form consist of Username, email, and password. 
-- I thought not to add in the first and last name fields to speed the sign up process, only including the information not needed. The first name and last name can be added to the users profile after sign up using the profile page.
-- This form is close to the django allauth form so most of the error handling is there to be used preventing the user to submit if:
+- The sign-up is again a simple process, the form consists of Username, email, and password. 
+- I thought not to add in the first and last name fields to speed the sign-up process, only including the information not needed. The first name and last name can be added to the users profile after sign up using the profile page.
+- This form is close to the Django all auth form, so most of the error handling is there to be used, preventing the user to submit if:
   - Username is taken
-  - The emails is not the correct format
+  - The emails are not the correct format
   - Password and current password match. 
-- Because of all these actions I though it would be best to focus any custom error handling like password strenght to the profile page.
-- Just in case the sign up link was select by addicdent I add the login link at the bottom with a text where the user can notice it.
+- Because of all these actions, I thought it would be best to focus any custom error handling like password strength to the profile page.
+- Just in case the sign-up link was select by accident, I add the login link at the bottom with a text where the user can notice it.
 
 ![signup](docs/images/signup.JPG)
 
 #### Support
 
-- Because fo the loss of the forgot my password page I thought users needed a definite way to contact the team for support. 
-- This gave me the idea for the support app. It is own app that stands apart from the rest of the application as all the other function of the project deal with the feed app I thought it best to keep them all under one however the support is such a general function it should be sepperate, these issues could range from passwords to logical issues with the project as a whole it allows the user to have a direct line with the error reports to someone who can make a chance if needed and all errors site in the panel pannel where a user will see the issue, description, date/tinme, and final the email of the user so they can contact them directly!
+- Because of the loss of the forgot my password page, I thought users required a definite way to contact the team for support. 
+- This gave me the idea for the support app. It is its own app that stands apart from the rest of the applications. All the other functions of the project deal with the feed app, I thought it's best to keep them all under one. However, the support is such a general function it should be separate. These issues could range from passwords to logical issues with the project as a whole. It allows the user to have a direct line with the error reports to someone who can make a chance if needed. All errors site in the panel where a user will see the issue, description, date/time, and final the email of the user so they can contact them directly!
 
 ![Support Admin](docs/images/error-reports.JPG)
 
-- The users may contact support via a button that was placed on all screen by being placed on the base, so any place loading the base will have access. So no matter where a user is on the site they can make a report.
+- The users may contact support via a button that was placed on all screen by being placed on the base, so any place loading the base will have access. So no matter where a user is on the site, they can make a report.
 
 ![Support Button](docs/images/support-btn.JPG)
 
@@ -552,35 +552,35 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 ![Error Report Form](docs/images/submit-form.JPG)
 
-- Then once the form is submit the user is brought to a success screen to let them k now their form has successfully been submitted.
+- Then once the form is submitted, the user is brought to a success screen to let them know their form has successfully been submitted.
 
 ![Success Page](docs/images/submit-request.JPG)
 
-- This process is a bit diffferent then the admins side, as seen from above the error reports are held in the admin panel. Too give the admin a little accountabiliy I added an addtional field to the form in which they must give details on te steps they took to correct the error. This creates a log on how issues were reseolved helping the admin team created a history. 
+- This process is a bit different then the admins side, as seen from above the error reports are held in the admin panel. To give the admin a little accountability, I added another field to the form in which they must give details on the steps they took to correct the error. This creates a log on how issues were resolved, helping the admin team created a history. 
 
 ![Error Report Admin](docs/images/error-report-admin.JPG)
 
-- I felt over time and as more error come in this page would begin to be very messy so I created a filter with looks for any report in which the steps taken field is null so this is allow the admin to hide any complete error reports and just see what they need to take action on. 
+- I felt over time and as more error come in, this page would begin to be very messy, so I created a filter with looks for any report in which the step's taken field is null. This allows the admin to hide any complete error reports and just see what they need to take action on. 
 
 ![Filter](docs/images/filter-errors.JPG)
 
 
 ### Features Left to Implement
 
-- As stated in the beginging I wanted this site to be both a recipe and review website however, I had some difficulties added the review section. I felt my time was being wasted trying to get this section in, I felt my website had a clear enough function by this time. The review section was similar to the create but allowed the users to review with a star option making the user more interactive with the theme of Little bites. I feel with more time and experience I feel I could accomplish this.
-- I wanted to add in socail media logins, allowing the users to connect their other socail profile but again my current knowledge and time frame I felt I couldnt get this done to an acceptable level.
+- As stated in the beginning I wanted this site to be both a recipe and review website however, I had some difficulties added the review section. I felt my time was being wasted trying to get this section in, I felt my website had a clear enough function by this time. The review section was similar to the creation but allowed the users to review with a star option, making the user more interactive with the theme of Little bites. I feel with more time and experience I feel I could accomplish this.
+- I wanted to add in social media logins, allowing the users to connect their other social profile, but again in my current knowledge and time frame I felt I couldn't get this done to an acceptable level.
 - I wanted to incorporate Tailwind CSS styles into my project to separate it from other projects, but as this was new to me, I felt the time would have been wasted focusing so much on style. Additionally, I found the verbosity of HTML classes in Tailwind CSS to be less visually appealing or harder to read compared to Bootstrap's more structured HTML markup. This made the learning curve steeper and the transition more challenging.
-- I would like to bring the suport further and setup a page for admins within the site to just deal with errors but I was at the end of my project when I set this up and I didnt want to start something I might not of been able to finsih
+- I would like to bring the support further and set up a page for admins within the site to just deal with errors. But I was at the end of my project when I set this up, and I didn't want to start something I might not of been able to finish.
 
 ## Testing
 
 ### Logic testing
 
-- Because the majority of this projects time was spent on the python I found it necessacary to test the Django view and forms. Using djangos test functionality I ran a number of test.
-- After I setup each test I ran the tests using python3 manage.py test.
+- Because the majority of this project's time was spent on the python, I found it necessary to test the Django view and forms. Using Django test functionality, I ran a number of test.
+- After I set up each test, I ran the tests using python3 manage.py test.
 - There is a total of 36 tests
 
-#### Proformance
+#### Performance
 
 ##### SecurityTest
 - **setUp**
@@ -756,13 +756,13 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 ### User testing
 
-- The user testing was also important as my users needs was that the website was easy to understand. I felt human error would be a big factor in issues with this project. 
-- To allow for user testing I will encourage user to:
-  - Sign up using the sign up page. 
+- The user testing was also important, as my users needs were that the website was easy to understand. I felt human error would be a big factor in issues with this project. 
+- To allow for user testing, I will encourage user to:
+  - Sign up using the sign-up page. 
   - Login using the login page. 
   - Edit information from the profile page.
   - Browser through the feed while also making use of the search bar. 
-  - Comment on a users post while making sure they are aware they can edit and delete said comments
+  - Comment on a user's post while making sure they are aware they can edit and delete said comments
   - Review the my bites page and post edit page.
   - Delete or approve comments I have made on their post using the to be approved page.
   - Logout using the logout modal
@@ -772,24 +772,27 @@ The form is divided into four distinct sections, each represented by a carousel 
   3. **Were you able to easily edit your information from the profile page?**
   4. **How intuitive was it to browse through the feed and utilize the search bar?**
   5. **Were you able to comment on a user's post and understand how to edit or delete your comments?**
-  6. **What are your thoughts on the "My Bites" page and post edit page in terms of usability?**
+  6. **What are your thoughts on the “My Bites” page and post edit page in terms of usability?**
   7. **Did you find it straightforward to delete or approve comments made on your posts?**
   8. **What was your experience with logging out of the website using the logout modal?**
   9. **Overall, how would you rate the ease of use and intuitiveness of the website?**
   10. **Is there any specific feedback or suggestions you have for improving the website's usability?**
 
 
-#### User 1
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
+#### User 1 (jackyd420)
+1. Weird bug when I signed up (error 404) but then logged in when I refreshed the page.
+  - This has been logged using the support app.
+2. Same as issues as 1.
+3. Was straight forward editing my details
+4. It was fairly intuitive, you'd be able to find what you want when you want fairly quickly
+5. commenting on a post was easy enough, but the to be approved should surely only be done by admin. 
+  - I explained that the to be approved is in the post owner's control, so they can manage and maintain their own comments.
+6. The my bites was an easy enough run through, all you need to put up a recipe. 
+7. approving / Deletion was in fact pretty straight forward an easy to understand. Why can it not be on the same page as my_bites.
+  - My bites are more of a collection of all your posts like a recipe book, and to be approved allows to separate the options from the ideas.
+8. Log out was simple and worked perfectly!
+9. 7/10 as the login was a bit strange.
+10. Nothing at the top of my mind besides changing the comment approval system but after explanation I understand why they are separate with if the login had worked on first go the score would-be high, but the quick process of the support submission was a big help having so close.
 #### User 2
 1.
 2.
@@ -829,13 +832,13 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 ##### HTML Validator
 
-- I used [W3C HTML](https://validator.w3.org/) to validate my app to bypass the ginja errors that might come with it I used the URL to validate the HTML
+- I used [W3C HTML](https://validator.w3.org/) to validate my app to bypass the ginja errors that might come with it, I used the URL to validate the HTML
 
 ![HTML Validation](docs/images/html_val.JPG)
 
 ##### CSS Validator
 
-- I didnt have any worries with the css so I was able to just copy and paste the file into [W3C CSS](https://jigsaw.w3.org/css-validator/)
+- I didn't have any worries with the CSS, so I was able to just copy and paste the file into [W3C CSS](https://jigsaw.w3.org/css-validator/)
 
 ![CSS Validation](docs/images/css_val.JPG)
 
@@ -879,19 +882,19 @@ The form is divided into four distinct sections, each represented by a carousel 
       color: rgba(0, 0, 0, 0.1);
     } */
     ```
-- When a user adds a post with a substanal amount of text it makes the post card longers which is fine however this has an effect on the image. I believe this is because the image is size.
-- My first style idea for the creation form was a lot simpler but I found it necessary for the users to have the summer note field for formating thier posts. However, this caused a lot of issues with the card that held the form on smallers screens. The fields went over the bound of the card and it just looked a mess. I tried to reszie the fields but that was proving difficult so I decided to reimagine the form page with I belive is a lot more interactive. 
-- The password change was suppose to be part of the profile page but the issue was the password would update anytime the profile was updated even if you did not wish to change it. Also, it didnt ask for current password to confirm the user was aware of the change so it definely casued some security concerns. I decided a modal was a better idea as I still wanted the password change to be on the same page.
-- All the current data was brought into the system using a json file so all the post formats were incorrect and the were missing images. 
-  - I thought a default image was the best way to approach the image issue, by setting a default image I could see how each  post card looked with a image witout having to go through each one by one but it also made the pressure of uploading a image with your post a little less as there would but something visiually pleasing at least.
+- When a user adds a post with a substantial amount of text it makes the post card longer, which is fine, however this has an effect on the image. I believe this is because the image is size.
+- My first style idea for the creation form was a lot simpler, but I found it necessary for the users to have the summer note field for formatting their posts. However, this caused a lot of issues with the card that held the form on smaller screens. The fields went over the bound of the card and it just looked a mess. I tried to resize the fields, but that was proving difficult, so I decided to reimagine the form page with I believe is a lot more interactive. 
+- The password change was supposed to be part of the profile page, but the issue was the password would update anytime the profile was updated, even if you did not wish to change it. Also, it didn't ask for a current password to confirm the user was aware of the change, so it definitely caused some security concerns. I decided a modal was a better idea, as I still wanted the password change to be on the same page.
+- All the current data was brought into the system using a JSON file, so all the post formats were incorrect and they were missing images. 
+  - I thought a default image was the best way to approach the image issue. By setting a default image, I could see how each post card looked with an image without having to go through each one by one. It also made the pressure of uploading an image with your post a little less, as there would be something visually pleasing at least.
     - The default image I picked was
-    ![Defualt Image](docs/images/default_2.jpg)
-  - I had have such an easy choice with the text so I decided I put aside some time to go through this but when I update the text it appeared to put it through as HTML with tags like <p> and <h3> I belive this was due to using the summernote. As I mentioned already I thought this was an important part of the create process so I couldnt just change it. After some research I found summernote, like many other rich text editors, automatically converts input into HTML format to preserve formatting such as bold, italics, headers, and paragraphs. Using | safe, it tells the system to treat the text as safe HTML, preventing it from escaping HTML characters and rendering them as text. This approach ensures that the HTML tags are interpreted correctly and displayed as intended, rather than as plain text.
-  - The process of login redirection became a significant focus of my attention. Initially, the login functionality would consistently redirect users to the home page upon successful login, which wasn't problematic. However, a significant issue arose when users attempted to log in to post a comment on a specific post—they were redirected to the home page instead of returning to the post they were engaging with. This discrepancy posed a considerable inconvenience, as hours of research or interaction could be undone by a simple login. To address this, I implemented the "next" method, which appends the current page's URL to the login link. This ensures that users are redirected back to their original page after logging in.
+    ![Default Image](docs/images/default_2.jpg)
+  - I had such an easy choice with the text, so I decided to put aside some time to go through this. However, when I updated the text, it appeared to put it through as HTML with tags like and. I believe this was due to using the summer note. As I mentioned already, I thought this was an important part of the create process, so I couldn't just change it. After some research I found summer note, like many other rich text editors, automatically converts input into HTML format to preserve formatting such as bold, italics, headers, and paragraphs. Using **| safe**, it tells the system to treat the text as safe HTML, preventing it from escaping HTML characters and rendering them as text. This approach ensures that the HTML tags are interpreted correctly and displayed as intended, rather than as plain text.
+  - The process of login redirection became a significant focus of my attention. Initially, the login functionality would consistently redirect users to the home page upon successful login, which wasn't problematic. However, a significant issue arose when users attempted to log in to post a comment on a specific post—they were redirected to the home page instead of returning to the post they were engaging with. This discrepancy posed a considerable inconvenience, as hours of research or interaction could be undone by a simple login. To address this, I implemented the “next” method, which appends the current page's URL to the login link. This ensures that users are redirected back to their original page after logging in.
   ```
   {% url 'account_login' %}?next={{ request.path }}
   ```
-  - However, this solution unearthed another issue: if a user mistyped their password and the login page refreshed, the "next" URL would be lost. To mitigate this problem, I adjusted the login page's return statement to include a dictionary containing the "next" URL as context. This approach ensured that even if the login attempt failed, the "next" URL would persist, allowing users to be redirected back to their intended page upon successful login.
+  - However, this solution unearthed another issue: if a user mistyped their password and the login page refreshed, the “next” URL would be lost. To mitigate this problem, I adjusted the login page's return statement to include a dictionary containing the “next” URL as context. This approach ensured that even if the login attempt failed, the “next” URL would persist, allowing users to be redirected back to their intended page upon successful login.
   ```
   return render(request, "account/login.html", {'next': next_url})
   ```
@@ -919,13 +922,14 @@ widgets = {
 
 ### Bugs I did not get to fix
 
-- The images only certain images for posts work with the post detail and the post list view if the photo is too big its is hidden or makes the card appear bigger, I fear this will cause issue for the users as most users not not have the abilty to reize their images. I feel like this is an easily solved issue however I didnt notice this till late in the project and I had not enough time investigate and correct this. I did correct it light with media queries however I feel it is not fully fixed so I added it to did not get to fix.
-- When the image is too big it mishapes the image circle on the post detail card.
-- The password reset section is incomplete, Everytime I try email from the page it throws a error. Unfortunately, I dont have the knowledge to fufill this function before my projects dead line. So for testing purposes I will removed the forgot password fucntion.
-- I couldnt quite get the time or focus to apply the socials authentication, I really wanted to add this hence the enteries in the setting.py file however they were only added back in to prevent an error I know it is not a bug but I thought it was worth mention.
-- Whem the site runs I get the follow error in dev tools, This error is in relation to the cloudinary urls loading in http instead of https I had a look around the setting for a correction but I could not find anything.
+- The images only certain images for posts work with the post detail and the post list view if the photo is too big it is hidden or makes the card appear bigger, I fear this will cause issue for the users as most users not have the ability to seize their images. I feel like this is an easily solved issue, however I didn't notice this till late in the project and I had not enough time to investigate and correct this. I did correct it light with media queries, however I feel it is not fully fixed, so I added it to did not get to fix.
+- When the image is too big, it mishaps the image circle on the post detail card.
+- The password reset section is incomplete, Every time I try email from the page it throws an error. Unfortunately, I don't have the knowledge to fu fill this function before my project's deadline. So for testing purposes, I will remove the forgot password function.
+- I couldn't quite get the time or focus to apply the social's authentication. I really wanted to add this, hence the entries in the setting.py file. However, they were only added back in to prevent an error. I know it is not a bug, but I thought it was worth mention.
+- When the site runs, I get the follow error in dev tools. This error is in relation to the Cloudinary URLs loading in http instead of https. I had a look around the setting for a correction, but I could not find anything.
 ![error-cloudinary](docs/images/cloud-bug.JPG)
-
+- While I was running the testing for the view I notice that the change password error would not be corrected no matter what actions I took. I soon found out because the page was refreshed the profile page it was submitting that form and show the profile success message, but in the UI I could see it was displaying the password updated message. So, to get the test to pass, I added self.assertTrue(str(messages[0]) == 'Profile updated successfully!' or str(messages[0]) == 'Incorrect Password!'). I know this is against the point of testing, but I had no idea how to stop this and assume it was a side effect of using the same page. I felt I should add that here due to it not being corrected at the root of the issue.
+- **ErrorReport object (2)** The page was trying to bring up account/profile, but there was not a URL configured for this path. To counter the redirection, I decide to hard code the redirection with the settings.py file. - Copied from '***Steps taken to correct***'
 
 
 ## Deployment
@@ -934,8 +938,8 @@ This section describes how to create a new repository.
 
 - This repository was created using [GitHub](https://github.com/) The steps are as followed:
   - I went to the [Code Institute Template](https://github.com/Code-Institute-Org/ci-full-template)
-  - I selected the green button labeled 'Use this template'
-  - Then, Create a new repository.
+  - I selected the green button labelled 'Use this template'
+  - Then, create a new repository.
   - Then I was brought to a new page to set the name and setting for my new repository.
   - I named my repository 'tiny-bites'
 
@@ -947,9 +951,9 @@ This section describes how I set up my workspace, Once my repository has been cr
   - Here under local, I could copy the link needed: <https://github.com/JAmcevoy/tiny_bites.git>
   - Then I went to code anywhere.
   - In workplaces, I selected new workspaces
-  - Here I copied the link from the git hub and clicked to create to make my workspace.
+  - Here I copied the link from the GitHub and clicked to create to make my workspace.
 
-  - The type of project was django so I had a different file creatation process that usual.
+  - The type of project was Django, so I had a different file creation process that usual.
     ##### Create the project
     - First I type the following command in the terminal to install the Django Python package: pip3 install Django~=4.2.1
     - Once the package is installed, I add it to the requirements.txt file with the following command: pip3 freeze --local > requirements.txt
@@ -965,16 +969,16 @@ This section describes how I set up my workspace, Once my repository has been cr
 
 This section describes the commands I used in code anywhere to push my code and changes to GitHub.
 
-    - I used the git add . command to add all changes once the project and app was created.
-    - Using the git commit command I committed the change and used -m to attach a message to the commit.
-    - When I was finished with the creation I used git push to push all these files and folders to GitHub.
+    - I used the git add . Command to add all changes once the project and app was created.
+    - Using the git commit command, I committed the change and used -m to attach a message to the commit.
+    - When I was finished with the creation, I used git push to push all these files and folders to GitHub.
     - I used these same 3 commands through the creation and modification
 
 This section should describe the process I went through to deploy the project to a hosting platform.
 
 Create the Heroku app:
-- I went to https://dashboard.heroku.com/apps to create my new app. Once I got to this page I selected new > Create new app.
-- I had to give the app a name so I decided to name it after the repository 'tiny-bites'
+- I went to https://dashboard.heroku.com/apps to create my new app. Once I got to this page, I selected new > Create new app.
+- I had to give the app a name, so I decided to name it after the repository 'tiny-bites'
 - I picked the closest region to me, in this case 'Europe'
 - Then I hit create app to confirm the creation of my app.
 
@@ -983,19 +987,19 @@ Preparing the code for deployment:
 - I need to create a procfile (Note: Conventionally, the Procfile is spelled with an uppercase "P" to adhere to a widely accepted naming convention.)
 - The contents of the Profile should be as follows 'web: gunicorn tiny-bites.wsgi'
 - Because I am deployment to Heroku I need to allow the domain in the allowed host section of the settings.py. Like so .. ALLOWED_HOSTS = ['8000-jamcevoy-tiny-bites-jdbmznt5m7.us1.codeanyapp.com', '.herokuapp.com']
-- I had to make sure the Debug was set the False as it is recommended not to push your project to deployment with this True. When DEBUG is set to True, Django will display detailed error pages with sensitive information about your application, including stack traces and environment variables. This information can be useful for debugging during development but poses a security risk if exposed in a production environment.
-- Lastly I git add, commt -m, and pushed my code to github.
+- I had to make sure the Debug was set to False, as it is recommended not to push your project to deployment with this True. When DEBUG is set to True, Django will display detailed error pages with sensitive information about your application, including stack traces and environment variables. This information can be useful for debugging during development but poses a security risk if exposed in a production environment.
+- Lastly I git add, commit -m, and pushed my code to GitHub.
 
 Deploying in Heroku: 
-- Once my code was pushed to github then I need to deploy it from my tiny-bites app.
-Firstly, I need to add all of the varables of the env.py file to the Config Vars. I opened my app then navigated to the setting tab and then the 'Config Vars' section. Here I added the following: 
+- Once my code was pushed to GitHub, then I need to deploy it from my tiny-bites app.
+Firstly, I need to add all the variables of the env.py file to the Config Vars. I opened my app, then navigated to the setting tab and then the 'Config Vars' section. Here I added the following: 
   - CLOUDINARY_URL
   - DATABASE_URL
-  - DISABLE_COLLECTSTATIC ( Set to the value of '1')
+  - DISABLE_COLLECTSTATIC (Set to the value of '1')
   - SECRET_KEY
-- Finally once these vars were configured I need to connect my github to heroku. I done this from the 'Deploy' tab within in heroku app.
-- In the deployment method section I selected Github. Once signed in I used the search bar to locate my repository and connected my app.
-- Last but not least, I manually deployed the app using 'Manual deploy' so I could see a log of the ddeployment incase of any errors. I selected the main branch and then once I was sure I selected 'Deploy Branch' button to start the process.
+- Finally, once these vars were configured I need to connect my GitHub to Heroku. I have done this from the 'Deploy' tab within in Heroku app.
+- In the deployment method section, I selected GitHub. Once signed in, I used the search bar to locate my repository and connected my app.
+- Last but not least, I manually deployed the app using 'Manual deploy' so I could see a log of the deployment in case of any errors. I selected the main branch and then once I was sure I selected 'Deploy Branch' button to start the process.
 - The process is as follows:
   - Receive code from GitHub
   - Build main efe7e624
@@ -1004,19 +1008,19 @@ Firstly, I need to add all of the varables of the env.py file to the Config Vars
 
 ## Credits
 
-- I used these resources to research and develop my understanding of the Django framework, as well as get inspiration for my own code. During this research, I have borrowed some ideas and modified the code to suit my project. No code was used unedited
+- I used these resources to research and develop my understanding of the Django framework, as well as get inspiration for my own code. During this research, I have borrowed some ideas and modified the code to suit my project. No code was used unedited.
 
 ### Design/Style
 
-- I used the bootsrap 5.1.3 Documentation to research the inspiration of my design.
-- All the design screenshots from above came from [Wirframe](https://wireframe.cc/)
-- All images come from [Pexels](https://www.pexels.com/)
+- I used the bootstrap 5.1.3 Documentation to research the inspiration of my design.
+- All the design screenshots from above came from [Wireframe](https://wireframe.cc/)
+- All images come from [Pixels](https://www.pexels.com/)
 - The fonts were taking from [Google Fonts](https://fonts.google.com/)
 
 ### Code
 
-- All my main code inspiration and ideas came from my reasearch into the Django Documentation [Django Documentation](https://docs.djangoproject.com/)
+- All my main code inspiration and ideas came from my research into the [Django Documentation](https://docs.djangoproject.com/)
 - The idea behind the Search bar was taken from [Make Use Of](https://www.makeuseof.com/add-search-functionality-to-django-apps/#:~:text=Create%20a%20View%20for%20the%20Search&text=%23%20Check%20if%20the%20request%20is%20a%20post%20request.&text=In%20request.,your%20search%20bar's%20input%20field.&text=Finally%2C%20the%20function%20renders%20a,and%20filtered%20model%20as%20context.)
-- The if next functionality for redircting users back to a page after a login was part taken from this post [Django Forms](https://forum.djangoproject.com/t/redirecting-user-to-page-after-login/14603/10)
+- The if next functionality for redirecting users back to a page after a login was part taken from this post [Django Forms](https://forum.djangoproject.com/t/redirecting-user-to-page-after-login/14603/10)
 
 

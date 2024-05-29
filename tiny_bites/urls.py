@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path("", include("feed.urls"), name='feed-urls'),
+    path('support/', include('support.urls'), name='support-urls'),
 
 ]

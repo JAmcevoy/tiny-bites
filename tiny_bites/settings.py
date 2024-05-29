@@ -34,7 +34,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-jamcevoy-tiny-bites-jdbmznt5m7.us1.codeanyapp.com', '.herokuapp.com']
 
@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'cloudinary',
     'feed',
+    'support',
 ]
 
 
@@ -127,6 +128,8 @@ CSRF_TRUSTED_ORIGINS = [
 "https://*.codeanyapp.com",
 "https://*.herokuapp.com"
 ]
+
+CSRF_COOKIE_SECURE = True
 
 
 # Password validation

@@ -506,14 +506,14 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 #### Account Pages
 
-#### Login
+##### Login
 
 - I wanted the login page to be a simple process so I went for a plain view with the username and password fields.
 - The login is a sepperate page so with use of the login_view I was able to allow the page to redirct to previous page when relavant. For example, the detail view has its own login button for the comments. Before after a successful a user would be redircted to home based of the configurations in the setting.py file, I believe this to be fustrating for the user as they would need to go back and find the post they wished to comment on. With the next method the login link grabs the slug of the post then after login the user will be brought back to the post.
 
 ![Login](docs/images/login.JPG)
 
-#### Logout
+##### Logout
 
 - Just as the login I wanted the logout to be simple and easy to do. 
 - The logout is handled by a modal on the base. When the users wants to logout no matter the page the modal will pop up and it is just a simple click of a button. 
@@ -521,7 +521,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 ![Logout](docs/images/logout.JPG)
 
-#### Sign up
+##### Sign up
 
 - The sign up is again a simple process the form consist of Username, email, and password. 
 - I thought not to add in the first and last name fields to speed the sign up process, only including the information not needed. The first name and last name can be added to the users profile after sign up using the profile page.
@@ -534,12 +534,43 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 ![signup](docs/images/signup.JPG)
 
+#### Support
+
+- Because fo the loss of the forgot my password page I thought users needed a definite way to contact the team for support. 
+- This gave me the idea for the support app. It is own app that stands apart from the rest of the application as all the other function of the project deal with the feed app I thought it best to keep them all under one however the support is such a general function it should be sepperate, these issues could range from passwords to logical issues with the project as a whole it allows the user to have a direct line with the error reports to someone who can make a chance if needed and all errors site in the panel pannel where a user will see the issue, description, date/tinme, and final the email of the user so they can contact them directly!
+
+![Support Admin](docs/images/error-reports.JPG)
+
+- The users may contact support via a button that was placed on all screen by being placed on the base, so any place loading the base will have access. So no matter where a user is on the site they can make a report.
+
+![Support Button](docs/images/support-btn.JPG)
+
+- They can then build their reports with the use of the 'Submit Error Report' form, this form contains :
+  - Issue (Cause or Area of Issue)
+  - Email
+  - Description.
+
+![Error Report Form](docs/images/submit-form.JPG)
+
+- Then once the form is submit the user is brought to a success screen to let them k now their form has successfully been submitted.
+
+![Success Page](docs/images/submit-request.JPG)
+
+- This process is a bit diffferent then the admins side, as seen from above the error reports are held in the admin panel. Too give the admin a little accountabiliy I added an addtional field to the form in which they must give details on te steps they took to correct the error. This creates a log on how issues were reseolved helping the admin team created a history. 
+
+![Error Report Admin](docs/images/error-report-admin.JPG)
+
+- I felt over time and as more error come in this page would begin to be very messy so I created a filter with looks for any report in which the steps taken field is null so this is allow the admin to hide any complete error reports and just see what they need to take action on. 
+
+![Filter](docs/images/filter-errors.JPG)
+
 
 ### Features Left to Implement
 
 - As stated in the beginging I wanted this site to be both a recipe and review website however, I had some difficulties added the review section. I felt my time was being wasted trying to get this section in, I felt my website had a clear enough function by this time. The review section was similar to the create but allowed the users to review with a star option making the user more interactive with the theme of Little bites. I feel with more time and experience I feel I could accomplish this.
 - I wanted to add in socail media logins, allowing the users to connect their other socail profile but again my current knowledge and time frame I felt I couldnt get this done to an acceptable level.
 - I wanted to incorporate Tailwind CSS styles into my project to separate it from other projects, but as this was new to me, I felt the time would have been wasted focusing so much on style. Additionally, I found the verbosity of HTML classes in Tailwind CSS to be less visually appealing or harder to read compared to Bootstrap's more structured HTML markup. This made the learning curve steeper and the transition more challenging.
+- I would like to bring the suport further and setup a page for admins within the site to just deal with errors but I was at the end of my project when I set this up and I didnt want to start something I might not of been able to finsih
 
 ## Testing
 
@@ -892,6 +923,9 @@ widgets = {
 - When the image is too big it mishapes the image circle on the post detail card.
 - The password reset section is incomplete, Everytime I try email from the page it throws a error. Unfortunately, I dont have the knowledge to fufill this function before my projects dead line. So for testing purposes I will removed the forgot password fucntion.
 - I couldnt quite get the time or focus to apply the socials authentication, I really wanted to add this hence the enteries in the setting.py file however they were only added back in to prevent an error I know it is not a bug but I thought it was worth mention.
+- Whem the site runs I get the follow error in dev tools, This error is in relation to the cloudinary urls loading in http instead of https I had a look around the setting for a correction but I could not find anything.
+![error-cloudinary](docs/images/cloud-bug.JPG)
+
 
 
 ## Deployment

@@ -8,6 +8,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.utils.text import slugify
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -76,6 +77,7 @@ def post_detail(request, slug):
     )
 
 
+@login_required
 def post_creation(request):
     """
     Handles the creation of a new post.

@@ -247,7 +247,7 @@ The following table describes each password strength rule.
 ![Card Top](docs/images/card_top.JPG)
 
 - Recognizing that sometimes a post might catch your eye but not immediately draw you in with just the information above, the description button reveals a box on the card with the description the user set for the recipe, along with another button that leads to the post's detailed page. This creates a step-by-step journey for the user, rather than overwhelming them with all the information at once or making them hunt for it at the end.
-
+- However, each recipe name holds the link to the post just in case the users do not need to read the description.
 ![Card Bottom](docs/images/card_bottom.JPG)
 
 ##### Pagination
@@ -578,7 +578,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 - Because the majority of this project's time was spent on the python, I found it necessary to test the Django view and forms. Using Django test functionality, I ran a number of test.
 - After I set up each test, I ran the tests using python3 manage.py test.
-- There is a total of 36 tests
+- There is a total of 36 tests:
 
 #### Performance
 
@@ -750,8 +750,6 @@ The form is divided into four distinct sections, each represented by a carousel 
   - Test password change with valid input.
 - **test_password_change_view_post_invalid_old_password**
   - Test password change with invalid old password.
-
-
 
 
 ### User testing

@@ -38,8 +38,8 @@
       </button>
       <div class="collapse" id="collapse{{ forloop.counter }}">
         <div class="card card-body">
-          <p class="p-3">{{ post.description | safe }}</p>
-          <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read More</a>
+          <p class="fs-4">{{ post.description | safe }}</p>
+          <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary fs-4">Read More</a>
         </div>
       </div>
     </div>

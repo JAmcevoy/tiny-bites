@@ -6,7 +6,6 @@
 {% if not user_posts %}
 <div class="full-page-overlay">
   <div class="water-text" data-text="No posts yet. Click Create above to start!">No posts yet. Click Create above to start!</div>
-  
 </div>
 {% endif %}
 
@@ -17,21 +16,21 @@
     <div class="col mb-4">
       <div class="card h-100">
         <div class="image-container">
-          <img
-            src="{% if 'placeholder' in record.featured_image.url %}{% static 'images/default_2.jpg' %}{% else %}{{ record.featured_image.url }}{% endif %}"
-            class="card-img-top" alt="{{ record.title }}">
-            <button type="button" class="btn btn-danger position-absolute top-0 end-0 delete-post" data-bs-toggle="modal" data-bs-target="#deleteModal{{ record.id }}"><i class="fas fa-times"></i></button>
-
+          <img src="{% if 'placeholder' in record.featured_image.url %}{% static 'images/default_2.jpg' %}{% else %}{{ record.featured_image.url }}{% endif %}" class="card-img-top" alt="{{ record.title }}">
+          <button type="button" class="btn btn-danger position-absolute top-0 end-0 delete-post" data-bs-toggle="modal" data-bs-target="#deleteModal{{ record.id }}"><i class="fas fa-times"></i></button>
         </div>
         <div class="card-body">
           <h5 class="card-title">{{ record.name }}</h5>
           <p class="card-text">{{ record.description | safe }}</p>
           <p class="card-text"><small class="text-muted">By {{ record.author }} | {{ record.created_at }}</small></p>
-          <a href="{% url 'post_detail' record.slug %}" class="btn btn-primary">View Details</a>
-          <a href="{% url 'edit_post' record.slug %}" class="btn btn-primary">Edit Details</a>
+          <div class="btn-group" role="group">
+            <a href="{% url 'post_detail' record.slug %}" class="btn btn-primary">View Details</a>
+            <a href="{% url 'edit_post' record.slug %}" class="btn btn-primary">Edit Details</a>
+          </div>
         </div>
       </div>
     </div>
+    <!-- Delete Post Modal -->
     <div class="modal fade" id="deleteModal{{ record.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ record.id }}" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -56,7 +55,7 @@
   </div>
 </div>
 
-<nav aria-label="...">
+<nav aria-label="Pagination">
   <ul class="pagination justify-content-center">
     {% if user_posts.has_previous %}
     <li class="page-item">
@@ -66,11 +65,9 @@
     </li>
     {% endif %}
     
-    {% if user_posts.has_previous or user_posts.has_next %}
     <li class="page-item disabled">
       <span class="page-link">Page {{ user_posts.number }} of {{ user_posts.paginator.num_pages }}</span>
     </li>
-    {% endif %}
 
     {% if user_posts.has_next %}
     <li class="page-item">

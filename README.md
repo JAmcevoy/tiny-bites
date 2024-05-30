@@ -751,6 +751,18 @@ The form is divided into four distinct sections, each represented by a carousel 
 - **test_password_change_view_post_invalid_old_password**
   - Test password change with invalid old password.
 
+#### Results
+    - /workspaces/tiny-bites$ python3 manage.py test
+    Found 36 test(s).
+    Creating test database for alias 'default'...
+    System check identified no issues (0 silenced).
+    ....................................
+    ----------------------------------------------------------------------
+    Ran 36 tests in 44.442s
+
+    OK
+    Destroying test database for alias 'default'...
+
 
 ### User testing
 

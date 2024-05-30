@@ -547,7 +547,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 - They can then build their reports with the use of the 'Submit Error Report' form, this form contains :
   - Issue (Cause or Area of Issue)
-  - Email
+  - Email ( When the user is logged in their email is automatically assigned )
   - Description.
 
 ![Error Report Form](docs/images/submit-form.JPG)

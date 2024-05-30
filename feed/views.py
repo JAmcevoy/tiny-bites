@@ -1,14 +1,19 @@
+# Standard Library Imports
+import datetime
+
+# Django Imports
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
-from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.db.models import Q
 from django.utils.text import slugify
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.views import PasswordChangeView
+
+# Local Application Imports
 from .models import Create, Comment
 from .forms import PostFormCreate, CommentForm
 
@@ -74,7 +79,8 @@ def post_detail(request, slug):
 def post_creation(request):
     """
     Handles the creation of a new post.
-    Generates a unique slug for each post and displays appropriate messages based on the form submission result.
+    Generates a unique slug for each post and displays appropriate messages 
+    based on the form submission result.
     """
     if request.method == "POST":
         create_form = PostFormCreate(request.POST, request.FILES)
@@ -109,7 +115,7 @@ def edit_post(request, slug):
         form = PostFormCreate(request.POST, request.FILES, instance=post)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Your bite has Updated successfully.')
+            messages.success(request, 'Your bite has been updated successfully.')
             return redirect('post_detail', slug=post.slug)
     else:
         form = PostFormCreate(instance=post)
@@ -118,16 +124,16 @@ def edit_post(request, slug):
 
 def delete_posts(request, slug):
     """
-    Handles the deletation of a existing post
+    Handles the deletion of an existing post
     """
     post = get_object_or_404(Create, slug=slug)
 
     if request.user == post.author or request.user.is_superuser:
         post.delete()
-        messages.success(request, 'Your bite deleted successfully.')
+        messages.success(request, 'Your bite was deleted successfully.')
         return redirect('my_bites')
     else:
-        messages.danger(request, 'There has been an error, Try again later.')
+        messages.error(request, 'There has been an error. Try again later.')
         return redirect('my_bites')
 
 
@@ -149,7 +155,7 @@ def my_bites(request):
 
         return render(request, "feed/my_bites.html", {'user_posts': user_posts})
     else:
-        return render(request, "account/login.html")
+        return redirect('login')
 
 
 def to_be_approved(request):
@@ -161,7 +167,7 @@ def to_be_approved(request):
         comments_pending = Comment.objects.filter(post__in=user_posts, approved=False)
         return render(request, "feed/to_be_approved.html", {'comments_pending': comments_pending})
     else:
-        return render(request, "account/login.html")
+        return redirect('login')
 
 
 def approve_comment(request, comment_id):
@@ -176,14 +182,16 @@ def approve_comment(request, comment_id):
 
 def delete_comment(request, comment_id):
     """
-    Deletes a comment.
-    Redirects to the referring URL if available, otherwise redirects to the post detail page.
+    Deletes a comment. Redirects to the referring URL if available, 
+    otherwise redirects to the post detail page.
     """
     comment = get_object_or_404(Comment, id=comment_id)
     request.session['referring_url'] = request.META.get('HTTP_REFERER', None)
     default_url = reverse('post_detail', kwargs={'slug': comment.post.slug})
 
-    if request.user == comment.author or request.user.is_superuser or comment.post.author == request.user:
+    if (request.user == comment.author or 
+        request.user.is_superuser or 
+        comment.post.author == request.user):
         comment.delete()
         messages.success(request, 'Comment deleted successfully.')
         return referring_url(request, default_url)
@@ -247,7 +255,6 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, f"You have successfully logged in as {request.user.username}.")
             if next_url:
                 return redirect(next_url)
             else:
@@ -276,7 +283,7 @@ def profile(request):
         else:
             return render(request, 'feed/profile.html')
     else:
-        return render(request, "account/login.html")
+        return redirect('login')
 
 
 class CustomPasswordChangeView(PasswordChangeView):
@@ -284,15 +291,10 @@ class CustomPasswordChangeView(PasswordChangeView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-
-        # Update session auth hash to prevent user from being logged out
         update_session_auth_hash(self.request, self.request.user)
-
-        # Notify user of successful password change
         messages.success(self.request, 'Password changed successfully!')
-
         return response
 
     def form_invalid(self, form):
-        messages.error(self.request, 'Incorrect Password!')
+        messages.error(self.request, 'Your old password was entered incorrectly.')
         return HttpResponseRedirect(reverse_lazy('profile'))

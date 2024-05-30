@@ -37,7 +37,6 @@
             <div class="col-md-6">
                 <h3>Comments: {{ comment_count }}</h3>
                 <div class="card-body overflow-auto" style="max-height: 600px;">
-                    <!-- Show approved comments and pending comments for post owner and user who posted it -->
                     {% for comment in comments %}
                     {% if comment.approved or comment.author == user or comment.post.author == user %}
                     <div class="comment {% if not comment.approved %}pending{% endif %}">
@@ -50,10 +49,8 @@
                                 {% endif %}
                                 <span class="comment-time">{{ comment.created_on }}</span>
                                 {% if user.is_authenticated and comment.author == user %}
-                                <!-- Edit Comment Button -->
                                 <button type="button" class="btn btn-delete text-primary" data-bs-toggle="modal"
                                     data-bs-target="#editModal{{ comment.id }}">Edit</button>
-                                <!-- Delete Comment Button -->
                                 <button type="button" class="btn btn-delete text-danger" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal{{ comment.id }}">Delete</button>
                                 {% endif %}
@@ -61,7 +58,6 @@
                         </div>
                     </div>
                     {% endif %}
-                    <!-- Delete Comment Modal -->
                     <div class="modal fade" id="deleteModal{{ comment.id }}" tabindex="-1"
                         aria-labelledby="deleteModalLabel{{ comment.id }}" aria-hidden="true">
                         <div class="modal-dialog">
@@ -82,7 +78,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Edit Comment Modal -->
                     {% for comment, form in commented_forms %}
                     <div class="modal fade" id="editModal{{ comment.id }}" tabindex="-1"
                         aria-labelledby="editModalLabel{{ comment.id }}" aria-hidden="true">

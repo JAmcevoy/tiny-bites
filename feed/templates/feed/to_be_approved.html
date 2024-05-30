@@ -20,7 +20,6 @@
                 {% csrf_token %}
                 <button type="button" class="btn btn-success" data-bs-toggle="modal"
                   data-bs-target="#approveModal{{ comment.id }}">Approve</button>
-                <!-- Approve Modal -->
                 <div class="modal fade" id="approveModal{{ comment.id }}" tabindex="-1"
                   aria-labelledby="approveModalLabel{{ comment.id }}" aria-hidden="true">
                   <div class="modal-dialog">
@@ -44,7 +43,6 @@
                 {% csrf_token %}
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                   data-bs-target="#deleteModal{{ comment.id }}">Delete</button>
-                <!-- Delete Modal -->
                 <div class="modal fade" id="deleteModal{{ comment.id }}" tabindex="-1"
                   aria-labelledby="deleteModalLabel{{ comment.id }}" aria-hidden="true">
                   <div class="modal-dialog">

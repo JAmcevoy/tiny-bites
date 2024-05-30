@@ -1,7 +1,9 @@
 from django.test import TestCase
 from django_summernote.widgets import SummernoteWidget
 from .forms import CommentForm, PostFormCreate
+
 from .models import Comment, Create
+
 
 class CommentFormTest(TestCase):
 
@@ -17,6 +19,7 @@ class CommentFormTest(TestCase):
     def test_comment_form_invalid_data(self):
         form = CommentForm(data={'body': ''})
         self.assertFalse(form.is_valid())
+
 
 class PostFormCreateTest(TestCase):
 

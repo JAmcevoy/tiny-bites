@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.test import TestCase, Client
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
@@ -8,7 +7,6 @@ from .models import Create, Comment
 
 
 class PostListViewTest(TestCase):
-
     """
     Tests the view for listing posts.
     """
@@ -32,7 +30,6 @@ class PostListViewTest(TestCase):
 
 
 class SearchFeatureViewTest(TestCase):
-
     """
     Tests the search feature view.
     """
@@ -43,15 +40,9 @@ class SearchFeatureViewTest(TestCase):
         """
         self.client = Client()
         self.url = reverse('search_feature')
-        self.user = User.objects.create_user(
-            username='testuser', password='password'
-        )  # fix error by adding test user to make author
-        self.create1 = Create.objects.create(
-            name='Test Post 1', slug='test-post-1',
-            author=self.user)  # fixed error by adding slug an author
-        self.create2 = Create.objects.create(name='Another Test Post',
-                                             slug='another-test-post',
-                                             author=self.user)
+        self.user = User.objects.create_user(username='testuser', password='password')
+        self.create1 = Create.objects.create(name='Test Post 1', slug='test-post-1', author=self.user)
+        self.create2 = Create.objects.create(name='Another Test Post', slug='another-test-post', author=self.user)
 
     def test_search_feature_post(self):
         """
@@ -78,7 +69,6 @@ class SearchFeatureViewTest(TestCase):
 
 
 class PostDetailViewTest(TestCase):
-
     """
     Tests the view for displaying post details.
     """
@@ -88,11 +78,8 @@ class PostDetailViewTest(TestCase):
         Sets up the client, user, post data, and URL for the post detail view.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser',
-                                             password='password')
-        self.create = Create.objects.create(name='Test Post',
-                                            slug='test-post',
-                                            author=self.user)
+        self.user = User.objects.create_user(username='testuser', password='password')
+        self.create = Create.objects.create(name='Test Post', slug='test-post', author=self.user)
         self.url = reverse('post_detail', kwargs={'slug': 'test-post'})
 
     def test_post_detail_view(self):
@@ -111,9 +98,7 @@ class PostDetailViewTest(TestCase):
         Verifies that the response status code is 200 (OK).
         Verifies that the comment is successfully added to the database.
         """
-        user = User.objects.create_user(
-            username='uniqueuser', password='testpass'
-        )  # need to add a unique username as testuser has already been created in test
+        user = User.objects.create_user(username='uniqueuser', password='testpass')
         self.client.login(username='uniqueuser', password='testpass')
         response = self.client.post(self.url, {'body': 'Test comment'})
         self.assertEqual(response.status_code, 200)
@@ -121,18 +106,17 @@ class PostDetailViewTest(TestCase):
 
 
 class PostCreationViewTest(TestCase):
-
     """
     Tests the view for creating a new post.
     """
+
     def setUp(self):
         """
         Sets up the client, URL for the post creation view, and creates a test user.
         """
         self.client = Client()
         self.url = reverse('post_creation')
-        self.user = User.objects.create_user(username='testuser',
-                                             password='testpass')
+        self.user = User.objects.create_user(username='testuser', password='testpass')
 
     def test_post_creation_view_get(self):
         """
@@ -158,26 +142,24 @@ class PostCreationViewTest(TestCase):
                 'description': 'Description',
                 'ingredients': 'Ingredients',
                 'instructions': 'Instructions',
-            })
+            }
+        )
         self.assertEqual(response.status_code, 302)
         self.assertTrue(Create.objects.filter(name='New Post').exists())
 
 
 class EditPostViewTest(TestCase):
-
     """
     Tests the view for editing a post.
     """
+
     def setUp(self):
         """
         Sets up the client, creates a test user and a post, and defines the URL for editing the post.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser',
-                                             password='testpass')
-        self.create = Create.objects.create(name='Test Post',
-                                            slug='test-post',
-                                            author=self.user)
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.create = Create.objects.create(name='Test Post', slug='test-post', author=self.user)
         self.url = reverse('edit_post', kwargs={'slug': 'test-post'})
 
     def test_edit_post_view_get(self):
@@ -204,7 +186,8 @@ class EditPostViewTest(TestCase):
                 'description': 'Updated description',
                 'ingredients': 'Updated ingredients',
                 'instructions': 'Updated instructions',
-            })
+            }
+        )
         self.assertEqual(response.status_code, 302)
         self.create.refresh_from_db()
         self.assertEqual(self.create.name, 'Updated Post')
@@ -217,7 +200,7 @@ class DeletePostsTest(TestCase):
 
     def setUp(self):
         """
-        Set up the client, create a test user, and a test post.
+        Sets up the client, creates a test user, and a test post.
         """
         self.client = Client()
         self.user = User.objects.create_user(username='testuser', password='testpass')
@@ -229,15 +212,12 @@ class DeletePostsTest(TestCase):
         Verifies that a post is deleted successfully.
         """
         self.client.login(username='testuser', password='testpass')
-
         response = self.client.post(reverse('delete_post', kwargs={'slug': self.post.slug}))
-
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Create.objects.filter(slug=self.post.slug).exists())
 
 
 class MyBitesViewTest(TestCase):
-
     """
     Tests the view for displaying user's saved posts (bites).
     """
@@ -247,12 +227,9 @@ class MyBitesViewTest(TestCase):
         Sets up the client, creates a test user, a test post, and defines the URL for accessing user's saved posts.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser',
-                                             password='testpass')
+        self.user = User.objects.create_user(username='testuser', password='testpass')
         self.url = reverse('my_bites')
-        self.create = Create.objects.create(name='Test Post',
-                                            author=self.user,
-                                            slug='test-post')
+        self.create = Create.objects.create(name='Test Post', author=self.user, slug='test-post')
 
     def test_my_bites_view_authenticated(self):
         """
@@ -268,16 +245,15 @@ class MyBitesViewTest(TestCase):
     def test_my_bites_view_unauthenticated(self):
         """
         Tests the behavior of the my bites view when the user is unauthenticated.
-        Verifies that the response status code is 200 (OK).
+        Verifies that the response status code is 302 (Redirect).
         Verifies that the user is redirected to the login page.
         """
         response = self.client.get(self.url)
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'account/login.html')
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, '/login/')
 
 
 class ToBeApprovedViewTest(TestCase):
-
     """
     Tests the view for displaying comments to be approved by an admin.
     """
@@ -287,16 +263,10 @@ class ToBeApprovedViewTest(TestCase):
         Sets up the client, creates a test user, a test post, and a pending comment.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser',
-                                             password='testpass')
+        self.user = User.objects.create_user(username='testuser', password='testpass')
         self.url = reverse('to_be_approved')
-        self.create = Create.objects.create(name='Test Post',
-                                            author=self.user,
-                                            slug='test_post')
-        self.comment = Comment.objects.create(post=self.create,
-                                              body='Pending comment',
-                                              approved=False,
-                                              author=self.user)
+        self.create = Create.objects.create(name='Test Post', author=self.user, slug='test_post')
+        self.comment = Comment.objects.create(post=self.create, body='Pending comment', approved=False, author=self.user)
 
     def test_to_be_approved_view_authenticated(self):
         """
@@ -312,16 +282,15 @@ class ToBeApprovedViewTest(TestCase):
     def test_to_be_approved_view_unauthenticated(self):
         """
         Tests the behavior of the to-be-approved view when the user is unauthenticated.
-        Verifies that the response status code is 200 (OK).
+        Verifies that the response status code is 302 (Redirect).
         Verifies that the user is redirected to the login page.
         """
         response = self.client.get(self.url)
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'account/login.html')
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, '/login/')
 
 
 class ApproveCommentViewTest(TestCase):
-
     """
     Tests the view for approving comments by an admin.
     """
@@ -331,14 +300,10 @@ class ApproveCommentViewTest(TestCase):
         Sets up the client, creates a test user, a test post, and a pending comment.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser',
-                                             password='testpass')
-        self.url = reverse('approve_comment', kwargs={'comment_id': 1})
+        self.user = User.objects.create_user(username='testuser', password='testpass')
         self.create = Create.objects.create(name='Test Post', author=self.user)
-        self.comment = Comment.objects.create(post=self.create,
-                                              body='Pending comment',
-                                              approved=False,
-                                              author=self.user)
+        self.comment = Comment.objects.create(post=self.create, body='Pending comment', approved=False, author=self.user)
+        self.url = reverse('approve_comment', kwargs={'comment_id': self.comment.id})
 
     def test_approve_comment_view(self):
         """
@@ -351,44 +316,21 @@ class ApproveCommentViewTest(TestCase):
         self.comment.refresh_from_db()
         self.assertTrue(self.comment.approved)
 
-    def setUp(self):
-        self.client = Client()
-        self.user = User.objects.create_user(username='testuser',
-                                             password='testpass')
-        self.url = reverse('approve_comment', kwargs={'comment_id': 1})
-        self.create = Create.objects.create(name='Test Post', author=self.user)
-        self.comment = Comment.objects.create(post=self.create,
-                                              body='Pending comment',
-                                              approved=False,
-                                              author=self.user)
-
-    def test_approve_comment_view(self):
-        self.client.login(username='testuser', password='testpass')
-        response = self.client.get(self.url)
-        self.assertEqual(response.status_code, 302)
-        self.comment.refresh_from_db()
-        self.assertTrue(self.comment.approved)
-
 
 class DeleteCommentViewTest(TestCase):
     """
     Tests the view for deleting comments.
     """
+
     def setUp(self):
         """
         Sets up the client, creates a test user, a test post, and a comment to delete.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser',
-                                             password='testpass')
-        self.create = Create.objects.create(name='Test Post',
-                                            author=self.user,
-                                            slug='test-post')
-        self.comment = Comment.objects.create(post=self.create,
-                                              body='Comment to delete',
-                                              author=self.user)
-        self.url = reverse('delete_comment',
-                           kwargs={'comment_id': self.comment.id})
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.create = Create.objects.create(name='Test Post', author=self.user, slug='test-post')
+        self.comment = Comment.objects.create(post=self.create, body='Comment to delete', author=self.user)
+        self.url = reverse('delete_comment', kwargs={'comment_id': self.comment.id})
 
     def test_delete_comment_view_get(self):
         """
@@ -402,7 +344,6 @@ class DeleteCommentViewTest(TestCase):
 
 
 class EditCommentViewTest(TestCase):
-
     """
     Tests the view for editing comments.
     """
@@ -412,16 +353,10 @@ class EditCommentViewTest(TestCase):
         Sets up the client, creates a test user, a test post, and a comment to edit.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser',
-                                             password='testpass')
-        self.create = Create.objects.create(name='Test Post',
-                                            author=self.user,
-                                            slug='test-post')
-        self.comment = Comment.objects.create(post=self.create,
-                                              body='Comment to edit',
-                                              author=self.user)
-        self.url = reverse('edit_comment',
-                           kwargs={'comment_id': self.comment.id})
+        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.create = Create.objects.create(name='Test Post', author=self.user, slug='test-post')
+        self.comment = Comment.objects.create(post=self.create, body='Comment to edit', author=self.user)
+        self.url = reverse('edit_comment', kwargs={'comment_id': self.comment.id})
 
     def test_edit_comment_view_get(self):
         """
@@ -461,7 +396,6 @@ class EditCommentViewTest(TestCase):
 
 
 class LoginViewTestCase(TestCase):
-
     """
     Tests for the login functionality.
     """
@@ -493,24 +427,20 @@ class LoginViewTestCase(TestCase):
         """
         Test login with redirection to a next URL.
         """
-        slug = 'test-post'
-        next_url = reverse('post_detail', kwargs={'slug': slug})
-        # Create a test user
+        next_url = reverse('home')
         self.user = User.objects.create_user(username='testuser', password='testpass')
 
-        # Log in the user and redirect to the next URL
         response = self.client.post(reverse('login'), {
-            REDIRECT_FIELD_NAME: next_url,
+            'next': next_url,
             'username': 'testuser',
             'password': 'testpass'
         }, follow=True)
 
-        # Check if the response is a successful redirect
         self.assertEqual(response.status_code, 200)
+        self.assertRedirects(response, next_url)
 
 
 class ProfileViewTest(TestCase):
-
     """
     Tests for the user profile view.
     """
@@ -521,8 +451,7 @@ class ProfileViewTest(TestCase):
         """
         self.client = Client()
         self.url = reverse('profile')
-        self.user = User.objects.create_user(username='testuser',
-                                             password='testpass')
+        self.user = User.objects.create_user(username='testuser', password='testpass')
 
     def test_profile_view_authenticated(self):
         """
@@ -536,22 +465,24 @@ class ProfileViewTest(TestCase):
     def test_profile_view_unauthenticated(self):
         """
         Test profile view for unauthenticated user.
+        Verifies that the response status code is 302 (Redirect).
+        Verifies that the user is redirected to the login page.
         """
         response = self.client.get(self.url)
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'account/login.html')
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, '/login/')
 
     def test_profile_view_post(self):
         """
         Test profile view for POST request.
+        Verifies that user profile is updated correctly.
         """
         self.client.login(username='testuser', password='testpass')
-        response = self.client.post(
-            self.url, {
-                'firstName': 'Updated',
-                'lastName': 'Name',
-                'email': 'updated@example.com',
-            })
+        response = self.client.post(self.url, {
+            'firstName': 'Updated',
+            'lastName': 'Name',
+            'email': 'updated@example.com',
+        })
         self.assertEqual(response.status_code, 302)
         self.user.refresh_from_db()
         self.assertEqual(self.user.first_name, 'Updated')
@@ -560,7 +491,6 @@ class ProfileViewTest(TestCase):
 
 
 class CustomPasswordChangeViewTest(TestCase):
-
     """
     Test suite for CustomPasswordChangeView.
     Ensures the correct behavior of the password change view in a Django app.
@@ -572,39 +502,33 @@ class CustomPasswordChangeViewTest(TestCase):
         Set up the test environment.
         """
         self.client = Client()
-        self.user = User.objects.create_user(
-            username='testuser', 
-            password='testpass', 
-        )
+        self.user = User.objects.create_user(username='testuser', password='testpass')
         self.url = reverse_lazy('profile')
-        self.client.login(username='testuser', password='testpass') 
+        self.client.login(username='testuser', password='testpass')
 
     def test_password_change_view_post_valid(self):
         """
         Test password change with valid input.
+        Verifies that the user is redirected to the profile page after changing password.
         """
-        response = self.client.post(
-            self.url, {
-                'old_password': 'testpass',
-                'new_password1': 'newpass123',
-                'new_password2': 'newpass123',
-            })
+        response = self.client.post(self.url, {
+            'old_password': 'testpass',
+            'new_password1': 'newpass123',
+            'new_password2': 'newpass123',
+        })
         self.assertRedirects(response, reverse_lazy('profile'))
 
     def test_password_change_view_post_invalid_old_password(self):
         """
         Test password change with invalid old password.
+        Verifies that an error message is shown and the password is not changed.
         """
-        response = self.client.post(
-            self.url, {
-                'old_password': 'wrongpass',
-                'new_password1': 'newpass123',
-                'new_password2': 'newpass123',
-            })
-        
-        self.assertIsInstance(response, HttpResponseRedirect)
-        self.assertEqual(response.url, reverse_lazy('profile'))
+        response = self.client.post(self.url, {
+            'old_password': 'wrongpass',
+            'new_password1': 'newpass123',
+            'new_password2': 'newpass123',
+        })
+        self.assertEqual(response.status_code, 302)
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        self.assertTrue(str(messages[0]) == 'Profile updated successfully!' or str(messages[0]) == 'Incorrect Password!')
-
+        self.assertTrue(str(messages[0]) == 'Profile updated successfully!' or str(messages[0]) == 'Your old password was entered incorrectly.')

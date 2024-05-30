@@ -7,9 +7,7 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('body',)
-        labels = {
-            'body': 'Comment'
-        }
+        labels = {'body': 'Comment'}
 
 
 class PostFormCreate(forms.ModelForm):

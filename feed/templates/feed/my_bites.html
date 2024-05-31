@@ -24,9 +24,9 @@
           <p class="card-text">{{ record.description | safe }}</p>
           <p class="card-text"><small class="text-muted">By {{ record.author }} | {{ record.created_at }}</small></p>
           <div class="btn-group" role="group">
-            <a href="{% url 'post_detail' record.slug %}" class="btn btn-primary">View Details</a>
+            <a href="{% url 'post_detail' record.slug %}" class="btn btn-primary me-2">View Details</a>
             <a href="{% url 'edit_post' record.slug %}" class="btn btn-primary">Edit Details</a>
-          </div>
+        </div>
         </div>
       </div>
     </div>

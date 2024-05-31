@@ -121,6 +121,15 @@
     </span>
     <span class="support-label">Support</span>
   </div>
+  
+  {% if user.is_superuser or user.is_staff %}
+  <div id="admin-bubble" aria-label="Admin">
+      <span class="display-6">
+          <i class="fas fa-user-cog"></i>
+      </span>
+      <span class="support-label">Admin</span>
+  </div>
+  {% endif %}
 
   <footer class="bg-primary p-2 text-dark bg-opacity-10 py-2">
     <div class="container">

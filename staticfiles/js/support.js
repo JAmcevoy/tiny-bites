@@ -9,3 +9,8 @@ document.getElementById("support-bubble").onclick = function() {
     var supportUrl = window.location.origin + "/support/submit_error/";
     window.location.href = supportUrl;
 }
+
+document.getElementById("admin-bubble").onclick = function() {
+    var supportUrl = window.location.origin + "/admin/";
+    window.location.href = supportUrl;
+}

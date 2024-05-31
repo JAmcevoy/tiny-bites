@@ -1,7 +1,5 @@
-# Standard Library Imports
 import datetime
 
-# Django Imports
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse, reverse_lazy
@@ -14,7 +12,6 @@ from django.utils.text import slugify
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.views import PasswordChangeView
 
-# Local Application Imports
 from .models import Create, Comment
 from .forms import PostFormCreate, CommentForm
 
@@ -61,6 +58,7 @@ def post_detail(request, slug):
                 request, messages.SUCCESS,
                 'Comment submitted and awaiting approval'
             )
+            return redirect('post_detail', slug=post.slug)
 
     comment_form = CommentForm()
 

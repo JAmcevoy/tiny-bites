@@ -985,7 +985,8 @@ Now there is no errors in the console and the images are saving with https, I ve
 ![htttp error fixed](docs/images/http-error-fixed.JPG)
 - **ErrorReport object (2)** The page was trying to bring up account/profile, but there was not a URL configured for this path. To counter the redirection, I decide to hard code the redirection with the settings.py file. - Copied from '***Steps taken to correct***'
 - **ErrorReport object (6)** When there is no post in my bites the page number still shows. While I was making changes to the HTML the div moved out of the conditional loop. I put it in if user.post has next and it is now hidden. - Copied from '***Steps taken to correct***'
-- **ErrorReport object (7)** The back/next buttons could be a bit more intuitive, maybe underneath the text box rather than as arrows at the side of the page. Because this confused most users I thought it was best to remove the arrows. It makes the form clearer to understand. - - Copied from '***Steps taken to correct***'
+- **ErrorReport object (7)** The back/next buttons could be a bit more intuitive, maybe underneath the text box rather than as arrows at the side of the page. Because this confused most users I thought it was best to remove the arrows. It makes the form clearer to understand. - Copied from '***Steps taken to correct***'
+- **ErrorReport object (8)** The view wasn't redirecting after the comments were not showing, so this resulted in the page not updating with the new comment. I added return redirect('post_detail', slug=post.slug) below the save for the comment form in the view, test it, and it is now refreshing the page and displaying the comment too. - Copied from '***Steps taken to correct***
 
 ### Bugs I did not get to fix
 
@@ -994,6 +995,7 @@ Now there is no errors in the console and the images are saving with https, I ve
 - The password reset section is incomplete, Every time I try email from the page it throws an error. Unfortunately, I don't have the knowledge to fu fill this function before my project's deadline. So for testing purposes, I will remove the forgot password function.
 - I couldn't quite get the time or focus to apply the social's authentication. I really wanted to add this, hence the entries in the setting.py file. However, they were only added back in to prevent an error. I know it is not a bug, but I thought it was worth mention.
 - While I was running the testing for the view I notice that the change password error would not be corrected no matter what actions I took. I soon found out because the page was refreshed the profile page it was submitting that form and show the profile success message, but in the UI I could see it was displaying the password updated message. So, to get the test to pass, I added self.assertTrue(str(messages[0]) == 'Profile updated successfully!' or str(messages[0]) == 'Incorrect Password!'). I know this is against the point of testing, but I had no idea how to stop this and assume it was a side effect of using the same page. I felt I should add that here due to it not being corrected at the root of the issue.
+- When a user is signing up and the password dont match the form resets I think this is bad user experience becasue they have to fill it all out again, I believe I could correct this with some js but I could find the time to get it done.
 
 
 ## Deployment

@@ -277,8 +277,8 @@ footer {
 #support-bubble,
 #admin-bubble {
   position: fixed;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   background-color: #007bff;
   color: white;
   border-radius: 50%;
@@ -309,7 +309,7 @@ footer {
 }
 
 #support-bubble {
-  bottom: 90px;
+  bottom: 120px;
   right: 20px;
 }
 
@@ -345,6 +345,11 @@ footer {
     font-size: 14px;
     margin-top: 2px;
   }
+
+  #support-bubble:hover,
+  #admin-bubble:hover {
+    width: 75;
+}
 
   .scale {
     height: 300px;

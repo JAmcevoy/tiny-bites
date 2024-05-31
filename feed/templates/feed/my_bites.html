@@ -65,11 +65,11 @@
     </li>
     {% endif %}
     
+  
+    {% if user_posts.has_next %}
     <li class="page-item disabled">
       <span class="page-link">Page {{ user_posts.number }} of {{ user_posts.paginator.num_pages }}</span>
     </li>
-
-    {% if user_posts.has_next %}
     <li class="page-item">
       <a class="page-link" href="?page={{ user_posts.next_page_number }}" aria-label="Next">
         <span aria-hidden="true"><i class="fas fa-chevron-right"></i></span>

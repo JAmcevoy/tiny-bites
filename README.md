@@ -787,6 +787,7 @@ The form is divided into four distinct sections, each represented by a carousel 
   8. **What was your experience with logging out of the website using the logout modal?**
   9. **Overall, how would you rate the ease of use and intuitiveness of the website?**
   10. **Is there any specific feedback or suggestions you have for improving the website's usability?**
+  11. **Did you create a post? If not log back in and try. Do you fine it easy to understand?**
 
 
 #### User 1 (jackyd420)
@@ -804,16 +805,17 @@ The form is divided into four distinct sections, each represented by a carousel 
 9. 7/10 as the login was a bit strange.
 10. Nothing at the top of my mind besides changing the comment approval system but after explanation I understand why they are separate with if the login had worked on first go the score would-be high, but the quick process of the support submission was a big help having so close.
 #### User 2
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
+1. It was very easy to sign up to. 
+2. No, it was good and easy.
+3. I was able to update my information straight away so that much it much easier.
+4. The search bar was extremly helpful
+5. I was able to understand it fine.
+6. it is very useful, easy to work and perfect for if you really dont know what you are doing
+7. Yes, I did.
+8. Not difficult at all, very simple
+9. 10 / 10 rating I really enjoyed using the site was just not so fun without a community to share with.
+10. No, I liked it all
+11. Yes I did, I found it simple to understand
 #### User 3
 1.
 2.
@@ -825,6 +827,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 8.
 9.
 10.
+11.
 #### User 4
 1.
 2.
@@ -836,7 +839,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 8.
 9.
 10.
-
+11.
 
 ### Validator Testing
 

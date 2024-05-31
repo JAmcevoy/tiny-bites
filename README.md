@@ -6,7 +6,7 @@ Tiny Bites is more than just a food website; it's a culinary community where use
 
 Whether it's a gourmet twist on instant noodles or a cherished lunchtime BLT spot, Tiny Bites invites users to explore and celebrate the world of snacks and tiny delights. With a focus on user-friendly design, the platform aims to provide a seamless experience for posting recipes and sharing ratings. It's not just about food; it's about sharing thoughts, emotions, and experiences surrounding everyone's ultimate passion: food.
 
-![Responsive Mock-up](doc/images/responsive-all-screens.JPG)
+![Responsive Mock-up](docs/images/responsive.JPG)
 
 ## User Needs
 
@@ -943,6 +943,8 @@ widgets = {
             ]}}),
         }
 ```
+- I could get the page to show on [Amiresponsive](https://ui.dev/amiresponsive?). The kept getting the error below : 
+![response](docs/images/respon-error.JPG) I just search around for a different site that would work and I finally found <https://usepastel.com/responsive-website-test>
 
 ### Bugs I did not get to fix
 
@@ -953,8 +955,6 @@ widgets = {
 - When the site runs, I get the follow error in dev tools. This error is in relation to the Cloudinary URLs loading in http instead of https. I had a look around the setting for a correction, but I could not find anything.
 ![error-cloudinary](docs/images/cloud-bug.JPG)
 - While I was running the testing for the view I notice that the change password error would not be corrected no matter what actions I took. I soon found out because the page was refreshed the profile page it was submitting that form and show the profile success message, but in the UI I could see it was displaying the password updated message. So, to get the test to pass, I added self.assertTrue(str(messages[0]) == 'Profile updated successfully!' or str(messages[0]) == 'Incorrect Password!'). I know this is against the point of testing, but I had no idea how to stop this and assume it was a side effect of using the same page. I felt I should add that here due to it not being corrected at the root of the issue.
-- I could get the page to show on [Amiresponsive](https://ui.dev/amiresponsive?). The kept getting the error below : 
-![response](docs/images/respon-error.JPG)
 - **ErrorReport object (2)** The page was trying to bring up account/profile, but there was not a URL configured for this path. To counter the redirection, I decide to hard code the redirection with the settings.py file. - Copied from '***Steps taken to correct***'
 - **ErrorReport object (6)** When there is no post in my bites the page number still shows. While I was making changes to the HTML the div moved out of the conditional loop. I put it in if user.post has next and it is now hidden. - Copied from '***Steps taken to correct***'
 - **ErrorReport object (7)** The back/next buttons could be a bit more intuitive, maybe underneath the text box rather than as arrows at the side of the page. Because this confused most users I thought it was best to remove the arrows. It makes the form clearer to understand. - - Copied from '***Steps taken to correct***'
@@ -1051,4 +1051,6 @@ Firstly, I need to add all the variables of the env.py file to the Config Vars. 
 - The idea behind the Search bar was taken from [Make Use Of](https://www.makeuseof.com/add-search-functionality-to-django-apps/#:~:text=Create%20a%20View%20for%20the%20Search&text=%23%20Check%20if%20the%20request%20is%20a%20post%20request.&text=In%20request.,your%20search%20bar's%20input%20field.&text=Finally%2C%20the%20function%20renders%20a,and%20filtered%20model%20as%20context.)
 - The if next functionality for redirecting users back to a page after a login was part taken from this post [Django Forms](https://forum.djangoproject.com/t/redirecting-user-to-page-after-login/14603/10)
 
-
+### Content
+- To check the how responsive my page was I used [Responsive Website Test](https://usepastel.com/responsive-website-test)
+- All images during the devlopment process were taken from [Pexel](https://www.pexels.com/)

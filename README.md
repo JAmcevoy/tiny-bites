@@ -177,14 +177,14 @@ The following table describes each password strength rule.
 
 ##### Navbar
 
-- The navbar was created with ease of access in mind using bootstrap. It provides a responsive navigation bar that displays all the website's different pages, with space to read and navigate clearly. On smaller screens, it neatly tucks together, hidden away until the burger icon is selected.
+- The nav bar was created with ease of access in mind using bootstrap. It provides a responsive navigation bar that displays all the website's different pages, with space to read and navigate clearly. On smaller screens, it neatly tucks together, hidden away until the burger icon is selected.
   - Contains:
     - **Feed**
     - **My Bites**
     - **To be Approved**
     - **Create**
     - **Login**, **Sign up**, and **Log out** (Based on if you are logged in or not)
-    - If the user is logged in the navbar will display their username which acts as a link to the **Profile**.
+    - If the user is logged in, the nav bar will display their username, which acts as a link to the **Profile**.
 
 ![Navbar Big Screen](docs/images/nav_signed_in.JPG)
 
@@ -247,7 +247,7 @@ The following table describes each password strength rule.
 ![Card Top](docs/images/card_top.JPG)
 
 - Recognizing that sometimes a post might catch your eye but not immediately draw you in with just the information above, the description button reveals a box on the card with the description the user set for the recipe, along with another button that leads to the post's detailed page. This creates a step-by-step journey for the user, rather than overwhelming them with all the information at once or making them hunt for it at the end.
-- However, each recipe name holds the link to the post just in case the users do not need to read the description.
+- However, each recipe name holds the link to the post, just in case the users do not need to read the description.
 ![Card Bottom](docs/images/card_bottom.JPG)
 
 ##### Pagination
@@ -332,7 +332,7 @@ The following table describes each password strength rule.
 
 #### My Bites
 
-- As mentioned in the planning stage I could decide on a layout for my bites. Here are the two choices created.
+- As mentioned in the planning stage, I could decide on a layout for my bites. Here are the two choices created.
 
 - ***Closes U.S.12*** because it allows users to update and modify their existing posts, ensuring that the content remains accurate and up-to-date.
 - ***Closes U.S.20*** because it allows users to remove their posts from the platform, maintaining the relevancy and appropriateness of content on their profile.
@@ -342,7 +342,7 @@ The following table describes each password strength rule.
 **Choice 2**
 ![Choice 2](docs/images/my_bites_choice_2.JPG)
 
-- I sent both options to possible users and chocie two seemed to be the most popular option. Also, I decided I want the users control on edit and delete to be used her and my idea took a little more shape.
+- I sent both options to possible users, and choice two seemed to be the most popular option. Also, I decided I want the users control on edit and delete to be used her and my idea took a little more shape.
 
 ![My bites](docs/images/my-bites.JPG)
 
@@ -480,21 +480,21 @@ The form is divided into four distinct sections, each represented by a carousel 
 ![Profile Form](docs/images/profile.JPG)
 
 ##### Password Modal
-- The password change is done by using a modal holding a form. This modal is actived by clicking the change password link. 
+- The password change is done by using a modal holding a form. This modal is activated by clicking the change password link. 
 - The modal  contains:
-  - Currrent Password
+  - Current Password
   - New Password
   - Confirm Password.
 
 ![Password Modal](docs/images/change-password-modal.JPG)
 
-- Using javascript I made some logic to make the change password process less prone to error
-  - Using calculatePasswordStrength() I check the password strenght based on predefined rules. If the password meet one the rule it adds 1 to the strenght variable. This reflects in the strenght message that shows under the password field. 
+- Using JavaScript I made some logic to make the change password process less prone to error
+  - Using calculatePasswordStrength() I check the password strength based on predefined rules. If the password meets one of the rules it adds 1 to the strength variable. This reflects in the strength message that shows under the password field. 
     - Weak is 0-1
     - Moderate is 2-3
     - Strong is 4 and higher
-  - Using validatePasswordsMatch() to check if new password and password confirm match. Untill they match the submit button is hidden. Also, show a passwordMismatchMessage, 'New password and confirmation do not match.'.
-- I used a lot of the color red in this modal to let the user know this is a major change and they must think carefully before procceding. This applies to the 'Change Password' link and the modal title. 
+  - Using validatePasswordsMatch() to check if new password and password confirm match. Until they match, the submit button is hidden. Also, show a passwordMismatchMessage, 'New password and confirmation do not match.'.
+- I used a lot of the colour red in this modal to let the user know this is a major change, and they must think carefully before proceeding. This applies to the 'Change Password' link and the modal title. 
 
 - ***Closes U.S.19*** because it provides users with the ability to update their profile information, ensuring that their account details are accurate and up-to-date.
 
@@ -509,7 +509,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 ##### Login
 
 - I wanted the login page to be a simple process, so I went for a plain view with the username and password fields.
-- The login is a separate page, so with use of the login_view I was able to allow the page to redirect to the previous page when relevant. For example, the detail view has its own login button for the comments. Before after a successful a user would be redirected to home based on the configurations in the setting.py file, I believe this to be frustrating for the user as they would need to go back and find the post they wished to comment on. With the next method, the login link grabs the slug of the post, then after login the user will be brought back to the post.
+- The login is a separate page, so with use of the login_view, I was able to allow the page to redirect to the previous page when relevant. For example, the detail view has its own login button for the comments. Before after a successful a user would be redirected to home based on the configurations in the setting.py file, I believe this to be frustrating for the user as they would need to go back and find the post they wished to comment on. With the next method, the login link grabs the slug of the post, then after login the user will be brought back to the post.
 
 ![Login](docs/images/login.JPG)
 
@@ -547,26 +547,39 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 - They can then build their reports with the use of the 'Submit Error Report' form, this form contains :
   - Issue (Cause or Area of Issue)
-  - Email ( When the user is logged in their email is automatically assigned )
+  - Email (When the user is logged in, their email is automatically assigned)
   - Description.
 
 ![Error Report Form](docs/images/submit-form.JPG)
 
-- Then once the form is submitted, the user is brought to a success screen to let them know their form has successfully been submitted. There is a link that bring then to the home page
+- Then once the form is submitted, the user is brought to a success screen to let them know their form has successfully been submitted. There is a link that bring them to the home page.
 
 ![Success Page](docs/images/submit-request.JPG)
 
-- This process is a bit different then the admins side, as seen from above the error reports are held in the admin panel. To give the admin a little accountability, I added another field to the form in which they must give details on the steps they took to correct the error. This creates a log on how issues were resolved, helping the admin team created a history. There is also a status on the error to let other admin know where this error is at in the correction process
+- This process is a bit different from the admins side, as seen from above the error reports are held in the admin panel. To give the admin a little accountability, I added another field to the form in which they must give details on the steps they took to correct the error. This creates a log on how issues were resolved, helping the admin team created a history. There is also a status on the error to let other admin know where this error is at in the correction process.
   - Open
   - Closed
   - In Progress
-- I also made an handle by field to state who it was that corrected what error. This is automatically updated when the form is saved
+- I also made a handle by field to state who it was that corrected what error. This is automatically updated when the form is saved.
 
 ![Error Report Admin](docs/images/error-report-admin.JPG)
 
-- I felt over time and as more error come in, this page would begin to be very messy, so I created a filter for Status and the date the error was create. This allows the admin to hide any completed error reports and just see what they need to take action . 
+- I felt over time and as more error come in, this page would begin to be very messy, so I created a filter for Status and the date the error was created. This allows the admin to hide any completed error reports and just see what they need to take action. 
 
 ![Filter](docs/images/filter-errors.JPG)
+
+- I found it frustrating that each time I had to go to the admin panel, I manually had to input /admin/ to the URL. So I decided to create a button similar to the support button that only shows for users that are logged in with a superuser role.
+- This caused the shape and style of the support button to change a little, but I think this work better. 
+
+![New buttons Large](docs/images/new-button-ls.JPG)
+![New buttons Small](docs/images/new-button-ss.JPG)
+
+- The test for each button is hidden until the pointer is hoovered over or the user click on a smaller screen. 
+
+![New button support](docs/images/new-button-admin.JPG)
+![New button support](docs/images/new-button-support.JPG) 
+
+- In this new setup the support holds the same URL (support/submit-error/) and now the admin bring the user to admin (/admin/).
 
 
 ### Features Left to Implement
@@ -575,7 +588,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 - I wanted to add in social media logins, allowing the users to connect their other social profile, but again in my current knowledge and time frame I felt I couldn't get this done to an acceptable level.
 - I wanted to incorporate Tailwind CSS styles into my project to separate it from other projects, but as this was new to me, I felt the time would have been wasted focusing so much on style. Additionally, I found the verbosity of HTML classes in Tailwind CSS to be less visually appealing or harder to read compared to Bootstrap's more structured HTML markup. This made the learning curve steeper and the transition more challenging.
 - I would like to bring the support further and set up a page for admins within the site to just deal with errors. But I was at the end of my project when I set this up, and I didn't want to start something I might not of been able to finish.
-- It was pointed out in the user testing that the create form doesnt stop progression on after each slide is filled in. The form cannot be submitted unless all fields are filled out so it handles that error however I would like to make the validation work this way. Maybe using some JavaScript to check the fields however the user testing was at the end of the project so I didnt have time to implement this.
+- It was pointed out in the user testing that the create form doesn't stop progression on after each slide is filled in. The form cannot be submitted unless all fields are filled out so it handles that error, however I would like to make the validation work this way. Maybe using some JavaScript to check the fields, however the user testing was at the end of the project, so I didn't have time to implement this.
 
 ## Testing
 
@@ -797,9 +810,8 @@ The form is divided into four distinct sections, each represented by a carousel 
   8. **What was your experience with logging out of the website using the logout modal?**
   9. **Overall, how would you rate the ease of use and intuitiveness of the website?**
   10. **Is there any specific feedback or suggestions you have for improving the website's usability?**
-  11. **Did you create a post? If not log back in and try. Do you fine it easy to understand?** (optional)
+  11. **Did you create a post? If not log back in and try. Do you find it easy to understand?** (optional)
   12. **Admin Review**
-
 
 #### User 1 (jackyd420) - PC
 1. Weird bug when I signed up (error 404) but then logged in when I refreshed the page.
@@ -832,31 +844,31 @@ The form is divided into four distinct sections, each represented by a carousel 
 12. non-admin
 #### User 3 (Muireannf00) - Mobile Phone
 1. It was very simple to sign up for an account as all you needed was basic details and your email, no issues with this.
-2. No issues logging in either once username and password was added.
+2. No issues logging in either once username and password were added.
 3. I found this part easily accessible.
 4. Once you knew what you were looking for, all post on the feed were easy to find, search bar specific also.
-5. First comment disappearedfor a second and then appeared back again, once it appeared nackit was easy to change it or delete it altogether.
+5. The first comment disappeared for a second and then appeared back again, once it appeared it was easy to change it or delete it altogether.
 6. I found this part difficult to manage at first but eventually got there once I messed around with it, I liked that it told you what exact information was missing or if there was an issue with it.
-7. The drop down (nav) made this accessible and very simple to understand no issue with this part.
-8. Logging out was easy, again drop down menu made it simple.
-9. Overall, the website was easy to use bar making your own post as I personally found this abit more difficult but once I figured out what to post, it was quite simple after that.
+7. The drop-down (nav) made this accessible and very simple to understand, no issue with this part.
+8. Logging out was easy, again the drop-down menu made it simple.
+9. Overall, the website was easy to use bar making your own post as I personally found this a bit more difficult but once I figured out what to post, it was quite simple after that.
 10. none at this time
 11. no answer
 12. non-admin
 #### User 4 (RonanCruise) - PC
-- I gave this user super user permissions and asked they to review the support handling (answered in 12.)
+- I gave this user superuser permissions and asked they to review the support handling (answered in 12.)
 1. 10 - process only asks for basic information and no difficulty in creating account
 2. 10 - No issues with login process
 3. 10 - No issues accessing profile and changing information, very intuitive process
 4. 8 - Feed is straightforward to browse - only comment is a filtering system at the top might make it easier to browse (options to filter by chicken/beef/pizza etc), also photos are very large on page (smaller images might make it a bit easier to browse also). Search function works well.
 5. 10 - No issues with commenting on a post or editing/deleting my comments
-6. 6 - The back/next buttons could be a bit more intuitive, maybe underneath the text box rather than as arrows at the side of the page. It doesnt stop me from progressing to the next section if I havent filled in the mandatory fields. Overall layout of the create post page is basic but is straightforward and works without issue.
+6. 6 - The back/next buttons could be a bit more intuitive, maybe underneath the text box rather than as arrows at the side of the page. It doesn't stop me from progressing to the next section if I haven't filled in the mandatory fields. Overall layout of the create post page is basic but is straightforward and works without issue.
 7. 10 - No issues with approving posts and editing/deleting them
 8. 10 - Logout button works as expected
 9. 8 - Overall the website is simple to use and works well. A few small changes in the feed and create post screens as outlined below, but I was able to browse, create posts and comment easily and without issue.
 10. No further comments really aside from the above
 11. No answer
-12. Support section is fine, easy to navigate. The only thing I noticed overall is that the Comments section on the left doesnt show which post the comment belongs to so is difficult to manage. Everything else seems fine for a control panel.
+12. Support section is fine, easy to navigate. The only thing I noticed overall is that the Comments section on the left doesn't show which post the comment belongs to so is difficult to manage. Everything else seems fine for a control panel.
   - I explained and showed the user that there is a view post button on the post field.
 
 #### Conclusion
@@ -872,7 +884,7 @@ The form is divided into four distinct sections, each represented by a carousel 
   ###### Create/Edit Process:
 
   - Users found the create/edit process challenging.
-Decision made to switch from arrow buttons to "Next" and "Prev" buttons for better clarity.
+Decision made to switch from arrow buttons to “Next” and “Prev” buttons for better clarity.
 
 ##### Additional Observations:
 
@@ -912,7 +924,7 @@ Decision made to switch from arrow buttons to "Next" and "Prev" buttons for bett
 
 ### Bugs I Faced Along The Way
 
-- When there was a user with no post yet and they try to log out the modal is not accessible but the user due to the over-lay sittng on the page. This was a bit of an oversite when I was creating this. To fix this bug I removed the following styles.
+- When there was a user with no post yet, and they try to log out, the modal is not accessible but the user due to the over-lay sitting on the page. This was a bit of an oversite when I was creating this. To fix this bug, I removed the following styles.
     ``` 
     /* .full-page-overlay {
       position: fixed;
@@ -951,32 +963,38 @@ Decision made to switch from arrow buttons to "Next" and "Prev" buttons for bett
   ```
   return render(request, "account/login.html", {'next': next_url})
   ```
-  - The create form had a bit of issue with UI, on larger screens the arrows confused the user. To counter this I decided to change 'Create Bite' into Steps based on which slide the user is on. I had to create my own 'carousel.js'. I was having some trouble putting that script directly to the page, when I did it didnt work so I moved it to base and it worked fine.
-  - The summernote field was an important part of the create and edit process as it allows user to add style and format to their posts, however that wasnt the only function of the summernote. I notice that code or html could be added directly. With security in mind I found it possible these features could cause some damage to my database if encountered by anyone with malicaus intent. So to fix this issue I used to form to specfically out what functions I would like the summernote field to have, I decide all that was really need was the style and formatting so everything else was removed. 
+  - The create form had a bit of issue with UI, on larger screens the arrows confused the user. To counter this, I decided to change 'Create Bite' into steps based on which slide the user is on. I had to create my own 'carousel.js'. I was having some trouble putting that script directly to the page, when I did, it didn't work, so I moved it to base and it worked fine.
+  - The summernote field was an important part of the create and edit process as it allows user to add style and format to their posts, however that wasn't the only function of the summer note. I notice that code or HTML could be added directly. With security in mind, I found it possible these features could cause some damage to my database if encountered by anyone with malicious intent. So to fix this issue I used the form to specifically out what functions I would like the summernote field to have, I decide all that was really need was the style and formatting so everything else was removed. 
 ```
 widgets = {
             'description': SummernoteWidget(attrs={'summernote': {'toolbar': [
-                ['style', ['style']],
+                ['style', 'style'],
                 ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
             ]}}),
             'ingredients': SummernoteWidget(attrs={'summernote': {'toolbar': [
-                ['style', ['style']],
+                ['style', 'style'],
                 ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
             ]}}),
             'instructions': SummernoteWidget(attrs={'summernote': {'toolbar': [
-                ['style', ['style']],
+                ['style', 'style'],
                 ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
             ]}}),
         }
 ```
 - I could get the page to show on [Amiresponsive](https://ui.dev/amiresponsive?). The kept getting the error below : 
-![response](docs/images/respon-error.JPG) I just search around for a different site that would work and I finally found <https://usepastel.com/responsive-website-test>
+![response](docs/images/respon-error.JPG) I just search around for a different site that would work, and I finally found <https://usepastel.com/responsive-website-test>
 - When the site runs, I get the following error in dev tools. This error is in relation to the Cloudinary URLs loading in http instead of https. 
 ![error-cloudinary](docs/images/cloud-bug.JPG)
-I had a look around online and it turn out the http can be set to secure for the settings.py file soI update it with the following code
+I had a look around online and it turn out the http can be set to secure for the settings.py file, so I update it with the following code
 ```
 CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': 'CLOUDINARY_URL',
@@ -988,18 +1006,18 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 Now there is no errors in the console and the images are saving with https, I verified this with dev tools.
 ![htttp error fixed](docs/images/http-error-fixed.JPG)
 - **ErrorReport object (2)** The page was trying to bring up account/profile, but there was not a URL configured for this path. To counter the redirection, I decide to hard code the redirection with the settings.py file. - Copied from '***Steps taken to correct***'
-- **ErrorReport object (6)** When there is no post in my bites the page number still shows. While I was making changes to the HTML the div moved out of the conditional loop. I put it in if user.post has next and it is now hidden. - Copied from '***Steps taken to correct***'
-- **ErrorReport object (7)** The back/next buttons could be a bit more intuitive, maybe underneath the text box rather than as arrows at the side of the page. Because this confused most users I thought it was best to remove the arrows. It makes the form clearer to understand. - Copied from '***Steps taken to correct***'
+- **ErrorReport object (6)** When there is no post in my bites, the page number still shows. While I was making changes to the HTML, the div moved out of the conditional loop. I put it in if user.post has next and it is now hidden. - Copied from '***Steps taken to correct***'
+- **ErrorReport object (7)** The back/next buttons could be a bit more intuitive, maybe underneath the text box rather than as arrows at the side of the page. Because this confused most users, I thought it was best to remove the arrows. It makes the form clearer to understand. - Copied from '***Steps taken to correct***'
 - **ErrorReport object (8)** The view wasn't redirecting after the comments were not showing, so this resulted in the page not updating with the new comment. I added return redirect('post_detail', slug=post.slug) below the save for the comment form in the view, test it, and it is now refreshing the page and displaying the comment too. - Copied from '***Steps taken to correct***
 
 ### Bugs I did not get to fix
 
-- The images only certain images for posts work with the post detail and the post list view if the photo is too big it is hidden or makes the card appear bigger, I fear this will cause issue for the users as most users not have the ability to seize their images. I feel like this is an easily solved issue, however I didn't notice this till late in the project and I had not enough time to investigate and correct this. I did correct it light with media queries, however I feel it is not fully fixed, so I added it to did not get to fix.
+- Only certain images for posts work with the post detail and the post list view. If the photo is too big, it is hidden or makes the card appear bigger. I fear this will cause issue for the users as most users not have the ability to seize their images. I feel like this is an easily solved issue, however I didn't notice this till late in the project and I had not enough time to investigate and correct this. I did correct it lightly with media queries, however I feel it is not fully fixed, so I added it to did not get to fix.
 - When the image is too big, it mishaps the image circle on the post detail card.
 - The password reset section is incomplete, Every time I try email from the page it throws an error. Unfortunately, I don't have the knowledge to fu fill this function before my project's deadline. So for testing purposes, I will remove the forgot password function.
 - I couldn't quite get the time or focus to apply the social's authentication. I really wanted to add this, hence the entries in the setting.py file. However, they were only added back in to prevent an error. I know it is not a bug, but I thought it was worth mention.
-- While I was running the testing for the view I notice that the change password error would not be corrected no matter what actions I took. I soon found out because the page was refreshed the profile page it was submitting that form and show the profile success message, but in the UI I could see it was displaying the password updated message. So, to get the test to pass, I added self.assertTrue(str(messages[0]) == 'Profile updated successfully!' or str(messages[0]) == 'Incorrect Password!'). I know this is against the point of testing, but I had no idea how to stop this and assume it was a side effect of using the same page. I felt I should add that here due to it not being corrected at the root of the issue.
-- When a user is signing up and the password dont match the form resets I think this is bad user experience becasue they have to fill it all out again, I believe I could correct this with some js but I could find the time to get it done.
+- While I was running the testing for the view, I notice that the change password error would not be corrected no matter what actions I took. I soon found out because the page was refreshed the profile page it was submitting that form and show the profile success message, but in the UI I could see it was displaying the password updated message. So, to get the test to pass, I added self.assertTrue(str(messages[0]) == 'Profile updated successfully!' or str(messages[0]) == 'Incorrect Password!'). I know this is against the point of testing, but I had no idea how to stop this and assume it was a side effect of using the same page. I felt I should add that here due to it not being corrected at the root of the issue.
+- When a user is signing up and the password don't match the form resets, I think this is bad user experience. They have to fill it all out again. I believe I could correct this with some JS, but I could find the time to get it done.
 
 
 ## Deployment
@@ -1023,11 +1041,11 @@ This section describes how I set up my workspace, Once my repository has been cr
   - In workplaces, I selected new workspaces
   - Here I copied the link from the GitHub and clicked to create to make my workspace.
 
-  - The type of project was Django, so I had a different file creation process that usual.
+  - The type of project was Django, so I had a different file creation process than usual.
     ##### Create the project
-    - First I type the following command in the terminal to install the Django Python package: pip3 install Django~=4.2.1
+    - First, I type the following command in the terminal to install the Django Python package: pip3 install Django~=4.2.1
     - Once the package is installed, I add it to the requirements.txt file with the following command: pip3 freeze --local > requirements.txt
-    - Then I Return to the terminal. In the terminal, create a Django project called tiny-bites in the current directory. django-admin startproject tiny-bites .
+    - Then I Return to the terminal. In the terminal, create a Django project called tiny-bites in the current directory. django-admin startproject tiny-bites.
     - Click on Open Browser.
     - **DisallowedHost at /Invalid HTTP_HOST header: '8000-jamcevoy-tiny-bites-jdbmznt5m7.us1.codeanyapp.com'. You may need to add '8000-jamcevoy-tiny-bites-jdbmznt5m7.us1.codeanyapp.com' to ALLOWED_HOSTS.**. This means Django doesn't recognise the hostname - the server name your project is running on.
     - I selected and copied the hostname after "Invalid HTTP_HOST header:". In this case, that is '8000-jamcevoy-tiny-bites-jdbmznt5m7.us1.codeanyapp.com'.
@@ -1056,7 +1074,7 @@ Preparing the code for deployment:
 - I had to use pip3 install gunicorn~=20.1 to install gunicorn then used pip3 freeze --local > requirements.txt to added it to the requirements.txt.
 - I need to create a procfile (Note: Conventionally, the Procfile is spelled with an uppercase "P" to adhere to a widely accepted naming convention.)
 - The contents of the Profile should be as follows 'web: gunicorn tiny-bites.wsgi'
-- Because I am deployment to Heroku I need to allow the domain in the allowed host section of the settings.py. Like so .. ALLOWED_HOSTS = ['8000-jamcevoy-tiny-bites-jdbmznt5m7.us1.codeanyapp.com', '.herokuapp.com']
+- Because I am deployment to Heroku, I need to allow the domain in the allowed host section of the settings.py. Like so .. ALLOWED_HOSTS = ['8000-jamcevoy-tiny-bites-jdbmznt5m7.us1.codeanyapp.com', '.herokuapp.com']
 - I had to make sure the Debug was set to False, as it is recommended not to push your project to deployment with this True. When DEBUG is set to True, Django will display detailed error pages with sensitive information about your application, including stack traces and environment variables. This information can be useful for debugging during development but poses a security risk if exposed in a production environment.
 - Lastly I git add, commit -m, and pushed my code to GitHub.
 
@@ -1067,7 +1085,7 @@ Firstly, I need to add all the variables of the env.py file to the Config Vars. 
   - DATABASE_URL
   - DISABLE_COLLECTSTATIC (Set to the value of '1')
   - SECRET_KEY
-- Finally, once these vars were configured I need to connect my GitHub to Heroku. I have done this from the 'Deploy' tab within in Heroku app.
+- Finally, once these vars were configured, I need to connect my GitHub to Heroku. I have done this from the 'Deploy' tab within in Heroku app.
 - In the deployment method section, I selected GitHub. Once signed in, I used the search bar to locate my repository and connected my app.
 - Last but not least, I manually deployed the app using 'Manual deploy' so I could see a log of the deployment in case of any errors. I selected the main branch and then once I was sure I selected 'Deploy Branch' button to start the process.
 - The process is as follows:
@@ -1094,5 +1112,5 @@ Firstly, I need to add all the variables of the env.py file to the Config Vars. 
 - The if next functionality for redirecting users back to a page after a login was part taken from this post [Django Forms](https://forum.djangoproject.com/t/redirecting-user-to-page-after-login/14603/10)
 
 ### Content
-- To check the how responsive my page was I used [Responsive Website Test](https://usepastel.com/responsive-website-test)
-- All images during the devlopment process were taken from [Pexel](https://www.pexels.com/)
+- To check how responsive my page was, I used [Responsive Website Test](https://usepastel.com/responsive-website-test)
+- All images during the development process were taken from [Pexel](https://www.pexels.com/)

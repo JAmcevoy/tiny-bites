@@ -490,9 +490,9 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 - Using javascript I made some logic to make the change password process less prone to error
   - Using calculatePasswordStrength() I check the password strenght based on predefined rules. If the password meet one the rule it adds 1 to the strenght variable. This reflects in the strenght message that shows under the password field. 
-    - <span style="color:red">Weak</span> is 0-1
-    - <span style="color:yellow">Moderate</span> is 2-3
-    - <span style="color:green">Strong</span> is 4 and higher
+    - Weak is 0-1
+    - Moderate is 2-3
+    - Strong is 4 and higher
   - Using validatePasswordsMatch() to check if new password and password confirm match. Untill they match the submit button is hidden. Also, show a passwordMismatchMessage, 'New password and confirmation do not match.'.
 - I used a lot of the color red in this modal to let the user know this is a major change and they must think carefully before procceding. This applies to the 'Change Password' link and the modal title. 
 
@@ -586,39 +586,39 @@ The form is divided into four distinct sections, each represented by a carousel 
 ##### SecurityTest
 - **setUp**
   - Sets up the client and the URL for the home page.
-- **test_csrf** <span style="color:green">PASS</span>
+- **test_csrf** ***PASS***
   - Tests the Cross-Site Request Forgery (CSRF) protection.
   - Verifies that the CSRF token is present in the response.
 
 ##### PerformanceTest
 - **setUp**
   - Sets up the client and the URL for the home page.
-- **test_query_count** <span style="color:green">PASS</span>
+- **test_query_count** ***PASS***
   - Tests the performance by checking the number of queries.
   - Verifies that only one query is executed when accessing the home page.
 
 #### Forms
 
 ##### CommentFormTest
-- **test_comment_form_fields** <span style="color:green">PASS</span>
+- **test_comment_form_fields** ***PASS***
   - Checks if the `CommentForm` contains the 'body' field.
   - Verifies that the label for the 'body' field is 'Comment'.
-- **test_comment_form_valid_data** <span style="color:green">PASS</span>
+- **test_comment_form_valid_data** ***PASS***
   - Tests the `CommentForm` with valid data.
   - Verifies that the form is valid when provided with valid data.
-- **test_comment_form_invalid_data** <span style="color:green">PASS</span>
+- **test_comment_form_invalid_data** ***PASS***
   - Tests the `CommentForm` with invalid data.
   - Verifies that the form is invalid when provided with empty 'body' data.
 
 ##### PostFormCreateTest
-- **test_post_form_create_fields** <span style="color:green">PASS</span>
+- **test_post_form_create_fields** ***PASS***
   - Checks if the `PostFormCreate` contains all expected fields.
-- **test_post_form_create_widgets** <span style="color:green">PASS</span>
+- **test_post_form_create_widgets** ***PASS***
   - Checks if the widgets for certain fields in `PostFormCreate` are instances of `SummernoteWidget`. 
-- **test_post_form_create_valid_data** <span style="color:green">PASS</span>
+- **test_post_form_create_valid_data** ***PASS***
   - Tests the `PostFormCreate` with valid data.
   - Verifies that the form is valid when provided with valid data.
-- **test_post_form_create_invalid_data** <span style="color:green">PASS</span>
+- **test_post_form_create_invalid_data** ***PASS***
   - Tests the `PostFormCreate` with invalid data.
   - Verifies that the form is invalid when provided with empty data for all fields.
 
@@ -627,7 +627,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 ##### PostListViewTest
 - **setUp**
   - Sets up the client and the URL for the home page.
-- **test_post_list_view** <span style="color:green">PASS</span>
+- **test_post_list_view** ***PASS***
   - Tests the behavior of the post list view.
   - Verifies that the response status code is 200 (OK).
   - Verifies that the correct template is used for rendering.
@@ -635,121 +635,121 @@ The form is divided into four distinct sections, each represented by a carousel 
 ##### SearchFeatureViewTest
 - **setUp**
   - Sets up the client, URL for the search feature, and creates test data.
-- **test_search_feature_post** <span style="color:green">PASS</span>
+- **test_search_feature_post** ***PASS***
   - Tests the behavior of the search feature when using the POST method.
   - Verifies various aspects of the response.
-- **test_search_feature_get** <span style="color:green">PASS</span>
+- **test_search_feature_get** ***PASS***
   - Tests the behavior of the search feature when using the GET method.
   - Verifies various aspects of the response.
 
 ##### PostDetailViewTest
 - **setUp**
   - Sets up the client, user, post data, and URL for the post detail view.
-- **test_post_detail_view** <span style="color:green">PASS</span>
+- **test_post_detail_view** ***PASS***
   - Tests the behavior of the post detail view.
   - Verifies various aspects of the response.
-- **test_post_detail_view_post_comment** <span style="color:green">PASS</span>
+- **test_post_detail_view_post_comment** ***PASS***
   - Tests the behavior of the post detail view when posting a comment.
   - Verifies various aspects of the response.
 
 ##### PostCreationViewTest
 - **setUp**
   - Sets up the client, URL for the post creation view, and creates a test user.
-- **test_post_creation_view_get** <span style="color:green">PASS</span>
+- **test_post_creation_view_get** ***PASS***
   - Tests the behavior of the post creation view when accessing via GET request.
   - Verifies various aspects of the response.
-- **test_post_creation_view_post** <span style="color:green">PASS</span>
+- **test_post_creation_view_post** ***PASS***
   - Tests the behavior of the post creation view when submitting a POST request.
   - Verifies various aspects of the response.
 
 ##### EditPostViewTest
 - **setUp**
   - Sets up the client, creates a test user and a post, and defines the URL for editing the post.
-- **test_edit_post_view_get** <span style="color:green">PASS</span>
+- **test_edit_post_view_get** ***PASS***
   - Tests the behavior of the edit post view when accessing via GET request.
   - Verifies various aspects of the response.
-- **test_edit_post_view_post** <span style="color:green">PASS</span>
+- **test_edit_post_view_post** ***PASS***
   - Tests the behavior of the edit post view when submitting a POST request.
   - Verifies various aspects of the response.
 
 ##### DeletePostsTest
 - **setUp**
   - Set up the client, create a test user, and a test post.
-- **test_delete_posts** <span style="color:green">PASS</span>
+- **test_delete_posts** ***PASS***
   - Tests the delete_posts function.
   - Verifies that a post is deleted successfully.
 
 ##### MyBitesViewTest
 - **setUp**
   - Sets up the client, creates a test user, a test post, and defines the URL for accessing user's saved posts.
-- **test_my_bites_view_authenticated** <span style="color:green">PASS</span>
+- **test_my_bites_view_authenticated** ***PASS***
   - Tests the behavior of the my bites view when the user is authenticated.
   - Verifies various aspects of the response.
-- **test_my_bites_view_unauthenticated** <span style="color:green">PASS</span>
+- **test_my_bites_view_unauthenticated** ***PASS***
   - Tests the behavior of the my bites view when the user is unauthenticated.
   - Verifies various aspects of the response.
 
 ##### ToBeApprovedViewTest
 - **setUp**
   - Sets up the client, creates a test user, a test post, and a pending comment.
-- **test_to_be_approved_view_authenticated** <span style="color:green">PASS</span>
+- **test_to_be_approved_view_authenticated** ***PASS***
   - Tests the behavior of the to-be-approved view when the user is authenticated.
   - Verifies various aspects of the response.
-- **test_to_be_approved_view_unauthenticated** <span style="color:green">PASS</span>
+- **test_to_be_approved_view_unauthenticated** ***PASS***
   - Tests the behavior of the to-be-approved view when the user is unauthenticated.
   - Verifies various aspects of the response.
 
 ##### ApproveCommentViewTest
 - **setUp**
   - Sets up the client, creates a test user, a test post, and a pending comment.
-- **test_approve_comment_view** <span style="color:green">PASS</span>
+- **test_approve_comment_view** ***PASS***
   - Tests the behavior of the approve comment view.
   - Verifies various aspects of the response.
 
 ##### DeleteCommentViewTest
 - **setUp**
   - Sets up the client, creates a test user, a test post, and a comment to delete.
-- **test_delete_comment_view_get** <span style="color:green">PASS</span>
+- **test_delete_comment_view_get** ***PASS***
   - Tests the behavior of the delete comment view for GET request.
   - Verifies various aspects of the response.
 
 ##### EditCommentViewTest
 - **setUp**
   - Sets up the client, creates a test user, a test post, and a comment to edit.
-- **test_edit_comment_view_get** <span style="color:green">PASS</span>
+- **test_edit_comment_view_get** ***PASS***
   - Tests the behavior of the edit comment view for GET request.
   - Verifies various aspects of the response.
-- **test_edit_comment_view_post** <span style="color:green">PASS</span>
+- **test_edit_comment_view_post** ***PASS***
   - Tests the behavior of the edit comment view for POST request with valid data.
   - Verifies various aspects of the response.
-- **test_edit_comment_view_post_invalid** <span style="color:green">PASS</span>
+- **test_edit_comment_view_post_invalid** ***PASS***
   - Tests the behavior of the edit comment view for POST request with invalid data.
   - Verifies various aspects of the response.
 
 ##### LoginViewTestCase
-- **test_login_view** <span style="color:green">PASS</span>
+- **test_login_view** ***PASS***
   - Test whether the login view returns the login page.
-- **test_login_unsuccessful** <span style="color:green">PASS</span>
+- **test_login_unsuccessful** ***PASS***
   - Test login with incorrect credentials.
-- **test_login_next_url** <span style="color:green">PASS</span>
+- **test_login_next_url** ***PASS***
   - Test login with redirection to a next URL.
 
 ##### ProfileViewTest
 - **setUp**
   - Set up the client and URL for profile view.
-- **test_profile_view_authenticated** <span style="color:green">PASS</span>
+- **test_profile_view_authenticated** ***PASS***
   - Test profile view for authenticated user.
-- **test_profile_view_unauthenticated** <span style="color:green">PASS</span>
+- **test_profile_view_unauthenticated** ***PASS***
   - Test profile view for unauthenticated user.
-- **test_profile_view_post** <span style="color:green">PASS</span>
+- **test_profile_view_post** ***PASS***
   - Test profile view for POST request.
 
 ##### CustomPasswordChangeViewTest
 - **setUp**
   - Set up the test environment.
-- **test_password_change_view_post_valid** <span style="color:green">PASS</span>
+- **test_password_change_view_post_valid** ***PASS***
   - Test password change with valid input.
-- **test_password_change_view_post_invalid_old_password** <span style="color:yellow">PASS but workaround was made to test.</span>
+- **test_password_change_view_post_invalid_old_password** ***PASS but workaround was made to test.***
   - Test password change with invalid old password.
 
 #### Results
@@ -953,7 +953,11 @@ widgets = {
 - When the site runs, I get the follow error in dev tools. This error is in relation to the Cloudinary URLs loading in http instead of https. I had a look around the setting for a correction, but I could not find anything.
 ![error-cloudinary](docs/images/cloud-bug.JPG)
 - While I was running the testing for the view I notice that the change password error would not be corrected no matter what actions I took. I soon found out because the page was refreshed the profile page it was submitting that form and show the profile success message, but in the UI I could see it was displaying the password updated message. So, to get the test to pass, I added self.assertTrue(str(messages[0]) == 'Profile updated successfully!' or str(messages[0]) == 'Incorrect Password!'). I know this is against the point of testing, but I had no idea how to stop this and assume it was a side effect of using the same page. I felt I should add that here due to it not being corrected at the root of the issue.
+- I could get the page to show on [Amiresponsive](https://ui.dev/amiresponsive?). The kept getting the error below : 
+![response](docs/images/respon-error.JPG)
 - **ErrorReport object (2)** The page was trying to bring up account/profile, but there was not a URL configured for this path. To counter the redirection, I decide to hard code the redirection with the settings.py file. - Copied from '***Steps taken to correct***'
+- **ErrorReport object (6)** When there is no post in my bites the page number still shows. While I was making changes to the HTML the div moved out of the conditional loop. I put it in if user.post has next and it is now hidden. - Copied from '***Steps taken to correct***'
+- **ErrorReport object (7)** The back/next buttons could be a bit more intuitive, maybe underneath the text box rather than as arrows at the side of the page. Because this confused most users I thought it was best to remove the arrows. It makes the form clearer to understand. - - Copied from '***Steps taken to correct***'
 
 
 ## Deployment

@@ -552,15 +552,19 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 ![Error Report Form](docs/images/submit-form.JPG)
 
-- Then once the form is submitted, the user is brought to a success screen to let them know their form has successfully been submitted.
+- Then once the form is submitted, the user is brought to a success screen to let them know their form has successfully been submitted. There is a link that bring then to the home page
 
 ![Success Page](docs/images/submit-request.JPG)
 
-- This process is a bit different then the admins side, as seen from above the error reports are held in the admin panel. To give the admin a little accountability, I added another field to the form in which they must give details on the steps they took to correct the error. This creates a log on how issues were resolved, helping the admin team created a history. 
+- This process is a bit different then the admins side, as seen from above the error reports are held in the admin panel. To give the admin a little accountability, I added another field to the form in which they must give details on the steps they took to correct the error. This creates a log on how issues were resolved, helping the admin team created a history. There is also a status on the error to let other admin know where this error is at in the correction process
+  - Open
+  - Closed
+  - In Progress
+- I also made an handle by field to state who it was that corrected what error. This is automatically updated when the form is saved
 
 ![Error Report Admin](docs/images/error-report-admin.JPG)
 
-- I felt over time and as more error come in, this page would begin to be very messy, so I created a filter with looks for any report in which the step's taken field is null. This allows the admin to hide any complete error reports and just see what they need to take action on. 
+- I felt over time and as more error come in, this page would begin to be very messy, so I created a filter for Status and the date the error was create. This allows the admin to hide any completed error reports and just see what they need to take action . 
 
 ![Filter](docs/images/filter-errors.JPG)
 

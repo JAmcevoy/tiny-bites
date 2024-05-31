@@ -753,6 +753,7 @@ The form is divided into four distinct sections, each represented by a carousel 
   - Test password change with invalid old password.
 
 #### Results
+
     - /workspaces/tiny-bites$ python3 manage.py test
     Found 36 test(s).
     Creating test database for alias 'default'...
@@ -763,6 +764,10 @@ The form is divided into four distinct sections, each represented by a carousel 
 
     OK
     Destroying test database for alias 'default'...
+
+#### Conclusion
+
+- The comprehensive testing of the Django views and forms confirms the reliability and efficiency of the backend logic. The successful execution of all tests without any failures highlights the stability and readiness of the application for deployment. Continuous testing and refinement will further ensure the application's performance and security.
 
 
 ### User testing
@@ -792,7 +797,7 @@ The form is divided into four distinct sections, each represented by a carousel 
   12. **Admin Review**
 
 
-#### User 1 (jackyd420)
+#### User 1 (jackyd420) - PC
 1. Weird bug when I signed up (error 404) but then logged in when I refreshed the page.
   - This has been logged using the support app.
 2. Same as issues as 1.
@@ -808,7 +813,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 10. Nothing at the top of my mind besides changing the comment approval system but after explanation I understand why they are separate with if the login had worked on first go the score would-be high, but the quick process of the support submission was a big help having so close.
 11. no answer
 12. non-admin user.
-#### User 2 (Tan42)
+#### User 2 (Tan42) - Tablet
 1. It was very easy to sign up to. 
 2. No, it was good and easy.
 3. I was able to update my information straight away so that much it much easier.
@@ -821,23 +826,21 @@ The form is divided into four distinct sections, each represented by a carousel 
 10. No, I liked it all
 11. Yes I did, I found it simple to understand
 12. non-admin
-#### User 3
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-7. 
-8. 
-9. 
-10. 
+#### User 3 (Muireannf00) - Mobile Phone
+1. It was very simple to sign up for an account as all you needed was basic details and your email, no issues with this.
+2. No issues logging in either once username and password was added.
+3. I found this part easily accessible.
+4. Once you knew what you were looking for, all post on the feed were easy to find, search bar specific also.
+5. First comment disappearedfor a second and then appeared back again, once it appeared nackit was easy to change it or delete it altogether.
+6. I found this part difficult to manage at first but eventually got there once I messed around with it, I liked that it told you what exact information was missing or if there was an issue with it.
+7. The drop down (nav) made this accessible and very simple to understand no issue with this part.
+8. Logging out was easy, again drop down menu made it simple.
+9. Overall, the website was easy to use bar making your own post as I personally found this abit more difficult but once I figured out what to post, it was quite simple after that.
+10. none at this time
 11. no answer
 12. non-admin
-#### User 4 (RonanCruise)
-
+#### User 4 (RonanCruise) - PC
 - I gave this user super user permissions and asked they to review the support handling (answered in 12.)
-
 1. 10 - process only asks for basic information and no difficulty in creating account
 2. 10 - No issues with login process
 3. 10 - No issues accessing profile and changing information, very intuitive process
@@ -851,6 +854,25 @@ The form is divided into four distinct sections, each represented by a carousel 
 11. No answer
 12. Support section is fine, easy to navigate. The only thing I noticed overall is that the Comments section on the left doesnt show which post the comment belongs to so is difficult to manage. Everything else seems fine for a control panel.
   - I explained and showed the user that there is a view post button on the post field.
+
+#### Conclusion
+
+##### Overall Usability:
+
+- Both experienced and inexperienced users found the website easy to understand.
+  -Users working in the IT industry (User 1 and User 4) were able to provide detailed feedback on structure and coding errors.
+  -Less experienced users (User 2 and User 3) also navigated the website effectively, indicating a generally intuitive design.
+
+##### Specific Feedback:
+
+  ###### Create/Edit Process:
+
+  - Users found the create/edit process challenging.
+Decision made to switch from arrow buttons to "Next" and "Prev" buttons for better clarity.
+
+##### Additional Observations:
+
+- Some users who were not part of the formal test enjoyed the website and commented positively on its layout and design
 
 ### Validator Testing
 
@@ -878,6 +900,9 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 ![Safari](docs/images/safari.jpg)
 
+#### Conclusion
+
+- Validator testing for both HTML and CSS using the W3C tools confirmed that the code adheres to web standards without major issues. Browser testing further validated that the website is compatible with major browsers, ensuring a consistent user experience across different platforms. These validations reinforce the robustness and reliability of the website's front-end implementation.
 
 ## Bugs
 
@@ -945,6 +970,22 @@ widgets = {
 ```
 - I could get the page to show on [Amiresponsive](https://ui.dev/amiresponsive?). The kept getting the error below : 
 ![response](docs/images/respon-error.JPG) I just search around for a different site that would work and I finally found <https://usepastel.com/responsive-website-test>
+- When the site runs, I get the following error in dev tools. This error is in relation to the Cloudinary URLs loading in http instead of https. 
+![error-cloudinary](docs/images/cloud-bug.JPG)
+I had a look around online and it turn out the http can be set to secure for the settings.py file soI update it with the following code
+```
+CLOUDINARY_STORAGE = {
+    'CLOUDINARY_URL': 'CLOUDINARY_URL',
+    'SECURE': True, 
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+```
+Now there is no errors in the console and the images are saving with https, I verified this with dev tools.
+![htttp error fixed](docs/images/http-error-fixed.JPG)
+- **ErrorReport object (2)** The page was trying to bring up account/profile, but there was not a URL configured for this path. To counter the redirection, I decide to hard code the redirection with the settings.py file. - Copied from '***Steps taken to correct***'
+- **ErrorReport object (6)** When there is no post in my bites the page number still shows. While I was making changes to the HTML the div moved out of the conditional loop. I put it in if user.post has next and it is now hidden. - Copied from '***Steps taken to correct***'
+- **ErrorReport object (7)** The back/next buttons could be a bit more intuitive, maybe underneath the text box rather than as arrows at the side of the page. Because this confused most users I thought it was best to remove the arrows. It makes the form clearer to understand. - - Copied from '***Steps taken to correct***'
 
 ### Bugs I did not get to fix
 
@@ -952,12 +993,7 @@ widgets = {
 - When the image is too big, it mishaps the image circle on the post detail card.
 - The password reset section is incomplete, Every time I try email from the page it throws an error. Unfortunately, I don't have the knowledge to fu fill this function before my project's deadline. So for testing purposes, I will remove the forgot password function.
 - I couldn't quite get the time or focus to apply the social's authentication. I really wanted to add this, hence the entries in the setting.py file. However, they were only added back in to prevent an error. I know it is not a bug, but I thought it was worth mention.
-- When the site runs, I get the follow error in dev tools. This error is in relation to the Cloudinary URLs loading in http instead of https. I had a look around the setting for a correction, but I could not find anything.
-![error-cloudinary](docs/images/cloud-bug.JPG)
 - While I was running the testing for the view I notice that the change password error would not be corrected no matter what actions I took. I soon found out because the page was refreshed the profile page it was submitting that form and show the profile success message, but in the UI I could see it was displaying the password updated message. So, to get the test to pass, I added self.assertTrue(str(messages[0]) == 'Profile updated successfully!' or str(messages[0]) == 'Incorrect Password!'). I know this is against the point of testing, but I had no idea how to stop this and assume it was a side effect of using the same page. I felt I should add that here due to it not being corrected at the root of the issue.
-- **ErrorReport object (2)** The page was trying to bring up account/profile, but there was not a URL configured for this path. To counter the redirection, I decide to hard code the redirection with the settings.py file. - Copied from '***Steps taken to correct***'
-- **ErrorReport object (6)** When there is no post in my bites the page number still shows. While I was making changes to the HTML the div moved out of the conditional loop. I put it in if user.post has next and it is now hidden. - Copied from '***Steps taken to correct***'
-- **ErrorReport object (7)** The back/next buttons could be a bit more intuitive, maybe underneath the text box rather than as arrows at the side of the page. Because this confused most users I thought it was best to remove the arrows. It makes the form clearer to understand. - - Copied from '***Steps taken to correct***'
 
 
 ## Deployment

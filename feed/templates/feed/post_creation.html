@@ -26,9 +26,6 @@
                                             {{ post_form.featured_image|as_crispy_field }}
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary float-end d-md-none next-btn" data-bs-target="#postFormCarousel" data-bs-slide="next">
-                                        Next
-                                    </button>
                                 </div>
                                 <div class="carousel-item">
                                     <div class="text-center">
@@ -36,12 +33,6 @@
                                             {{ post_form.description|as_crispy_field }}
                                         </div>
                                     </div>
-                                    <button class="btn btn-secondary float-start d-md-none prev-btn" data-bs-target="#postFormCarousel" data-bs-slide="prev">
-                                        Previous
-                                    </button>
-                                    <button class="btn btn-primary float-end d-md-none next-btn" data-bs-target="#postFormCarousel" data-bs-slide="next">
-                                        Next
-                                    </button>
                                 </div>
                                 <div class="carousel-item">
                                     <div class="text-center">
@@ -49,12 +40,6 @@
                                             {{ post_form.ingredients|as_crispy_field }}
                                         </div>
                                     </div>
-                                    <button class="btn btn-secondary float-start d-md-none prev-btn" data-bs-target="#postFormCarousel" data-bs-slide="prev">
-                                        Previous
-                                    </button>
-                                    <button class="btn btn-primary float-end d-md-none next-btn" data-bs-target="#postFormCarousel" data-bs-slide="next">
-                                        Next
-                                    </button>
                                 </div>
                                 <div class="carousel-item">
                                     <div class="text-center">
@@ -62,27 +47,28 @@
                                             {{ post_form.instructions|as_crispy_field }}
                                         </div>
                                     </div>
-                                    <button class="btn btn-secondary float-start d-md-none prev-btn" data-bs-target="#postFormCarousel" data-bs-slide="prev">
-                                        Previous
-                                    </button>
                                     <button type="submit" class="btn btn-primary float-end">
                                         Submit Post
                                     </button>
                                 </div>
                             </div>
                         </div>
+                        <div class="row justify-content-between mt-3">
+                            <div class="col-auto">
+                                <button class="btn btn-secondary prev-btn" type="button" data-bs-target="#postFormCarousel" data-bs-slide="prev">
+                                    Previous
+                                </button>
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-primary next-btn" type="button" data-bs-target="#postFormCarousel" data-bs-slide="next">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
-        <a class="carousel-control-prev d-none d-md-flex" href="#postFormCarousel" role="button" data-bs-slide="prev" style="position: absolute; top: 50%; transform: translateY(-50%); left: 40px;">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </a>
-        <a class="carousel-control-next d-none d-md-flex" href="#postFormCarousel" role="button" data-bs-slide="next" style="position: absolute; top: 50%; transform: translateY(-50%); right: 40px;">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </a>
     </div>
 </div>
 {% endblock content %}

@@ -98,7 +98,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 SECRET_KEY = 'SECRET_KEY'
 
-DEBUG = False
+DEBUG = False 
 
 ALLOWED_HOSTS = ['8000-jamcevoy-tiny-bites-jdbmznt5m7.us1.codeanyapp.com', '.herokuapp.com']
 

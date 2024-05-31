@@ -437,10 +437,10 @@ The following table describes each password strength rule.
 
 #### Create Bite Form
 
-#### Carousel Form Navigation
+##### Carousel Form Navigation
 - The form is divided into multiple slides using Bootstrap's carousel feature. This design choice was made to prevent users from feeling overwhelmed by a lengthy form. By breaking the form into manageable sections, users can focus on one task at a time, reducing cognitive load and improving the overall user experience.
 
-#### Form Sections
+##### Form Sections
 The form is divided into four distinct sections, each represented by a carousel slide. This segmentation ensures clarity and focus, guiding users through the process step-by-step.
 
 **First Slide**
@@ -472,14 +472,14 @@ The form is divided into four distinct sections, each represented by a carousel 
 
 #### Profile
 
-#### Page Layout
+##### Page Layout
 
 - The profile page allows users to edit their information, including first and last name, email, and password.
 - The input for the password on the profile page is for design and is disabled.
 
 ![Profile Form](docs/images/profile.JPG)
 
-#### Password Modal
+##### Password Modal
 - The password change is done by using a modal holding a form. This modal is actived by clicking the change password link. 
 - The modal  contains:
   - Currrent Password
@@ -571,6 +571,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 - I wanted to add in social media logins, allowing the users to connect their other social profile, but again in my current knowledge and time frame I felt I couldn't get this done to an acceptable level.
 - I wanted to incorporate Tailwind CSS styles into my project to separate it from other projects, but as this was new to me, I felt the time would have been wasted focusing so much on style. Additionally, I found the verbosity of HTML classes in Tailwind CSS to be less visually appealing or harder to read compared to Bootstrap's more structured HTML markup. This made the learning curve steeper and the transition more challenging.
 - I would like to bring the support further and set up a page for admins within the site to just deal with errors. But I was at the end of my project when I set this up, and I didn't want to start something I might not of been able to finish.
+- It was pointed out in the user testing that the create form doesnt stop progression on after each slide is filled in. The form cannot be submitted unless all fields are filled out so it handles that error however I would like to make the validation work this way. Maybe using some JavaScript to check the fields however the user testing was at the end of the project so I didnt have time to implement this.
 
 ## Testing
 
@@ -585,39 +586,39 @@ The form is divided into four distinct sections, each represented by a carousel 
 ##### SecurityTest
 - **setUp**
   - Sets up the client and the URL for the home page.
-- **test_csrf**
+- **test_csrf** <span style="color:green">PASS</span>
   - Tests the Cross-Site Request Forgery (CSRF) protection.
   - Verifies that the CSRF token is present in the response.
 
 ##### PerformanceTest
 - **setUp**
   - Sets up the client and the URL for the home page.
-- **test_query_count**
+- **test_query_count** <span style="color:green">PASS</span>
   - Tests the performance by checking the number of queries.
   - Verifies that only one query is executed when accessing the home page.
 
 #### Forms
 
 ##### CommentFormTest
-- **test_comment_form_fields**
+- **test_comment_form_fields** <span style="color:green">PASS</span>
   - Checks if the `CommentForm` contains the 'body' field.
   - Verifies that the label for the 'body' field is 'Comment'.
-- **test_comment_form_valid_data**
+- **test_comment_form_valid_data** <span style="color:green">PASS</span>
   - Tests the `CommentForm` with valid data.
   - Verifies that the form is valid when provided with valid data.
-- **test_comment_form_invalid_data**
+- **test_comment_form_invalid_data** <span style="color:green">PASS</span>
   - Tests the `CommentForm` with invalid data.
   - Verifies that the form is invalid when provided with empty 'body' data.
 
 ##### PostFormCreateTest
-- **test_post_form_create_fields**
+- **test_post_form_create_fields** <span style="color:green">PASS</span>
   - Checks if the `PostFormCreate` contains all expected fields.
-- **test_post_form_create_widgets**
-  - Checks if the widgets for certain fields in `PostFormCreate` are instances of `SummernoteWidget`.
-- **test_post_form_create_valid_data**
+- **test_post_form_create_widgets** <span style="color:green">PASS</span>
+  - Checks if the widgets for certain fields in `PostFormCreate` are instances of `SummernoteWidget`. 
+- **test_post_form_create_valid_data** <span style="color:green">PASS</span>
   - Tests the `PostFormCreate` with valid data.
   - Verifies that the form is valid when provided with valid data.
-- **test_post_form_create_invalid_data**
+- **test_post_form_create_invalid_data** <span style="color:green">PASS</span>
   - Tests the `PostFormCreate` with invalid data.
   - Verifies that the form is invalid when provided with empty data for all fields.
 
@@ -626,7 +627,7 @@ The form is divided into four distinct sections, each represented by a carousel 
 ##### PostListViewTest
 - **setUp**
   - Sets up the client and the URL for the home page.
-- **test_post_list_view**
+- **test_post_list_view** <span style="color:green">PASS</span>
   - Tests the behavior of the post list view.
   - Verifies that the response status code is 200 (OK).
   - Verifies that the correct template is used for rendering.
@@ -634,121 +635,121 @@ The form is divided into four distinct sections, each represented by a carousel 
 ##### SearchFeatureViewTest
 - **setUp**
   - Sets up the client, URL for the search feature, and creates test data.
-- **test_search_feature_post**
+- **test_search_feature_post** <span style="color:green">PASS</span>
   - Tests the behavior of the search feature when using the POST method.
   - Verifies various aspects of the response.
-- **test_search_feature_get**
+- **test_search_feature_get** <span style="color:green">PASS</span>
   - Tests the behavior of the search feature when using the GET method.
   - Verifies various aspects of the response.
 
 ##### PostDetailViewTest
 - **setUp**
   - Sets up the client, user, post data, and URL for the post detail view.
-- **test_post_detail_view**
+- **test_post_detail_view** <span style="color:green">PASS</span>
   - Tests the behavior of the post detail view.
   - Verifies various aspects of the response.
-- **test_post_detail_view_post_comment**
+- **test_post_detail_view_post_comment** <span style="color:green">PASS</span>
   - Tests the behavior of the post detail view when posting a comment.
   - Verifies various aspects of the response.
 
 ##### PostCreationViewTest
 - **setUp**
   - Sets up the client, URL for the post creation view, and creates a test user.
-- **test_post_creation_view_get**
+- **test_post_creation_view_get** <span style="color:green">PASS</span>
   - Tests the behavior of the post creation view when accessing via GET request.
   - Verifies various aspects of the response.
-- **test_post_creation_view_post**
+- **test_post_creation_view_post** <span style="color:green">PASS</span>
   - Tests the behavior of the post creation view when submitting a POST request.
   - Verifies various aspects of the response.
 
 ##### EditPostViewTest
 - **setUp**
   - Sets up the client, creates a test user and a post, and defines the URL for editing the post.
-- **test_edit_post_view_get**
+- **test_edit_post_view_get** <span style="color:green">PASS</span>
   - Tests the behavior of the edit post view when accessing via GET request.
   - Verifies various aspects of the response.
-- **test_edit_post_view_post**
+- **test_edit_post_view_post** <span style="color:green">PASS</span>
   - Tests the behavior of the edit post view when submitting a POST request.
   - Verifies various aspects of the response.
 
 ##### DeletePostsTest
 - **setUp**
   - Set up the client, create a test user, and a test post.
-- **test_delete_posts**
+- **test_delete_posts** <span style="color:green">PASS</span>
   - Tests the delete_posts function.
   - Verifies that a post is deleted successfully.
 
 ##### MyBitesViewTest
 - **setUp**
   - Sets up the client, creates a test user, a test post, and defines the URL for accessing user's saved posts.
-- **test_my_bites_view_authenticated**
+- **test_my_bites_view_authenticated** <span style="color:green">PASS</span>
   - Tests the behavior of the my bites view when the user is authenticated.
   - Verifies various aspects of the response.
-- **test_my_bites_view_unauthenticated**
+- **test_my_bites_view_unauthenticated** <span style="color:green">PASS</span>
   - Tests the behavior of the my bites view when the user is unauthenticated.
   - Verifies various aspects of the response.
 
 ##### ToBeApprovedViewTest
 - **setUp**
   - Sets up the client, creates a test user, a test post, and a pending comment.
-- **test_to_be_approved_view_authenticated**
+- **test_to_be_approved_view_authenticated** <span style="color:green">PASS</span>
   - Tests the behavior of the to-be-approved view when the user is authenticated.
   - Verifies various aspects of the response.
-- **test_to_be_approved_view_unauthenticated**
+- **test_to_be_approved_view_unauthenticated** <span style="color:green">PASS</span>
   - Tests the behavior of the to-be-approved view when the user is unauthenticated.
   - Verifies various aspects of the response.
 
 ##### ApproveCommentViewTest
 - **setUp**
   - Sets up the client, creates a test user, a test post, and a pending comment.
-- **test_approve_comment_view**
+- **test_approve_comment_view** <span style="color:green">PASS</span>
   - Tests the behavior of the approve comment view.
   - Verifies various aspects of the response.
 
 ##### DeleteCommentViewTest
 - **setUp**
   - Sets up the client, creates a test user, a test post, and a comment to delete.
-- **test_delete_comment_view_get**
+- **test_delete_comment_view_get** <span style="color:green">PASS</span>
   - Tests the behavior of the delete comment view for GET request.
   - Verifies various aspects of the response.
 
 ##### EditCommentViewTest
 - **setUp**
   - Sets up the client, creates a test user, a test post, and a comment to edit.
-- **test_edit_comment_view_get**
+- **test_edit_comment_view_get** <span style="color:green">PASS</span>
   - Tests the behavior of the edit comment view for GET request.
   - Verifies various aspects of the response.
-- **test_edit_comment_view_post**
+- **test_edit_comment_view_post** <span style="color:green">PASS</span>
   - Tests the behavior of the edit comment view for POST request with valid data.
   - Verifies various aspects of the response.
-- **test_edit_comment_view_post_invalid**
+- **test_edit_comment_view_post_invalid** <span style="color:green">PASS</span>
   - Tests the behavior of the edit comment view for POST request with invalid data.
   - Verifies various aspects of the response.
 
 ##### LoginViewTestCase
-- **test_login_view**
+- **test_login_view** <span style="color:green">PASS</span>
   - Test whether the login view returns the login page.
-- **test_login_unsuccessful**
+- **test_login_unsuccessful** <span style="color:green">PASS</span>
   - Test login with incorrect credentials.
-- **test_login_next_url**
+- **test_login_next_url** <span style="color:green">PASS</span>
   - Test login with redirection to a next URL.
 
 ##### ProfileViewTest
 - **setUp**
   - Set up the client and URL for profile view.
-- **test_profile_view_authenticated**
+- **test_profile_view_authenticated** <span style="color:green">PASS</span>
   - Test profile view for authenticated user.
-- **test_profile_view_unauthenticated**
+- **test_profile_view_unauthenticated** <span style="color:green">PASS</span>
   - Test profile view for unauthenticated user.
-- **test_profile_view_post**
+- **test_profile_view_post** <span style="color:green">PASS</span>
   - Test profile view for POST request.
 
 ##### CustomPasswordChangeViewTest
 - **setUp**
   - Set up the test environment.
-- **test_password_change_view_post_valid**
+- **test_password_change_view_post_valid** <span style="color:green">PASS</span>
   - Test password change with valid input.
-- **test_password_change_view_post_invalid_old_password**
+- **test_password_change_view_post_invalid_old_password** <span style="color:yellow">PASS but workaround was made to test.</span>
   - Test password change with invalid old password.
 
 #### Results
@@ -787,7 +788,8 @@ The form is divided into four distinct sections, each represented by a carousel 
   8. **What was your experience with logging out of the website using the logout modal?**
   9. **Overall, how would you rate the ease of use and intuitiveness of the website?**
   10. **Is there any specific feedback or suggestions you have for improving the website's usability?**
-  11. **Did you create a post? If not log back in and try. Do you fine it easy to understand?**
+  11. **Did you create a post? If not log back in and try. Do you fine it easy to understand?** (optional)
+  12. **Admin Review**
 
 
 #### User 1 (jackyd420)
@@ -804,7 +806,9 @@ The form is divided into four distinct sections, each represented by a carousel 
 8. Log out was simple and worked perfectly!
 9. 7/10 as the login was a bit strange.
 10. Nothing at the top of my mind besides changing the comment approval system but after explanation I understand why they are separate with if the login had worked on first go the score would-be high, but the quick process of the support submission was a big help having so close.
-#### User 2
+11. no answer
+12. non-admin user.
+#### User 2 (Tan42)
 1. It was very easy to sign up to. 
 2. No, it was good and easy.
 3. I was able to update my information straight away so that much it much easier.
@@ -816,30 +820,37 @@ The form is divided into four distinct sections, each represented by a carousel 
 9. 10 / 10 rating I really enjoyed using the site was just not so fun without a community to share with.
 10. No, I liked it all
 11. Yes I did, I found it simple to understand
+12. non-admin
 #### User 3
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
-#### User 4
-1.
-2.
-3.
-4.
-5.
-6.
-7.
-8.
-9.
-10.
-11.
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
+11. no answer
+12. non-admin
+#### User 4 (RonanCruise)
+
+- I gave this user super user permissions and asked they to review the support handling (answered in 12.)
+
+1. 10 - process only asks for basic information and no difficulty in creating account
+2. 10 - No issues with login process
+3. 10 - No issues accessing profile and changing information, very intuitive process
+4. 8 - Feed is straightforward to browse - only comment is a filtering system at the top might make it easier to browse (options to filter by chicken/beef/pizza etc), also photos are very large on page (smaller images might make it a bit easier to browse also). Search function works well.
+5. 10 - No issues with commenting on a post or editing/deleting my comments
+6. 6 - The back/next buttons could be a bit more intuitive, maybe underneath the text box rather than as arrows at the side of the page. It doesnt stop me from progressing to the next section if I havent filled in the mandatory fields. Overall layout of the create post page is basic but is straightforward and works without issue.
+7. 10 - No issues with approving posts and editing/deleting them
+8. 10 - Logout button works as expected
+9. 8 - Overall the website is simple to use and works well. A few small changes in the feed and create post screens as outlined below, but I was able to browse, create posts and comment easily and without issue.
+10. No further comments really aside from the above
+11. No answer
+12. Support section is fine, easy to navigate. The only thing I noticed overall is that the Comments section on the left doesnt show which post the comment belongs to so is difficult to manage. Everything else seems fine for a control panel.
+  - I explained and showed the user that there is a view post button on the post field.
 
 ### Validator Testing
 

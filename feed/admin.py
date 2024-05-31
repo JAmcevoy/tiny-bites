@@ -13,7 +13,5 @@ class PostAdmin(SummernoteModelAdmin):
     summernote_fields = ('description', 'ingredients', 'instructions')
 
 
-
-# Register your models here.
 admin.site.register(Comment)
 

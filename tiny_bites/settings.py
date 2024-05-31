@@ -254,3 +254,10 @@ MESSAGE_TAGS = {
     messages.WARNING: 'warning',
     messages.ERROR: 'danger',
 }
+
+CLOUDINARY_STORAGE = {
+    'CLOUDINARY_URL': 'CLOUDINARY_URL',
+    'SECURE': True, 
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

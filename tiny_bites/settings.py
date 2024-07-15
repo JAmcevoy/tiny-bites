@@ -9,14 +9,14 @@ if os.path.isfile('env.py'):
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 SECRET_KEY = 'SECRET_KEY'
 
-DEBUG = False 
+DEBUG = False
 
-ALLOWED_HOSTS = ['8000-jamcevoy-tinybites-2iq4p7fje8a.ws.codeinstitute-ide.net', '.herokuapp.com']
+ALLOWED_HOSTS = ['.codeinstitute-ide.net', '.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -87,53 +87,9 @@ if 'test' in sys.argv:
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeanyapp.com",
-    "https://*.herokuapp.com"
-]
-
-CSRF_COOKIE_SECURE = True
-
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-]
-
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
-USE_I18N = True
-USE_TZ = True
-
-STATIC_URL = '/static/'
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-MESSAGE_TAGS = {
-    messages.DEBUG: 'debug',
-    messages.INFO: 'info',
-    messages.SUCCESS: 'success',
-    messages.WARNING: 'warning',
-    messages.ERROR: 'danger',
-}
-
-
-if 'test' in sys.argv:
-    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
-
-CSRF_TRUSTED_ORIGINS = [
+    "https://*.herokuapp.com",
     "https://*.gitpod.com",
-    "https://*.herokuapp.com", 
-    "https://*.codeinstitute-ide.net"
+    "https://*.codeinstitute-ide.net",
 ]
 
 CSRF_COOKIE_SECURE = True

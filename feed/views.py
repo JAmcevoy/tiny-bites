@@ -105,12 +105,17 @@ def post_creation(request):
 
     return render(request, "feed/post_creation.html", {"post_form": create_form})
 
-
+@login_required
 def edit_post(request, slug):
     """
     Handles the editing of an existing post
     """
     post = get_object_or_404(Create, slug=slug)
+    
+    if request.user != post.author:
+        messages.error(request, 'You do not have permission to edit this post.')
+        return redirect('home')
+
     if request.method == 'POST':
         form = PostFormCreate(request.POST, request.FILES, instance=post)
         if form.is_valid():
@@ -119,7 +124,8 @@ def edit_post(request, slug):
             return redirect('post_detail', slug=post.slug)
     else:
         form = PostFormCreate(instance=post)
-    return render(request, 'feed/edit_post.html', {'form': form, 'post': post})  
+    
+    return render(request, 'feed/edit_post.html', {'form': form, 'post': post})
 
 
 def delete_posts(request, slug):

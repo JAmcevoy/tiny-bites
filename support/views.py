@@ -26,7 +26,10 @@ def submit_error(request):
             error_report.save()
             return redirect('submit_success')
     else:
-        form = ErrorReportForm(initial={'email': request.user.email} if request.user.is_authenticated else None)
+        form = ErrorReportForm(
+            initial={'email': request.user.email}
+            if request.user.is_authenticated else None
+        )
     return render(request, 'support/submit_error.html', {'form': form})
 
 

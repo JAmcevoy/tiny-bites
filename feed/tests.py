@@ -2,6 +2,7 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from .models import Create
 
+
 class SecurityTest(TestCase):
     """
     Tests related to security features of the application.
@@ -30,7 +31,8 @@ class PerformanceTest(TestCase):
 
     def test_query_count(self):
         """
-        Ensure that the number of database queries does not exceed expected limit.
+        Ensure that the number of database queries does not exceed the expected
+        limit.
         """
         self.client.get(reverse('home'))
         with self.assertNumQueries(1):

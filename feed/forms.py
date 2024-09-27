@@ -21,25 +21,31 @@ class PostFormCreate(forms.ModelForm):
             'instructions',
         )
         widgets = {
-            'description': SummernoteWidget(attrs={'summernote': {'toolbar': [
-                ['style', 'style'],
-                ['font', ['bold', 'italic', 'underline', 'clear']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-            ]}}),
-            'ingredients': SummernoteWidget(attrs={'summernote': {'toolbar': [
-                ['style', 'style'],
-                ['font', ['bold', 'italic', 'underline', 'clear']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-            ]}}),
-            'instructions': SummernoteWidget(attrs={'summernote': {'toolbar': [
-                ['style', 'style'],
-                ['font', ['bold', 'italic', 'underline', 'clear']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-            ]}}),
+            'description': SummernoteWidget(
+                attrs={'summernote': {'toolbar': [
+                    ['style', 'style'],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                ]}}
+            ),
+            'ingredients': SummernoteWidget(
+                attrs={'summernote': {'toolbar': [
+                    ['style', 'style'],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                ]}}
+            ),
+            'instructions': SummernoteWidget(
+                attrs={'summernote': {'toolbar': [
+                    ['style', 'style'],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                ]}}
+            ),
         }

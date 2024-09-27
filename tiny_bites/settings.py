@@ -130,7 +130,7 @@ MESSAGE_TAGS = {
 
 CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': 'CLOUDINARY_URL',
-    'SECURE': True, 
+    'SECURE': True,
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

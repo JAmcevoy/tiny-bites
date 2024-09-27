@@ -40,9 +40,15 @@ class SearchFeatureViewTest(TestCase):
         """
         self.client = Client()
         self.url = reverse('search_feature')
-        self.user = User.objects.create_user(username='testuser', password='password')
-        self.create1 = Create.objects.create(name='Test Post 1', slug='test-post-1', author=self.user)
-        self.create2 = Create.objects.create(name='Another Test Post', slug='another-test-post', author=self.user)
+        self.user = User.objects.create_user(
+            username='testuser', password='password'
+        )
+        self.create1 = Create.objects.create(
+            name='Test Post 1', slug='test-post-1', author=self.user
+        )
+        self.create2 = Create.objects.create(
+            name='Another Test Post', slug='another-test-post', author=self.user
+        )
 
     def test_search_feature_post(self):
         """
@@ -78,8 +84,12 @@ class PostDetailViewTest(TestCase):
         Sets up the client, user, post data, and URL for the post detail view.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser', password='password')
-        self.create = Create.objects.create(name='Test Post', slug='test-post', author=self.user)
+        self.user = User.objects.create_user(
+            username='testuser', password='password'
+        )
+        self.create = Create.objects.create(
+            name='Test Post', slug='test-post', author=self.user
+        )
         self.url = reverse('post_detail', kwargs={'slug': 'test-post'})
 
     def test_post_detail_view(self):
@@ -155,11 +165,16 @@ class EditPostViewTest(TestCase):
 
     def setUp(self):
         """
-        Sets up the client, creates a test user and a post, and defines the URL for editing the post.
+        Sets up the client, creates a test user and a post, 
+        and defines the URL for editing the post.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser', password='testpass')
-        self.create = Create.objects.create(name='Test Post', slug='test-post', author=self.user)
+        self.user = User.objects.create_user(
+            username='testuser', password='testpass'
+        )
+        self.create = Create.objects.create(
+            name='Test Post', slug='test-post', author=self.user
+        )
         self.url = reverse('edit_post', kwargs={'slug': 'test-post'})
 
     def test_edit_post_view_get(self):
@@ -203,8 +218,12 @@ class DeletePostsTest(TestCase):
         Sets up the client, creates a test user, and a test post.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser', password='testpass')
-        self.post = Create.objects.create(name='Test Post', author=self.user, slug='test-post')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpass'
+        )
+        self.post = Create.objects.create(
+            name='Test Post', author=self.user, slug='test-post'
+        )
 
     def test_delete_posts(self):
         """
@@ -212,7 +231,9 @@ class DeletePostsTest(TestCase):
         Verifies that a post is deleted successfully.
         """
         self.client.login(username='testuser', password='testpass')
-        response = self.client.post(reverse('delete_post', kwargs={'slug': self.post.slug}))
+        response = self.client.post(
+            reverse('delete_post', kwargs={'slug': self.post.slug})
+        )
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Create.objects.filter(slug=self.post.slug).exists())
 
@@ -224,12 +245,17 @@ class MyBitesViewTest(TestCase):
 
     def setUp(self):
         """
-        Sets up the client, creates a test user, a test post, and defines the URL for accessing user's saved posts.
+        Sets up the client, creates a test user, a test post,
+        and defines the URL for accessing user's saved posts.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpass'
+        )
         self.url = reverse('my_bites')
-        self.create = Create.objects.create(name='Test Post', author=self.user, slug='test-post')
+        self.create = Create.objects.create(
+            name='Test Post', author=self.user, slug='test-post'
+        )
 
     def test_my_bites_view_authenticated(self):
         """
@@ -263,10 +289,17 @@ class ToBeApprovedViewTest(TestCase):
         Sets up the client, creates a test user, a test post, and a pending comment.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpass'
+        )
         self.url = reverse('to_be_approved')
-        self.create = Create.objects.create(name='Test Post', author=self.user, slug='test_post')
-        self.comment = Comment.objects.create(post=self.create, body='Pending comment', approved=False, author=self.user)
+        self.create = Create.objects.create(
+            name='Test Post', author=self.user, slug='test_post'
+        )
+        self.comment = Comment.objects.create(
+            post=self.create, body='Pending comment',
+            approved=False, author=self.user
+        )
 
     def test_to_be_approved_view_authenticated(self):
         """
@@ -300,9 +333,14 @@ class ApproveCommentViewTest(TestCase):
         Sets up the client, creates a test user, a test post, and a pending comment.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpass'
+        )
         self.create = Create.objects.create(name='Test Post', author=self.user)
-        self.comment = Comment.objects.create(post=self.create, body='Pending comment', approved=False, author=self.user)
+        self.comment = Comment.objects.create(
+            post=self.create, body='Pending comment', 
+            approved=False, author=self.user
+        )
         self.url = reverse('approve_comment', kwargs={'comment_id': self.comment.id})
 
     def test_approve_comment_view(self):
@@ -327,9 +365,15 @@ class DeleteCommentViewTest(TestCase):
         Sets up the client, creates a test user, a test post, and a comment to delete.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser', password='testpass')
-        self.create = Create.objects.create(name='Test Post', author=self.user, slug='test-post')
-        self.comment = Comment.objects.create(post=self.create, body='Comment to delete', author=self.user)
+        self.user = User.objects.create_user(
+            username='testuser', password='testpass'
+        )
+        self.create = Create.objects.create(
+            name='Test Post', author=self.user, slug='test-post'
+        )
+        self.comment = Comment.objects.create(
+            post=self.create, body='Comment to delete', author=self.user
+        )
         self.url = reverse('delete_comment', kwargs={'comment_id': self.comment.id})
 
     def test_delete_comment_view_get(self):
@@ -353,15 +397,22 @@ class EditCommentViewTest(TestCase):
         Sets up the client, creates a test user, a test post, and a comment to edit.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser', password='testpass')
-        self.create = Create.objects.create(name='Test Post', author=self.user, slug='test-post')
-        self.comment = Comment.objects.create(post=self.create, body='Comment to edit', author=self.user)
+        self.user = User.objects.create_user(
+            username='testuser', password='testpass'
+        )
+        self.create = Create.objects.create(
+            name='Test Post', author=self.user, slug='test-post'
+        )
+        self.comment = Comment.objects.create(
+            post=self.create, body='Comment to edit', author=self.user
+        )
         self.url = reverse('edit_comment', kwargs={'comment_id': self.comment.id})
 
     def test_edit_comment_view_get(self):
         """
         Tests the behavior of the edit comment view for GET request.
-        Verifies that the view returns the correct template and contains the comment to edit.
+        Verifies that the view returns the correct template 
+        and contains the comment to edit.
         """
         self.client.login(username='testuser', password='testpass')
         response = self.client.get(self.url)
@@ -421,14 +472,17 @@ class LoginViewTestCase(TestCase):
         self.assertTemplateUsed(response, 'account/login.html')
         self.assertIn(
             'The username and/or password you specified are not correct.',
-            response.content.decode())
+            response.content.decode()
+        )
 
     def test_login_next_url(self):
         """
         Test login with redirection to a next URL.
         """
         next_url = reverse('home')
-        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpass'
+        )
 
         response = self.client.post(reverse('login'), {
             'next': next_url,
@@ -451,7 +505,9 @@ class ProfileViewTest(TestCase):
         """
         self.client = Client()
         self.url = reverse('profile')
-        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpass'
+        )
 
     def test_profile_view_authenticated(self):
         """
@@ -502,7 +558,9 @@ class CustomPasswordChangeViewTest(TestCase):
         Set up the test environment.
         """
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpass'
+        )
         self.url = reverse_lazy('profile')
         self.client.login(username='testuser', password='testpass')
 
@@ -531,4 +589,7 @@ class CustomPasswordChangeViewTest(TestCase):
         self.assertEqual(response.status_code, 302)
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        self.assertTrue(str(messages[0]) == 'Profile updated successfully!' or str(messages[0]) == 'Your old password was entered incorrectly.')
+        self.assertTrue(
+            str(messages[0]) == 'Profile updated successfully!' or
+            str(messages[0]) == 'Your old password was entered incorrectly.'
+        )

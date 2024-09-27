@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django_summernote.widgets import SummernoteWidget
 from .forms import CommentForm, PostFormCreate
-
 from .models import Comment, Create
 
 
@@ -33,9 +32,15 @@ class PostFormCreateTest(TestCase):
 
     def test_post_form_create_widgets(self):
         form = PostFormCreate()
-        self.assertIsInstance(form.fields['description'].widget, SummernoteWidget)
-        self.assertIsInstance(form.fields['ingredients'].widget, SummernoteWidget)
-        self.assertIsInstance(form.fields['instructions'].widget, SummernoteWidget)
+        self.assertIsInstance(
+            form.fields['description'].widget, SummernoteWidget
+        )
+        self.assertIsInstance(
+            form.fields['ingredients'].widget, SummernoteWidget
+        )
+        self.assertIsInstance(
+            form.fields['instructions'].widget, SummernoteWidget
+        )
 
     def test_post_form_create_valid_data(self):
         form = PostFormCreate(data={

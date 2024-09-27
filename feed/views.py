@@ -210,20 +210,20 @@ def approve_comment(request, comment_id):
 @login_required
 def delete_comment(request, comment_id):
     """
-    Deletes a comment. Redirects to the referring URL if available, 
+    Deletes a comment. Redirects to the referring URL if available,
     otherwise redirects to the post detail page.
+    Only the owner of the comment or superuser can delete the comment.
     """
     comment = get_object_or_404(Comment, id=comment_id)
     request.session['referring_url'] = request.META.get('HTTP_REFERER', None)
     default_url = reverse('post_detail', kwargs={'slug': comment.post.slug})
 
-    if (request.user == comment.author or
-            request.user.is_superuser or
-            comment.post.author == request.user):
+    if request.user == comment.author or request.user.is_superuser:
         comment.delete()
         messages.success(request, 'Comment deleted successfully.')
         return referring_url(request, default_url)
     else:
+        messages.error(request, 'You do not have permission to delete this comment.')
         return redirect(default_url)
 
 
@@ -232,8 +232,13 @@ def edit_comment(request, comment_id):
     """
     Edits a comment and sets its approval status to False.
     Renders the post detail template with the necessary context.
+    Only the owner of the comment can edit it.
     """
     comment = get_object_or_404(Comment, id=comment_id)
+
+    if request.user != comment.author:
+        messages.error(request, 'You do not have permission to edit this comment.')
+        return redirect('post_detail', slug=comment.post.slug)
 
     if request.method == 'POST':
         comment_form = CommentForm(request.POST, instance=comment)
@@ -244,9 +249,7 @@ def edit_comment(request, comment_id):
             messages.success(request, 'Comment updated!')
             return redirect('post_detail', slug=comment.post.slug)
     else:
-        comment_form = CommentForm(
-            instance=comment, initial={'body': comment.body}
-        )
+        comment_form = CommentForm(instance=comment, initial={'body': comment.body})
 
     post = comment.post
     comments = post.comments.all().order_by("-created_on")
@@ -303,24 +306,33 @@ def login_view(request):
         return render(request, "account/login.html", {'next': next_url})
 
 
+@login_required
 def profile(request):
     """
     Displays and updates the user's profile.
+    Only accessible to authenticated users.
     """
-    if request.user.is_authenticated:
-        if request.method == 'POST':
-            user = request.user
-            user.first_name = request.POST.get('firstName', '')
-            user.last_name = request.POST.get('lastName', '') 
-            user.email = request.POST.get('email', '')
+    user = request.user
 
-            user.save()
-            messages.success(request, 'Profile updated successfully!')
-            return redirect('profile')
-        else:
-            return render(request, 'feed/profile.html')
-    else:
-        return redirect('login')
+    if request.method == 'POST':
+        first_name = request.POST.get('firstName', '').strip()
+        last_name = request.POST.get('lastName', '').strip()
+        email = request.POST.get('email', '').strip()
+
+        # Update the user object
+        user.first_name = first_name
+        user.last_name = last_name
+        user.email = email
+
+        user.save()
+        messages.success(request, 'Profile updated successfully!')
+        return redirect('profile')
+
+    return render(request, 'feed/profile.html', {
+        'first_name': user.first_name,
+        'last_name': user.last_name,
+        'email': user.email
+    })
 
 
 class CustomPasswordChangeView(PasswordChangeView):

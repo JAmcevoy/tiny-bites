@@ -128,6 +128,7 @@ def edit_post(request, slug):
     return render(request, 'feed/edit_post.html', {'form': form, 'post': post})
 
 
+@login_required
 def delete_posts(request, slug):
     """
     Handles the deletion of an existing post
@@ -176,6 +177,7 @@ def to_be_approved(request):
         return redirect('login')
 
 
+@login_required
 def approve_comment(request, comment_id):
     """
     Approves a comment
@@ -186,6 +188,7 @@ def approve_comment(request, comment_id):
     return redirect('to_be_approved')
 
 
+@login_required
 def delete_comment(request, comment_id):
     """
     Deletes a comment. Redirects to the referring URL if available, 
@@ -205,6 +208,7 @@ def delete_comment(request, comment_id):
         return redirect(default_url)
 
 
+@login_required
 def edit_comment(request, comment_id):
     """
     Edits a comment and sets its approval status to False.
